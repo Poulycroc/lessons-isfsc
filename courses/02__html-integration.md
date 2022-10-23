@@ -18,7 +18,7 @@ Pour lire des fichiers `fichier.php` nous allons avoir besoin d'un serveur php d
 <summary>Téléchargement</summary>
 
 ##### Se rendre sur [https://www.mamp.info/en/downloads/](https://www.mamp.info/en/downloads/)
-<img src=".screenshots/Screenshot 2022-10-23 at 13.57.13.png" alt="Download MAMP" />
+<img src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 13.57.13.png" alt="Download MAMP" />
 
 #### Mac
 
@@ -48,21 +48,21 @@ Vous pouvez appuyer sur "Start"
 Ne pas utiliser la version 'pro'
 ---
 
-<img alt="MAMP mac" src="./.screenshots/Screenshot 2022-10-23 at 14.35.39.png" />
-<img alt="MAMP windows" src="./.screenshots/Screenshot 2022-10-23 at 14.40.35.png" />
+<img alt="MAMP mac" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 14.35.39.png" />
+<img alt="MAMP windows" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 14.40.35.png" />
 
 
 ### Dans l'onglet 'préférence'
 vous retrouverez 2 sections importante `Ports` et `Server`
 
 #### Server
-<img alt="MAMP Server" src="./.screenshots/Screenshot 2022-10-23 at 14.45.59.png" /><br>
+<img alt="MAMP Server" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 14.45.59.png" /><br>
 ici on va retrouver les informations relative a notre "espace de travail"
 dans mon cas mon il se trouve dans Application, MAMP, htdocs
 il n'y a pas de raisons d'y toucher pour l'instant 
 
 #### Ports
-<img alt="MAMP Ports" src="./.screenshots/Screenshot 2022-10-23 at 14.45.50.png" />
+<img alt="MAMP Ports" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 14.45.50.png" />
 
 ici vous retrouverez les information sur les ports 
 <ol>
@@ -72,7 +72,7 @@ ici vous retrouverez les information sur les ports
 
 pour accéder a votre première application il vous faudra donc vous rendre sur votre navigateur préféré entrer [http://localhost:8888/](http://localhost:8888/)
 vous devrier arriver sur une page de présentation
-<img alt="MAMP welcome page" src="./.screenshots/Screenshot 2022-10-23 at 14.53.22.png" />
+<img alt="MAMP welcome page" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 14.53.22.png" />
 
 l'information la plus importante pour nous c'est `Document root: /Applications/MAMP/htdocs` c'est la que va se trouver notre dossier de travail pour 
 
@@ -91,8 +91,8 @@ Rendez dans votre espace de travail MAMP (`/Applications/MAMP/htdocs` sur mac et
 ---
 
 créer un dossier que vous nommerez `monpremiersite` ouvrez ce dossier dans votre éditeur de code favori dans mon cas [VSCodium](https://vscodium.com/) (le plus connu étant [Visual Studio Code](https://code.visualstudio.com/) )
-avec votre éditeur de code créer un fichier `index.php` vous devriez avoir quelque chose qui resssemble a ça 
-<img alt="Premier Fichier index dans vscode" src=".screenshots/Screenshot 2022-10-23 at 15.43.31.png" />
+avec votre éditeur de code créer un fichier `index.php` vous devriez avoir quelque chose qui resssemble a ça<br />
+<img alt="Premier Fichier index dans vscode" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 15.43.31.png" />
 
 collez y le code-ci dessous
 ```php
@@ -105,12 +105,12 @@ collez y le code-ci dessous
   </body>
 </html>
 ```
-<img alt="premier code dans notre index" src="./.screenshots/Screenshot 2022-10-23 at 15.46.31.png" />
+<img alt="premier code dans notre index" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 15.46.31.png" />
 
 allez dans votre navigateur préféré et entrez [http://localhost:8888/monpremiersite/](http://localhost:8888/monpremiersite/) 
 
 vous devriez avoir quelque chose qui ressemble a ça<br>
-<img alt="premier site" src="./.screenshots/Screenshot 2022-10-23 at 15.49.33.png" />
+<img alt="premier site" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 15.49.33.png" />
 
 
 ## Exemple #2 Récupération des informations du système depuis PHP

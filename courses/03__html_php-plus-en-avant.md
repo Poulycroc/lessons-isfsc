@@ -57,7 +57,7 @@ on va préférer écrire
 </ol>
 ```
 pour se retourner avec ce résultat<br/>
-<img src="./.screenshots/Screenshot 2022-10-23 at 16.36.06.png" />
+<img src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 16.36.06.png" />
 
 #### On peut évidement appliquer le même concept pour les conditions
 ```php
@@ -169,7 +169,7 @@ plus simplement voila l'exemple représenté de manière visuel
 
 ## navigation dans notre application 
 si mon projet se présente comme ça<br>
-<img alt="projet avec plusieurs pages" src="./.screenshots/Screenshot 2022-10-23 at 17.14.41.png" />
+<img alt="projet avec plusieurs pages" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 17.14.41.png" />
 
 et que j'ai envie de voyager entre mes différentes pages...
 
