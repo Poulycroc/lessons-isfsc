@@ -1,6 +1,6 @@
 # PHP
 
-[See Github version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md)
+[Voir Github version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md)
 
 ## Les variables
 

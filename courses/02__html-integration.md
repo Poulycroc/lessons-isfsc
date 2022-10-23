@@ -1,5 +1,7 @@
 # HTML intégration
 
+[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/02__html-integration.md)
+
 ## Le but ?
 L'idée d'utiliser le php dans le monde du webdev est de dynamiser les pages `HTML`
 
@@ -107,7 +109,7 @@ collez y le code-ci dessous
 
 allez dans votre navigateur préféré et entrez [http://localhost:8888/monpremiersite/](http://localhost:8888/monpremiersite/) 
 
-vous devriez avoir quelque chose qui ressemble a ça
+vous devriez avoir quelque chose qui ressemble a ça<br>
 <img alt="premier site" src="./.screenshots/Screenshot 2022-10-23 at 15.49.33.png" />
 
 
