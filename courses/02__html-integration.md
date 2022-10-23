@@ -12,7 +12,7 @@ Pour lire des fichiers `fichier.php` nous allons avoir besoin d'un serveur php d
 
 ##### Se rendre sur [https://www.mamp.info/en/downloads/](https://www.mamp.info/en/downloads/)
 
-![Download screenshot](./.screenshots/Screenshot 2022-10-23 at 13.57.13.png)
+<img src=".screenshots/Screenshot 2022-10-23 at 13.57.13.png" alt="Download MAMP" />
 
 <details>
 	
