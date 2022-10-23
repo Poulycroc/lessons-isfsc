@@ -1,5 +1,7 @@
 # PHP
 
+[See Github version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md)
+
 ## Les variables
 
 [PHP net](https://www.php.net/manual/fr/language.variables.basics.php)
@@ -54,6 +56,7 @@ Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui ass
 ```
 #### Ajout d'une nouvelle entrée dans un tableau
 ```php
+<?php
   // Ajout d'un légume au tableu indexé numériquement
   $legumes[] = 'salade';
  
@@ -64,7 +67,6 @@ Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui ass
   // Ajout de légumes au tableu 
   $legumes[12] = 'endive';
   $legumes[20] = 'piment';
-<?php
 ?>
 ```
 #### Récupération de données
