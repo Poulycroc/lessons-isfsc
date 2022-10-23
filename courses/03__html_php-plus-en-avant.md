@@ -1,6 +1,6 @@
 # Intégration du PHP - plus en avant
 
-[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md)
+[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/03__html_php-plus-en-avant.md)
 
 ## L'intégration
 plusieurs solution pour afficher du `php`
@@ -179,7 +179,9 @@ et que j'ai envie de voyager entre mes différentes pages...
 <a href="/contact.php">Contact</a>
 ```
 
-## Récupérer l'url de la page
+## Les 'super' variables
+
+#### Récupérer l'url de la page
 ```php
 <?php 
   if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') { 
@@ -199,6 +201,13 @@ et que j'ai envie de voyager entre mes différentes pages...
   // Afficher l'URL
   echo $url; 
 ?>
+```
+
+si je veux savoir sur quel page je suis pour mettre en 'active' un lien par exemple
+```php
+<a href="/index.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/index.php'): ?>active<?php endif; ?>">Home</a>
+<a href="/about.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/about.php'): ?>active<?php endif; ?>">About</a>
+<a href="/contact.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/contact.php'): ?>active<?php endif; ?>">Contact</a>
 ```
 
 si je veux récupérer les query je peux 
