@@ -149,3 +149,8 @@ php:
 
 ## Exercice 19
 En utilisant la fonction `rand()`, remplir un tableau avec 10 nombres aléatoires. Puis, trier les valeurs dans deux tableaux distincts. Le premier contiendra les valeurs inférieures à 50 et le second contiendra les valeurs supérieures ou égales à 50. Enfin, afficher le contenu des deux tableaux.
+
+# BONUS 
+
+## Exercices 20 
+Faire cette liste [d'exos](https://github.com/Poulycroc/lessons-isfsc/tree/master/scriptServer/06__functions)
