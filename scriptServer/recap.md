@@ -137,7 +137,7 @@ php:
 ?>
 ```
 
-## Exercice 17
+## Exercice 18
 Quelle syntaxe permet d'afficher le deuxième élément du tableau `$cocktails` ?
 
 php:
@@ -147,5 +147,5 @@ php:
 ?>
 ```
 
-## Exercice 17
+## Exercice 19
 En utilisant la fonction `rand()`, remplir un tableau avec 10 nombres aléatoires. Puis, trier les valeurs dans deux tableaux distincts. Le premier contiendra les valeurs inférieures à 50 et le second contiendra les valeurs supérieures ou égales à 50. Enfin, afficher le contenu des deux tableaux.
