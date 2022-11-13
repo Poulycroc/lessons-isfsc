@@ -1,6 +1,6 @@
 # Premier template WordPress
 
-[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/)
+[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/05__premier-template-custom.md)
 
 ## C'est quoi en fait ?
 
