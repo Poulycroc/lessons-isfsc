@@ -144,5 +144,43 @@ Je vous invite alors à créer 2 nouveaux fichiers à la racine de votre thème 
 on va avoir quelque chose comme ça dans notre dossier de travail: <img src=".screenshots/Screenshot 2022-11-14 at 08.43.49.png" alt="notre dossier de travail">
 
 Dans `header.php` on vient placer ce code : 
+```php
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    
+    <?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+    
+    <?php wp_body_open(); ?>
+```
+(pas de panique j'explique plus bas ce qu'on vient décrire...)
+
+puis dans `footer.php` on ajout:
+```php
+  <?php wp_footer(); ?>
+</body>
+</html>
+```
+
+dans notre `index.php` on garde (évidement on peut changer "Bonjour tout le monde" par "coucou")
+```php
+<?php get_header(); ?>
+Coucou
+<?php get_footer(); ?>
+```
+
+on devrait avoir quelque chose comme ça: <img src=".screenshots/Screenshot 2022-11-14 at 08.49.48.png" alt="notre premier découpage plus avancé" />
+
+Si la manipulation a bien fonctionné, vous devriez voir apparaitre la barre d’administration WordPress (en noir en haut du site) et le titre dans l’onglet du navigateur. Concernant le code de la page via l’inspecteur, on remarque qu’il y a bien plus de HTML que ce qu’on en a écrit ! C’est dû aux fonctions que l’on vient d’ajouter et que l’on va analyser juste après.
+
+De manière générale, on utilisera les fonctions `get_header()` et `get_footer()` sur tous les templates de page que l’on créera par la suite avec WordPress.
+
+
+
 
 
