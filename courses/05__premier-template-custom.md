@@ -144,6 +144,17 @@ Je vous invite alors à créer 2 nouveaux fichiers à la racine de votre thème 
 
 on va avoir quelque chose comme ça dans notre dossier de travail: <img src=".screenshots/Screenshot 2022-11-14 at 09.01.50.png" alt="notre dossier de travail">
 
+On commence par `functions.php`:
+```php
+<?php 
+// Ajouter la prise en charge des images mises en avant
+add_theme_support( 'post-thumbnails' );
+
+// Ajouter automatiquement le titre du site dans l'en-tête du site
+add_theme_support( 'title-tag' );
+?>
+```
+
 Dans `header.php` on vient placer ce code : 
 ```php
 <!DOCTYPE html>
@@ -186,7 +197,36 @@ De manière générale, on utilisera les fonctions `get_header()` et `get_footer
 
 Je reviens sur le code que l’on a écrit plus haut. Comme vous avez pu le remarquer on a ajouté quelques fonctions de WordPress dans notre HTML.
 
-dans `header.php`
+### dans `functions.php`
+<details>
+<summary>(on se souvient du code php..)</summary>
+
+------------------------------------------------------------------
+```php
+// Ajouter la prise en charge des images mises en avant
+add_theme_support( 'post-thumbnails' );
+
+// Ajouter automatiquement le titre du site dans l'en-tête du site
+add_theme_support( 'title-tag' );
+```
+
+------------------------------------------------------------------
+</details>
+<br>
+<strong>Activer la gestion des images mises en avant</strong>
+
+La première chose que l’on demande, c’est d’activer la prise en charge des images mise en avant pour le blog. Ce sont les visuels qui accompagnent l’article et son résumé, anciennement appelés « image à la une » et en anglais les post thumbnails.
+<img src="https://capitainewp.io/wp-content/uploads/2019/01/image-une-metabox-1600x613.jpg.webp" alt="post thumbnails" />
+<br/>
+<br/>
+<strong>Activer la gestion automatique du titre de la page</strong>
+
+On lui demande également de créer automatiquement la balise `title` dans l’en-tête. C’est le titre qui apparait dans l’onglet du navigateur, il est d’ailleurs important pour le référencement naturel.
+<img src="https://capitainewp.io/wp-content/uploads/2019/01/titre-site-wp.jpg.webp" alt="page title" />
+
+<br/><hr/>
+
+### dans `header.php`
 <details>
 <summary>(on se souvient du code php..)</summary>
 
@@ -218,3 +258,72 @@ Je continue pour tomber sur une fonction `wp_head()` qui a une importance capita
 
 <strong>La fonction `wp_head()` est essentielle au bon fonctionnement de votre thème alors ne l’oubliez pas !</strong>
 
+D’ailleurs c’est via cette fonction que WordPress va venir écrire la balise `title` que l’on a activé dans le `functions.php` juste avant.
+
+Ensuite, la fonction `body_class()` nous permet d’obtenir des noms de classe CSS en fonction de la page visitée, ce qui pourra nous faciliter la création de nos styles.
+
+voila ce que ça donne en `html`
+```html
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    
+    <!–- plein de choses entre (on va revenir dessus mais pas de suite) -–>
+</head>
+
+<body class="home blog logged-in admin-bar no-customize-support">
+```
+<details>
+<summary>Ce que ça veut dire</summary>
+
+------------------------------------------------------------------
+La langue est définie sur fr-FR, l’encodage sur UTF-8, et dans les body classes on peut voir :
+
+1. `home` car on est sur la page d’accueil ;
+2. `blog` car par défaut la page d’accueil de WordPress affiche les derniers articles (on pourra changer ce réglage) ;
+3. `logged-in` car on est un utilisateur connecté ;
+4. `admin-bar` car la barre d’administration est affichée en haut du site.
+
+Cette dernière classe nous sera très utile si on veut faire un menu fixe en position absolue ou fixe : la barre d’admin va décaler le site de 32px vers le bas (sa propre hauteur). On pourra donc appliquer un style de ce genre pour compenser :
+
+```css
+.menu {
+    position: fixed;
+    top: 0px;
+}
+
+.admin-bar .menu {
+	top: 32px; /* on prend en compte le décalage */
+}
+```
+
+La classe `home` vous permettra d’appliquer des styles différents des autres pages par exemple. On reverra ça plus tard, mais au moins vous avez compris leur utilité. D’ailleurs rien ne vous oblige à utiliser la fonction `body_class()`. Mais si vous le faites, pensez à ne pas réutiliser ces noms de classe proposés par WordPress afin d’éviter des conflits de styles.
+
+<p>Enfin, la fonction `wp_body_open()` a été ajoutée dans WordPress 5.2 afin de permettre à des extensions d’écrire du code au début du body. C’est utile notamment pour Yoast qui vient y placer le Google Tag Manager et autres codes de scripts.</p>
+
+------------------------------------------------------------------
+</details>
+
+<br/><hr/>
+
+### Dans `footer.php`
+
+Pour finir, on retrouve simplement dans le pied de page une fonction `wp_footer()`:
+<details>
+<summary>(on se souvient du code php..)</summary>
+
+------------------------------------------------------------------
+```php
+  <?php wp_footer(); ?>
+  <!–- Vous pourriez ajouter votre script Google Analytics ici -–>
+</body>
+</html>
+```
+------------------------------------------------------------------
+</details>
+
+Il a exactement le même rôle que `wp_head()` : afficher des scripts (et styles) mais cette fois en bas de page.
+
+Pour conclure, ne confondez pas `get_header()` qui permet d’appeler le fichier d’en-tête et `wp_head()` qui permet de récupérer les scripts et styles.
