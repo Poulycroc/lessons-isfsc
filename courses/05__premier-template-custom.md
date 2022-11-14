@@ -327,3 +327,35 @@ Pour finir, on retrouve simplement dans le pied de page une fonction `wp_footer(
 Il a exactement le même rôle que `wp_head()` : afficher des scripts (et styles) mais cette fois en bas de page.
 
 Pour conclure, ne confondez pas `get_header()` qui permet d’appeler le fichier d’en-tête et `wp_head()` qui permet de récupérer les scripts et styles.
+
+
+## Ajouter un logo en haut du site
+On va profiter du fichier `header.php` pour ajouter la partie haute du site, qui ne bougera jamais d’une page à l’autre.
+
+Pour l’instant on va ajouter simplement un `logo`. Plus tard on mettra également un `menu`.
+
+Tout d’abord on va créer un dossier `/img/` à la racine du thème, et poser notre logo au format `PNG` à l’intérieur (ou format `SVG`, comme vous voulez).
+
+Ajoutez ensuite le code suivant dans le body:
+```php
+<body <?php body_class(); ?>>
+  <header class="header">
+    <a href="<?php echo home_url( '/' ); ?>">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
+    </a>  
+  </header>
+```
+
+Vous n’aurez pas le logo centré car on n’a pas encore ajouté de CSS, mais vous devriez pouvoir cliquer dessus, ce qui vous ramène à l’accueil du site grâce à la fonction `home_url()`.
+
+On utilise la fonction `get_template_directory_uri()` afin d’obtenir l’adresse absolue (c’est-à-dire complète) du logo. Sans ça, votre image ne s’affichera pas.
+
+En regardant le code (clic droit, afficher le code source de la page) on voit bien l’url vers l’accueil ainsi que l’url de mon image :
+
+```html
+<a href="http://wp.local/">
+  <img src="http://localhost:8888/test-wordpress/wp-content/themes/montheme/img/logo.png" alt="Logo" />
+</a>
+```
+
+On peut bien sûr étoffer à volonté cet en-tête et c’est d’ailleurs ce que l’on fera à terme.
