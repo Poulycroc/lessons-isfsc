@@ -140,8 +140,9 @@ Je vous invite alors à créer 2 nouveaux fichiers à la racine de votre thème 
 
 1. `header.php` : où l’on mettra la base du HTML et le haut du site ;
 2. `footer.php` : où l’on mettra le bas du site et les balises fermantes de notre page.
+2. `functions.php` : Ce fichier est essentiel puisque c’est ici que l’on va activer toutes les fonctionnalités nécessaires de WordPress, mais également ajouter nos propres fonctions sur mesure.
 
-on va avoir quelque chose comme ça dans notre dossier de travail: <img src=".screenshots/Screenshot 2022-11-14 at 08.43.49.png" alt="notre dossier de travail">
+on va avoir quelque chose comme ça dans notre dossier de travail: <img src=".screenshots/Screenshot 2022-11-14 at 09.01.50.png" alt="notre dossier de travail">
 
 Dans `header.php` on vient placer ce code : 
 ```php
@@ -181,6 +182,39 @@ Si la manipulation a bien fonctionné, vous devriez voir apparaitre la barre d�
 De manière générale, on utilisera les fonctions `get_header()` et `get_footer()` sur tous les templates de page que l’on créera par la suite avec WordPress.
 
 
+### Découverte de nouvelles fonctions WordPress
 
+Je reviens sur le code que l’on a écrit plus haut. Comme vous avez pu le remarquer on a ajouté quelques fonctions de WordPress dans notre HTML.
 
+dans `header.php`
+<details>
+<summary>(on se souvient du code php..)</summary>
+
+------------------------------------------------------------------
+```php
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    
+    <?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+    
+    <?php wp_body_open(); ?>
+```
+------------------------------------------------------------------
+</details>
+
+Tout d’abord, on remarque la fonction `language_attributes()` qui permet de définir automatiquement la langue du document. Cette valeur est basée sur le réglage WordPress dans `Réglages > Général > Langue` du site.
+
+Vient ensuite la fonction `bloginfo('charset')` qui permet de définir l’encodage du site. Par défaut c’est `UTF-8` et c’est très bien comme ça : votre site prendra en charge les caractères spéciaux, accents, caractères non-latins…
+
+Cette fonction nous permettra de récupérer [d’autres informations](https://developer.wordpress.org/reference/functions/bloginfo/) utiles pour notre site.
+
+Je continue pour tomber sur une fonction `wp_head()` qui a une importance capitale : c’est par cette fonction que WordPress, votre thème et les extensions vont pouvoir venir déclarer le chargement des scripts et des styles. On verra un peu plus tard comment en tirer parti.
+
+<strong>La fonction `wp_head()` est essentielle au bon fonctionnement de votre thème alors ne l’oubliez pas !</strong>
 
