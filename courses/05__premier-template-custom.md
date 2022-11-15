@@ -334,14 +334,14 @@ On va profiter du fichier `header.php` pour ajouter la partie haute du site, qui
 
 Pour l’instant on va ajouter simplement un `logo`. Plus tard on mettra également un `menu`.
 
-Tout d’abord on va créer un dossier `/img/` à la racine du thème, et poser notre logo au format `PNG` à l’intérieur (ou format `SVG`, comme vous voulez).
+Tout d’abord a la racine de notre theme (`montheme` dans mon cas) on va créer un dossier `assets` dans le quel on va créer un dossier `img` à la racine du thème, et poser notre logo au format `PNG` à l’intérieur (ou format `SVG`, comme vous voulez).
 
 Ajoutez ensuite le code suivant dans le body:
 ```php
 <body <?php body_class(); ?>>
   <header class="header">
-    <a href="<?php echo home_url( '/' ); ?>">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
+    <a href="<?php echo home_url('/'); ?>">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png" alt="Logo">
     </a>  
   </header>
 ```
@@ -353,9 +353,81 @@ On utilise la fonction `get_template_directory_uri()` afin d’obtenir l’adres
 En regardant le code (clic droit, afficher le code source de la page) on voit bien l’url vers l’accueil ainsi que l’url de mon image :
 
 ```html
-<a href="http://wp.local/">
-  <img src="http://localhost:8888/test-wordpress/wp-content/themes/montheme/img/logo.png" alt="Logo" />
+<a class="logo" href="http://wp.local/">
+  <img src="http://localhost:8888/test-wordpress/wp-content/themes/montheme/assets/img/logo.png" alt="Logo" />
 </a>
 ```
 
 On peut bien sûr étoffer à volonté cet en-tête et c’est d’ailleurs ce que l’on fera à terme.
+
+## Ajouter une touche de design dans sur notre en-tête
+
+dans un premier temps je vais devoir ajouter une feuille de `style` css histoire de pouvoir agir directement sur mon image et mon header
+
+dans notre dossier `assets` je vais ajouter un nouveau dossier `css` dans le quel je vais ajouter un fichier que je vais appeler `app.css`
+
+pour ça je vais ajouter cette ligne dans mon `<head></head>`
+```php
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
+```
+
+<details>
+<summary>Ce qui devrait nous donner a peu près ce code la:</summary>
+
+------------------------------------------------------------------
+```php
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    
+    <?php wp_head(); ?>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
+</head>
+```
+------------------------------------------------------------------
+</details>
+
+pour tester que notre `css` sera bien applliqué j'ai envie de faire quelque chose de visible... pour ça rien de mieu que du rouge.. partout
+
+dans notre `app.css` 
+```css
+body {
+  background-color: red;
+}
+```
+
+ça devrait nous donner ça:
+<img src=".screenshots/Screenshot 2022-11-14 at 18.07.49.png" alt="result red">
+
+pour designer de manière "final"
+
+je vais ajouter dans mon css
+dans notre `app.css`
+```css
+body {
+  margin: 0; /* pour éviter d'avoir une bordure blanche autour de notre contenu */
+  font-family: Arial, Helvetica, sans-serif; /* je choisi une font */
+}
+
+header.header {
+  width: 100%;
+  height: 280px;
+  background-color: #333;
+  padding-top: 20px;
+}
+
+header.header > a.logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto; /* on centre le logo */
+}
+
+header.header > a.logo > img {
+  width: 100%;
+}
+```
+
+ce qui devrait nous donner quelque chose comme ça
+<img src=".screenshots/Screenshot 2022-11-15 at 11.15.01.png" alt="notre résultat final" />
