@@ -252,49 +252,7 @@ et sur notre site...<br><img src=".screenshots/Screenshot 2022-11-20 at 19.48.58
 
 ----
 ### Ajouter encore plus des sexy a notre theme avec **Bootstrap**
-[source](https://www.tutowp.fr/comment-integrer-bootstrap-a-wordpress/)
 
-on commence a avoir quelque chose de sympa mais c'est pas super super ça serait plus rapide et surtout plus simple d'ajouter [Bootstrap](https://getbootstrap.com/) a notre theme
+On commence a avoir quelque chose de sympa mais c'est pas super super ça serait plus rapide et surtout plus simple d'ajouter [Bootstrap](https://getbootstrap.com/) a notre theme
 
-#### Ajoutons les éléments du framework Bootstrap à notre thème WordPress
-
-Pour ajouter les fichiers du framework Bootstrap, nous allons créer un fichier « functions.php » à la racine de notre thème.
-
-Comme vu précédemment, Bootstrap est constitué d’un ensemble de fichiers :
-1. Un fichier « `bootstrap.css` » qui regroupe l’ensemble des styles du framework
-2. La librairie javascript très connue : [jQuery](https://jquery.com/)
-3. La libraire [Popper.js](https://popper.js.org/) qui permet de gérer des petites popins sur son site web
-4. Et enfin, le fichier « `bootstrap.js` » qui contient tous les composants javascript de Bootstrap
-
-Installons ces fichiers sur notre thème WordPress.<br>
-dans notre fichier `functions.php` on va ajouter quelque ligne ce qui nous donnera:
-```php
-<?php
-
-add_theme_support('title-tag'); // support de mon title tag
-add_theme_support('post-thumbnails'); // support des images a la une
-
-// Chargement des styles et des scripts Bootstrap sur WordPress
-function wpbootstrap_styles_scripts(){
-  wp_enqueue_style('style', get_stylesheet_uri());
-  wp_enqueue_style('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
-  wp_enqueue_script('jquery');
-  wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', ['jquery'], 1, true);
-  wp_enqueue_script('boostrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', ['jquery', 'popper'], 1, true);
-}
-add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts'); // function qui va nous permettre de charger des function (perso ou autre a la chaine)
-```
-
-Nous utilisons une fonction « `wpbootstrap_styles_scripts` » que nous accrochons au hook « wp_enqueue_scripts ». Ce hook permet de charger les styles et scripts sur un thème WordPress.
-
-Dans la fonction « `wpbootstrap_styles_scripts` », voici ce que nous faisons :
-
-Nous ajoutons le style de base de notre thème, le fichier « style.css » avec la fonction « `wp_enqueue_style` » qui prends deux paramètres : le nom du style et l’url du fichier.
-
-Nous ajoutons le fichier css de Bootstrap de la même manière.
-
-Nous chargeons la libraire jQuery grâce à la fonction « `wp_enqueue_script` ». Il suffit d’indiquer « jquery » comme paramètre pour la charger car la librairie est présente par défaut dans WordPress.
-
-Nous chargeons les deux autres fichiers « `popper.js` » et « `bootstrap.js` » toujours grâce à la fonction « `wp_enqueue_script` » mais là, nous ajoutons des paramètres : le premier est le nom du script, le deuxième est l’url des scripts, le troisième permet de déterminer les dépendances nécessaires pour charger ces scripts. Pour le premier fichier, nous indiquons que « `jquery` » doit être chargé, pour le deuxième nous indiquons que « `jquery` » et « `popper` » doivent être chargés. Le quatrième paramètre désigne la version du script (nous mettons 1 par défaut) et le cinquième détermine si oui ou non le script doit être chargé dans le footer. Pour ces deux fichiers, c’est bien le cas. Pourquoi ? Parce que les scripts chargés dans le footer ne bloque pas le chargement de la page
-
-Maintenant que nous avons ajouté Bootstrap à WordPress, nous allons pouvoir passer à la création du thème à proprement parler.
+Je vous propose d'aller [dans le cours suivant](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/07__bootstrap_dans_wordpress.md) pour ça.
