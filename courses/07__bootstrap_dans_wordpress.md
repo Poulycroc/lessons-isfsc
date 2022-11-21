@@ -245,7 +245,7 @@ dans mon administration WordPress je vais pouvoir ajouter et manager mes différ
 1. `Accueil` page qui va nous service de "home page"
 2. `Actualités` page qui va simplement listé ma liste d'articles 
 
-**Bien penser a `Publier` les pages sinon ça ne marche pas**
+<img src=".screenshots/Screenshot 2022-11-21 at 17.59.24.png" alt="créer des pages" />
 
 ensuite toujours dans mon administration je vais manager ses pages dans **Réglages -> Lecture**<br><img src=".screenshots/Screenshot 2022-11-21 at 13.57.48.png" alt="link pages">
 
@@ -253,3 +253,25 @@ ensuite toujours dans mon administration je vais manager ses pages dans **Régla
 2. en page d'accueil je vais chercher ma page nouvellement créée
 3. en page des atrticle je vais chercher ma page Actualités
 4. j'enregistre les modification évidement
+
+je n'ai plus qu'a me rendre sur le fichier `front-page.php`
+```php
+<?php get_header(); ?>
+
+<?php while (have_posts()):  ?>
+  <?php the_post(); ?>
+  
+  <h1><?php the_title(); ?></h1>
+
+  <?php the_content(); ?>
+
+  <a href="<?php echo get_post_type_archive_link('post') ?>">
+    Voir les dernières actus
+  </a>
+<?php endwhile; ?>
+
+<?php get_footer(); ?>
+```
+la function `get_post_type_archive_link` va me permettre de généré un lien vers les archives de type 'post' dans ce cas si (donc `get_post_type_archive_link('post')`)
+
+je devrais me retrouver avec une page comme celle-ci:<br><img src=".screenshots/Screenshot 2022-11-21 at 18.15.02.png" alt="front-page">
