@@ -191,6 +191,8 @@ Je vois ici que j'ai utilisé `the_post_thumbnail_url()` plutot que `the_post_th
 
 ça va me donner quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-11-21 at 09.42.48.png" alt="ma page article">
 
+---
+
 ## Page 404
 je vois dans l'image de ma [hiérarchie WordPress](https://fr.wordpress.org/support/files/2022/07/wordpress-hierarchie-des-fichiers-modeles-juillet-2022.png) que je peux aussi créer une page [404](https://www.1ere-position.fr/definitions/erreur-404/) (pour gérer mes erreurs) pour ça il me suffit de créer une fichier `404.php` dans mon projet
 
@@ -213,3 +215,41 @@ pour rappel `home_url('/')` nous permet de généré un url pour qui mène a not
 </details>
 
 donc quand on va écrire un url qui n'existe pas dans notre application on va être redirigé sur une page comme ça:<br><img src=".screenshots/Screenshot 2022-11-21 at 09.51.43.png" alt="une page 404"/>
+
+
+---
+
+## Une home
+
+Actuelement on a une page d'accueil qui montre simplement ma liste d'`articles` mais si j'ai envie de faire une page d'accueil plus sexy comment faire ? 
+
+<details>
+<summary>Note</summary>
+
+---
+je fais référence a ce genre de page, parler un peu de ce qu'on vent par exemple..<br><img src="https://undsgn.com/wp-content/uploads/2018/06/des-5.jpg" alt="home page example" />
+
+---
+</details>
+
+dans ma [hiérarchie WordPress](https://fr.wordpress.org/support/files/2022/07/wordpress-hierarchie-des-fichiers-modeles-juillet-2022.png) je peux voir qu'on me propose de faire un fichier `front-page.php`<br><img src=".screenshots/Screenshot 2022-11-21 at 13.44.11.png" alt="make front-page.php" />
+
+dans mon fichier `front-page.php` je vais simplement ajouter 
+```php
+salut
+```
+pour le moment, quand je me dirige vers l'url de base de mon site vois que je tombe sur mon fameux "salut"
+
+dans mon administration WordPress je vais pouvoir ajouter et manager mes différentes pages pour ce faire dans l'onglet **Pages** je vais ajouter 2 pages
+
+1. `Accueil` page qui va nous service de "home page"
+2. `Actualités` page qui va simplement listé ma liste d'articles 
+
+**Bien penser a `Publier` les pages sinon ça ne marche pas**
+
+ensuite toujours dans mon administration je vais manager ses pages dans **Réglages -> Lecture**<br><img src=".screenshots/Screenshot 2022-11-21 at 13.57.48.png" alt="link pages">
+
+1. Je séléectionne "page statique"
+2. en page d'accueil je vais chercher ma page nouvellement créée
+3. en page des atrticle je vais chercher ma page Actualités
+4. j'enregistre les modification évidement
