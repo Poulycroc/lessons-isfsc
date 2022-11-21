@@ -133,3 +133,83 @@ on peut noter que la seul grosse différence dans mon code c'est
 <?php the_post_thumbnail('thumbnail', ['class' => 'card-img-top']); ?>
 ```
 j'appel ici `the_post_thumbnail` comme précédement mais j'ai jouter des [attributs html](https://developer.mozilla.org/fr/docs/Web/HTML/Attributes#:~:text=Les%20%C3%A9l%C3%A9ments%20HTML%20ont%20des,crit%C3%A8res%20souhait%C3%A9s%20par%20les%20utilisateurs.) dans ce cas si j'ai ajouté la classe `card-img-top` pour corresponde a la documentation Bootstrap
+
+<details>
+<summary>Note</summary>
+
+---
+je peux utiliser `the_excerpt()` au lieu de `the_content()` si j'ai configuré des extraits pour mon article
+
+---
+</details>
+
+---
+<br>
+
+## Design d'une page d'article
+[source](https://www.youtube.com/watch?v=CFbYbKu5dTg&list=PLjwdMgw5TTLWF1VV9TFWrsUTvWjtGS7Qt&index=8)
+
+Pour le moment on a une jolie page d'accueil mais j'aimerais bien pouvoir designer mes page d'article de manière un peut plus avancée pour ça on va avoir besoin de comprendre comment WordPress fonctionne au niveau de sa [hiérarchie](https://fr.wordpress.org/support/article/hierarchie-des-fichiers-modeles/) ([hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/) en anglais) visuelement ça donne ça..<br><img src="https://fr.wordpress.org/support/files/2022/07/wordpress-hierarchie-des-fichiers-modeles-juillet-2022.png" alt="wordpress.org - hierarchie" />
+
+dans cette image on peut voir que quand WordPress charge une page d'article on a besoin d'un fichier qui s'appel `single-post.php` 
+
+je vais donc créer le fichier `single-post.php` dans mon projet et ajouter le code suivant dans 
+```php
+<?php get_header(); ?>
+
+
+  <?php if (have_posts()): ?>
+    <h1 class="h1">Mes articles</h1>
+    
+    <?php while(have_posts()): the_post(); ?>
+        
+        <h1><?php the_title(); ?></h1>
+        
+
+        <p>
+          <img src="<?php the_post_thumbnail_url(); ?>" style="width:100%;height:auto;" />
+        </p>
+        <?php the_content(); ?>
+
+    <?php endwhile; ?>
+
+  <?php else: ?>
+    <h1>Aucun articles disponible pour le moment</h1>
+  <?php endif; ?>
+
+<?php get_footer(); ?>
+```
+
+<details>
+<summary>Note</summary>
+
+---
+Je vois ici que j'ai utilisé `the_post_thumbnail_url()` plutot que `the_post_thumbnail()` c'est pour montrer que je peux simplement charger l'url directement plutot que le tag `img` directement
+
+---
+</details>
+
+ça va me donner quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-11-21 at 09.42.48.png" alt="ma page article">
+
+## Page 404
+je vois dans l'image de ma [hiérarchie WordPress](https://fr.wordpress.org/support/files/2022/07/wordpress-hierarchie-des-fichiers-modeles-juillet-2022.png) que je peux aussi créer une page [404](https://www.1ere-position.fr/definitions/erreur-404/) (pour gérer mes erreurs) pour ça il me suffit de créer une fichier `404.php` dans mon projet
+
+au niveau du code `php` on va se retrouver avec quelque chose comme ça:
+```php
+<?php get_header(); ?>
+  <h1>Page introuvable</h1>
+  <p>
+    y a rien a voir ici retournez a <a href="<?php echo home_url('/'); ?>">la page d'accueil</a>
+  </p>
+<?php get_footer(); ?>
+```
+<details>
+<summary>Note</summary>
+
+---
+pour rappel `home_url('/')` nous permet de généré un url pour qui mène a notre home page
+
+---
+</details>
+
+donc quand on va écrire un url qui n'existe pas dans notre application on va être redirigé sur une page comme ça:<br><img src=".screenshots/Screenshot 2022-11-21 at 09.51.43.png" alt="une page 404"/>
