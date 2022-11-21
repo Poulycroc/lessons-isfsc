@@ -107,6 +107,8 @@ ce qui donne en `html`
 ```
 le résultat:<br><img src=".screenshots/Screenshot 2022-11-20 at 18.26.10.png" alt="notre liste d'articles">
 
+Vous pouvez consulter la liste de toutes les functions utils pour afficher un article dans une boucle [ici](https://developer.wordpress.org/themes/basics/the-loop/)
+
 ---- 
 
 ### Charger une image pour notre article

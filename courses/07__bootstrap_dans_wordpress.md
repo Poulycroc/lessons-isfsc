@@ -66,3 +66,70 @@ Nous chargeons le fichier « `bootstrap.bundle.js` » toujours grâce à la fonc
 5. le cinquième détermine si oui ou non le script doit être chargé dans le footer. Pour ces deux fichiers, c’est bien le cas. Pourquoi ? Parce que les scripts chargés dans le footer ne bloque pas le chargement de la page
 
 Maintenant que nous avons ajouté Bootstrap à WordPress, nous allons pouvoir passer à la création du thème à proprement parler.
+
+## Redesign de nos articles
+
+pour le moment on a quelque chose comme ça dans notre `index.php`
+```php
+<?php get_header(); ?>
+  <div class="container">
+    <?php if (have_posts()): ?>
+      <h1>Mes articles</h1>
+      <ul>
+        <?php while(have_posts()): the_post(); ?>
+          <li>
+            <?php the_post_thumbnail('thumbnail'); ?><br>
+            <?php the_title() ?> - <?php the_author(); ?>
+            <a href="<?php the_permalink(); ?>">lire l'article</a>
+          </li>
+        <?php endwhile; ?>
+      </ul>
+    <?php else: ?>
+      <h1>Aucun articles disponible pour le moment</h1>
+    <?php endif; ?>
+  </div>
+<?php get_footer(); ?>
+```
+c'est sympa mais j'aimerais quand même avoir quelque chose de plus propre avec les [cards de chez bootstrap](https://getbootstrap.com/docs/5.2/components/card/)
+
+on va simplement reprendre le code proposé par bootstrap et le placer dans une classe `.row` et `.col` pour les mettre en formes
+
+```html
+<div class="row"> <!-- mon container -->
+  <div class="col"> <!-- élément sur le quel je vais boucler -->
+    <div class="card" style="width: 18rem;"> <!-- mon article -->
+      <img src="..." class="card-img-top" alt="..."> <!-- mon thumbnail -->
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+pour ajouter dynamiquement nos données dans nos cards je vais pouvoir y ajouter mes variables
+```php
+<div class="row">
+  <?php while(have_posts()): the_post(); ?>
+    <div class="col">
+
+      <div class="card" style="width: 18rem;">
+        <?php the_post_thumbnail('thumbnail', ['class' => 'card-img-top']); ?>
+        <div class="card-body">
+          <h5 class="card-title"><?php the_title() ?></h5>
+          <p class="card-text"><?php the_content() ?></p>
+          <a href="<?php the_permalink(); ?>" class="btn btn-primary">lire l'article</a>
+        </div>
+      </div>
+
+    </div>
+  <?php endwhile; ?>
+</div>
+```
+on peut noter que la seul grosse différence dans mon code c'est
+```php
+<?php the_post_thumbnail('thumbnail', ['class' => 'card-img-top']); ?>
+```
+j'appel ici `the_post_thumbnail` comme précédement mais j'ai jouter des [attributs html](https://developer.mozilla.org/fr/docs/Web/HTML/Attributes#:~:text=Les%20%C3%A9l%C3%A9ments%20HTML%20ont%20des,crit%C3%A8res%20souhait%C3%A9s%20par%20les%20utilisateurs.) dans ce cas si j'ai ajouté la classe `card-img-top` pour corresponde a la documentation Bootstrap
