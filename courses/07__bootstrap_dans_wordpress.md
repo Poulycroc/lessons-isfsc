@@ -275,3 +275,5 @@ je n'ai plus qu'a me rendre sur le fichier `front-page.php`
 la function `get_post_type_archive_link` va me permettre de généré un lien vers les archives de type 'post' dans ce cas si (donc `get_post_type_archive_link('post')`)
 
 je devrais me retrouver avec une page comme celle-ci:<br><img src=".screenshots/Screenshot 2022-11-21 at 18.15.02.png" alt="front-page">
+
+Je vous propose d'aller [dans le cours suivant](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/08__navbar_search.md) pour créer une navigation un champ de recherche.
