@@ -332,3 +332,130 @@ ps: pour remplacer "Navbar" de notre nav bar par le titre de notre application j
 --- 
 
 
+## Formulaire de recherche
+[source](https://www.youtube.com/watch?v=3khRV9BGRo0&list=PLjwdMgw5TTLWF1VV9TFWrsUTvWjtGS7Qt&index=10)
+
+On va rendre le formulaire de recherche du code qu'on a récupéré sur bootstrap
+```html
+<form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+```
+dans un premier temps on va ajouter une petite function de génération de formulaire de recherche qui nous vient directement de wordpress `get_search_form()` on va placer
+```php
+<?php echo get_search_form(); ?>
+```
+entre `</nav>` et `<div class="container">` pour voir un peu ce que ça nous rend..<br>
+ça devrait nous rendre quelque chose dans le genre<br><img src=".screenshots/Screenshot 2022-11-27 at 19.11.37.png" alt="search input"><br>
+niveau `html` ça nous a écrit quelque chose comme ça
+```html
+<div>
+  <label class="screen-reader-text" for="s">Rechercher&nbsp;:</label>
+  <input type="text" value="" name="s" id="s">
+  <input type="submit" id="searchsubmit" value="Rechercher">
+</div>
+```
+un code assez simple donc
+
+j'aimerais évidement remplacer le code actuel de bootstrap avec le code généré par wordpress histoire que ce soit un peu plus sympa, pour ça il faudra créer notre propre formulaire de recherche
+
+1. on va créer un fichier `searchform.php` a la racine de notre theme
+2. on va y coller le code html de notre formulaire qui vient de bootstrap<br><img src=".screenshots/Screenshot 2022-11-27 at 19.19.00.png" alt="notre formulaire de recherche">
+3. on va mtn ajouter les functions de wordpress qui active la recherche automatique
+
+
+voila donc notre résultat
+```php
+<form class="d-flex" role="search" action="<?php echo esc_url(home_url('/')); ?>">
+  <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search" name="s" value="<?php echo get_search_query(); ?>">
+  <button class="btn btn-outline-success" type="submit">Rechercher</button>
+</form>
+```
+
+1. dans `<form>` -> `action="<?php echo esc_url(home_url('/')); ?>"` on indique ici l'url de notre page de recherche
+2. dans `<input>` -> `name="s"` le nom de notre input doit oblicatiorement s'appeler 's' (c'est important pour WordPress)
+3. toujours dans `<input>` -> `value="<?php echo get_search_query(); ?>"` c'est la recherche qu'on vient de faire
+
+voila ce que ça donne:<br><img src=".screenshots/Screenshot 2022-11-27 at 19.25.16.png" alt="le résultat de notre première recherche"><br>
+
+il ne me reste plus donc qu'a remplacer l'input du code bootstrap par notre fameux formulaire 
+
+donc ce code la:
+```html
+<form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+```
+par celui-ci:
+```php
+<?php echo get_search_form(); ?>
+```
+
+ça nous donne donc ça:
+```php
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php wp_head(); ?>
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><?php bloginfo('name'); ?></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <?php 
+        wp_nav_menu([
+          'theme_location' => 'header',
+          'container' => false,
+          'menu_class' => 'navbar-nav me-auto'
+        ]);
+      
+        echo get_search_form(); 
+      ?>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+```
+
+<details>
+<summary>oui j'ai effectivement</summary>
+
+---
+```php
+// j'ai préféré faire ça:
+<?php 
+  wp_nav_menu([
+    'theme_location' => 'header',
+    'container' => false,
+    'menu_class' => 'navbar-nav me-auto'
+  ]);
+
+  echo get_search_form(); 
+?>
+
+// plutot que ça
+<?php wp_nav_menu([
+  'theme_location' => 'header',
+  'container' => false,
+  'menu_class' => 'navbar-nav me-auto'
+]); ?>
+<?php echo get_search_form(); ?>
+
+// je trouve ça plus clean
+```
+---
+</details>
