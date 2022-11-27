@@ -1,6 +1,6 @@
 # Notre premier site WordPress
 
-[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/04__premier-sitewordpress.md)
+[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/04__premier-sitewordpress.md)<br>
 [le projet 'montheme' complet](https://github.com/Poulycroc/lessons-isfsc/tree/master/wordpress/montheme)
 
 ## Télécharger le projet wordpress 

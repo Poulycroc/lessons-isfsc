@@ -1,6 +1,6 @@
 # Bootstrap dans WordPress
 
-[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/07__bootstrap_dans_wordpress.md)
+[Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/07__bootstrap_dans_wordpress.md)<br>
 [le projet 'montheme' complet](https://github.com/Poulycroc/lessons-isfsc/tree/master/wordpress/montheme)
 
 ## Importer Bootstrap
