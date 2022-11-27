@@ -1,6 +1,7 @@
 # Premier template WordPress
 
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/05__premier-template-custom.md)
+[le projet 'montheme' complet](https://github.com/Poulycroc/lessons-isfsc/tree/master/wordpress/montheme)
 
 ## Quelque sites utils pour commencer
 

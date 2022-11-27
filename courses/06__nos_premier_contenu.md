@@ -1,6 +1,7 @@
 # Création de contenu 
 
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/06__nos_premier_contenu.md)
+[le projet 'montheme' complet](https://github.com/Poulycroc/lessons-isfsc/tree/master/wordpress/montheme)
 
 ## Les Articles
 

@@ -1,6 +1,7 @@
 # Bootstrap dans WordPress
 
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/08__navbar_search.md)
+[le projet 'montheme' complet](https://github.com/Poulycroc/lessons-isfsc/tree/master/wordpress/montheme)
 
 ## Navbar
 [source](https://www.youtube.com/watch?v=8SWt8bc2gK0&list=PLjwdMgw5TTLWF1VV9TFWrsUTvWjtGS7Qt&index=9)
