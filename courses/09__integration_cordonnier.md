@@ -373,21 +373,293 @@ on peut aussi remarquer que pour `jQuery` je n'ai pas eu besoind de préciser a 
 ### NavBar
 ---
 <img src=".screenshots/Screenshot 2022-11-28 at 10.08.28.png" alt="découpage maquette navbar">
+<details>
+<summary>La section NavBar</summary>
+
+la seul chose a faire ici c'est de se rendre dans les réglages:<br><img src=".screenshots/Screenshot 2022-12-04 at 23.43.22.png" alt="changer le titre de l'app"><br>
+
+en suite partout ou l'on retrouvera "SuperShoes" on aura juste a mettre:
+```php
+<?php echo bloginfo('name'); ?>
+```
+ce qui retrounera par défaut le titre de notre site
+</details>
 
 ---
 ### Header
 ---
 <img src=".screenshots/Screenshot 2022-11-28 at 10.08.46.png" alt="découpage maquette header">
+<details>
+<summary>La section Header</summary>
+
+pour le moment dans la section **header** j'ai un html qui ressemble a ça..
+```html
+<section class="hero" id="home">
+  <header>
+    <h1 class="visually-hidden">SuperShoes</h1>
+    <p class="h1 text-white">
+      <span class="bg-primary">Ici, on répare vos chaussures</span><br>
+      <small class="bg-secondary">pour que vous repartiez du bon pied</small>
+    </p>
+    <a href="#about" class="please-scroll">Scrollez vers le bas</a>
+  </header>
+</section>
+```
+
+j'aimerais évidement pouvoir rendre le contenu dynamique... je vais avoir **4 sections distincte** 
+1. `main-title` "Ici, on répare vos chaussures"
+2. `under-title` "pour que vous repartiez du bon pied"
+3. `scroll-label` "Scrollez vers le bas"
+4. `background-url` l'image en arrière plant
+
+(oui c'est moi qui ai inventé les termes) j'ai plusieur solutions pour le faire mais pour cette section de page si je vais opter pour la création `d'une page admin`.. dans mon `functions.php` (que j'aime tant) je vais ajouter une nouvelle **function** qui va utiliser la méthode [add_menu_page()](https://developer.wordpress.org/reference/functions/add_menu_page/) de wordpress 
+
+dans mon fichier `functions.php` j'ajoute: 
+```php
+function my_admin_menu() {
+	add_menu_page(
+		'Header hero', // nom de mon menu
+		'Header hero', // nom affiché dans la sidebar de l'admin wordpress
+		'manage_options', // la capacité requise pour que ce menu soit affiché à l'utilisateur.
+		'sample-page', // le slug (donc l'url dans l'admin)
+		'my_admin_page__header_hero__contents', // notre function qui va construire la page
+		'dashicons-schedule', // l'icone dans la side bar
+		3
+	);
+}
+add_action( 'admin_menu', 'my_admin_menu' );
+
+function my_admin_page__header_hero__contents() {
+  echo '<h1>COUCOU</h1>;
+}
+```
+ce qui devrait me permettre d'afficher: <br><img src=".screenshots/Screenshot 2022-12-04 at 23.17.14.png" alt="admin menu page" /><br>
+
+c'est cool évidement mais ça ne me permet pas encore de pouvoir entrer les donnée que je veux ni même de pouvoir les récuperer dans le html de mon theme
+
+la première chose que je vais devoir faire c'est donc créer un formulaire directement dans ma function `my_admin_page__header_hero__contents()`, voici le code complet pour ma page d'option du hero header
+```php
+function my_admin_menu() {
+	add_menu_page(
+		'Header hero', // nom de mon menu
+		'Header hero', // nom affiché dans la sidebar de l'admin wordpress
+		'manage_options', // la capacité requise pour que ce menu soit affiché à l'utilisateur.
+		'sample-page', // le slug (donc l'url dans l'admin)
+		'my_admin_page__header_hero__contents', // notre function qui va construire la page
+		'dashicons-schedule', // l'icone dans la side bar
+		3
+	);
+}
+add_action( 'admin_menu', 'my_admin_menu' );
+
+function my_admin_page__header_hero__contents() {
+  // ici je vérifie que que le contenu a bien été modifier 
+  // si ce n'est pas le cas.. pas besoin d'enregistrer
+  if( $_POST['updated'] === 'true' ){ 
+
+    // si mon contenu a bien été enregistré je vérifie que mon fomulaire existe bien
+    if( ! isset( $_POST['header-hero_form'] ) || ! wp_verify_nonce( $_POST['header-hero_form'], 'header-hero_update' ) ){ 
+      // si ce n'est pas le cas je retourne une erreur  
+    ?>
+      <div class="error">
+        <p>Sorry, your nonce was not correct. Please try again.</p>
+      </div> <?php
+      exit;
+    } else {
+      // si toute les vérifications se sont bien passée j'enregistre mes données
+
+      // 
+      // dans cette section je vais simplement récupérer les champs de mon formulaire 
+      // "main-title", "under-title", "scroll-label", "background-url"
+      // et demander a worpress de les traiter.. en suite j'enregistre ça dans une variable pour chaque champs
+      // 
+      $mainTitle = sanitize_text_field( $_POST['main-title'] ); 
+      $underTitle = sanitize_text_field( $_POST['under-title'] );
+      $scrollLabel = sanitize_text_field( $_POST['scroll-label'] );
+      $backgroundUrl = sanitize_text_field( $_POST['background-url'] );
+      //
+      
+      // 
+      // dans cette section je récupère les variable que j'ai enregistré avant 
+      // et je les stock dans une "option" wordpress option que je pourrais récupérer plus tard en fonction de mes besoin
+      // avec "get_option" suivi du nom de mon options
+      //
+      // donc pour enregistrer l'option j'utilise "update_option" pour la récuperer j'utilise "get_option"
+      // 
+      update_option('header-hero_main-title', $mainTitle );
+      update_option('header-hero_under-title', $underTitle );
+      update_option('header-hero_scroll-label', $scrollLabel );
+      update_option('header-hero_background-url', $backgroundUrl );
+      //
+    }
+  } ?>
+  <div class="wrap">
+    <h2><?php
+      // je récupère le titre de ma page admin dans mon cas "Header hero"
+      // c'est la 2eme ligne de "add_menu_page()"
+      echo get_admin_page_title();
+    ?></h2>
+    <form method="POST">
+      <input type="hidden" name="updated" value="true" />
+      <?php 
+        // ici je j'ajoute mon "vérificateur" en utilisant la function "wp_nonce_field" qui permet de nomer mon formulaire
+        // c'est grace a lui que je pourrais vérifier l'existance de mon formulaire d'ajout de données
+        wp_nonce_field( 'header-hero_update', 'header-hero_form' ); 
+      ?>
+      <table class="form-table">
+        <tbody>
+          <tr>
+            <th><label for="main-title">Main title</label></th>
+            <td><input name="main-title" id="main-title" type="text" value="<?php echo get_option('header-hero_main-title'); ?>" class="regular-text" /></td>
+          </tr>
+          <tr>
+            <th><label for="under-title">Under title</label></th>
+            <td><input name="under-title" id="under-title" type="text" value="<?php echo get_option('header-hero_under-title'); ?>" class="regular-text" /></td>
+          </tr>
+          <tr>
+            <th><label for="scroll-label">Scroll label</label></th>
+            <td><input name="scroll-label" id="scroll-label" type="text" value="<?php echo get_option('header-hero_scroll-label'); ?>" class="regular-text" /></td>
+          </tr>
+          <tr>
+            <th><label for="background-url">Background image url</label></th>
+            <td><input name="background-url" id="background-url" type="text" value="<?php echo get_option('header-hero_background-url'); ?>" class="regular-text" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="submit">
+        <?php
+          // wordpress nous donne la possibilité de générer un bouton pour enregistrer les valeurs de notre formulaire
+          submit_button(); 
+        ?></p>
+    </form>
+  </div><?php 
+}
+```
+ps: je sais c'est un code un peu avancé mais je vous encourage a tester des votre coté avec un peu moins de données peut-être quelque chose de plus simple ?
+
+ça devrait nous donner quelque chose comme ça dans notre administration:<br><img src=".screenshots/Screenshot 2022-12-04 at 23.39.56.png" alt="notre formulaire hero header terminé"><br>
+
+dans mon `html` maintenant il ne me reste plus qu'a changer les textes `static` par des donnée `dynamique`:
+<details>
+<summary>mon html d'avant:</summary>
+
+```html
+<section class="hero" id="home">
+  <header>
+    <h1 class="visually-hidden">SuperShoes</h1>
+    <p class="h1 text-white">
+      <span class="bg-primary">Ici, on répare vos chaussures</span><br>
+      <small class="bg-secondary">pour que vous repartiez du bon pied</small>
+    </p>
+    <a href="#about" class="please-scroll">Scrollez vers le bas</a>
+  </header>
+</section>
+```
+</details>
+
+je vais donc utiliser la même `function` que j'ai utilisé dans mon `functions.php` a savoir [get_option](https://developer.wordpress.org/reference/functions/get_option/) avec le nom du champs que je veux dans mon cas j'ai `4 champs` a récupérer ('`header-hero_background-url`', '`header-hero_main-title`', '`header-hero_under-title`', '`header-hero_scroll-label`')
+
+
+ce qui me donnera ça dans mon code:
+```php
+<section 
+  class="hero" 
+  id="home" 
+  style="background-image: url(<?php echo get_template_directory_uri() .'/'. get_option('header-hero_background-url'); ?>);"
+>
+  <header>
+    <h1 class="visually-hidden"><?php echo bloginfo('name'); ?></h1>
+    <p class="h1 text-white">
+      <span class="bg-primary"><?php echo get_option('header-hero_main-title'); ?></span><br>
+      <small class="bg-secondary"><?php echo get_option('header-hero_under-title'); ?></small>
+    </p>
+    <a href="#about" class="please-scroll"><?php echo get_option('header-hero_scroll-label'); ?></a>
+  </header>
+</section>
+```
+ps: j'utilise `get_template_directory_uri` pour m'assurer que le lien de mon image démarre bien du bon endroit, c'est parfait je dois juste faire un petit changement dans le `css/style.css` pour retirer le style qui chargeait le l'image a l'origine:
+```css
+.hero {
+  background-color: #000;
+  /* background-image: url(../images/cordonnier.jpg); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+```
+
+</details>
 
 ---
 ### About
 ---
 <img src=".screenshots/Screenshot 2022-11-28 at 10.08.53.png" alt="découpage maquette about">
+<details>
+<summary>La section About</summary>
+
+pour la section about je vais devoir plus tôt créer une "page" dans mon administration qui va me permettre de pouvoir gérer le **titre**, le **text** et **l'image**
+
+1. dans mon administration je me rend dans l'onglet `pages`
+2. j'ajoute une page au nom de `About` (histoire de s'y retrouver)
+3. J'ajoute mon contenu dans la page en question<br><img src=".screenshots/Screenshot 2022-12-03 at 16.04.48.png" alt="page about">
+4. je pense évidement a publier ma page sinon ça ne marche pas 
+
+dans notre code on va pouvoir utiliser la function [get_page_by_title()](https://developer.wordpress.org/reference/functions/get_page_by_title/)
+
+qui va me permettre d'aller chercher le contenu de la page en question (**content** et **thumbnail**)
+
+<details>
+<summary>mon html avant:</summary>
+
+```html
+<section class="container section about" id="about">
+  <div class="row align-items-center">
+    <div class="col-md">
+      <header>
+        <h2 class="mb-3">Notre entreprise</h2>
+      </header>
+      <p class="lead">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt reprehenderit hic eligendi assumenda quos animi consequatur tenetur atque nam. Quos aspernatur placeat fuga excepturi veritatis eos eveniet nemo magni facere.
+      </p>
+    </div>
+    <div class="col-md">
+      <img class="img-fluid" src="images/about.jpg" alt="cordonnier au travail">
+    </div>
+  </div>
+</section>
+```
+</details>
+
+on se retrouve donc avec un code comme celui-ci
+```php
+<section class="container section about" id="about">
+  <div class="row align-items-center">
+    <div class="col-md">
+      <?php $aboutSection = get_page_by_title('about'); ?>
+      <header>
+        <h2 class="mb-3"><?php echo $aboutSection->post_title; ?></h2>
+      </header>
+      <p class="lead"><?php echo $aboutSection->post_content; ?></p>
+    </div>
+    <div class="col-md">
+      <img class="img-fluid" src="<?php echo get_the_post_thumbnail_url($aboutSection->ID, 'medium'); ?>" alt="cordonnier au travail">
+    </div>
+  </div>
+</section>
+```
+
+on se retrouve donc avec quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-12-03 at 16.36.22.png" alt="about section result">
+
+</details>
 
 ---
 ### Services
 ---
 <img src=".screenshots/Screenshot 2022-11-28 at 10.09.00.png" alt="découpage maquette services"><br>
+<details>
+<summary>La section Services</summary>
+
 pour le moment j'ai quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-11-29 at 14.00.29.png" alt="mes services sans les images"><br>
 c'est évidement problématique pour plusiers raisons
 
@@ -554,12 +826,20 @@ niveau de mon `html` généré je me retrouve donc avec ce code la:
 
 on pourra évidement proposer a notre client de lui faire un carousel [comme celui-ci](https://getbootstrap.com/docs/4.0/components/carousel/#with-captions) si il veut exposer plus de services a l'avenir
 
+</details>
+
 ---
 ### Contact Form
 ---
 <img src=".screenshots/Screenshot 2022-11-28 at 10.09.08.png" alt="découpage maquette contact">
+<details>
+<summary>La section Contact</summary>
+</details>
 
 ---
 ### Footer
 ---
 <img src=".screenshots/Screenshot 2022-11-28 at 10.09.15.png" alt="découpage maquette footer">
+<details>
+<summary>La section Footer</summary>
+</details>
