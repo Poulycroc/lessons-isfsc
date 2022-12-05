@@ -430,7 +430,7 @@ function my_admin_menu() {
 add_action( 'admin_menu', 'my_admin_menu' );
 
 function my_admin_page__header_hero__contents() {
-  echo '<h1>COUCOU</h1>;
+  echo '<h1>COUCOU</h1>';
 }
 ```
 ce qui devrait me permettre d'afficher: <br><img src=".screenshots/Screenshot 2022-12-04 at 23.17.14.png" alt="admin menu page" /><br>
@@ -834,6 +834,30 @@ on pourra évidement proposer a notre client de lui faire un carousel [comme cel
 <img src=".screenshots/Screenshot 2022-11-28 at 10.09.08.png" alt="découpage maquette contact">
 <details>
 <summary>La section Contact</summary>
+
+Pour cette partie on va utiliser ce qu'on appel un [short code](https://www.wpbeginner.com/wp-tutorials/how-to-add-a-shortcode-in-wordpress/) dans WordPress ça va nous permettre de générer des petits ou grand bout de code depuis une chaine de carractère dans notre editeur d'article ou de page
+
+par example avec (dans notre `functions.php`:
+```php
+function create_shortcode(){
+    return "<h2>Hello world !</h2>";
+}
+add_shortcode('my_shortcode', 'create_shortcode');
+```
+on va pouvoir utiliser:
+```html
+[my_shortcode]
+```
+dans notre éditeur d'article:<br><img src=".screenshots/Screenshot 2022-12-05 at 10.07.51.png" alt="notre premier shortcode"><br>
+
+ce qui va du coup va écire `<h2>Hello world !</h2>` dans notre content pour la page Contact par exemple mais ça peut marcher pour tout un tas d'autre article ou type d'article
+
+pour notre formulaire de contact je vais donc créer une page `Contact` dans mon administration, ce que j'aimerais faire ici c'est ajouter du `html` directement dans mon article...
+
+1. ajouter un block `html` avec l'option <br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.27.png" alt="ajouter un block html">
+2. notre page `Contact` <br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.33.png" alt="notre page html">
+3. ici je vais charger le 
+
 </details>
 
 ---
@@ -842,4 +866,6 @@ on pourra évidement proposer a notre client de lui faire un carousel [comme cel
 <img src=".screenshots/Screenshot 2022-11-28 at 10.09.15.png" alt="découpage maquette footer">
 <details>
 <summary>La section Footer</summary>
+
+rien de particulier a faire ici, je pourrais évidement ajouter une option du même style que pour le hero-header... a toi de voir ce que tu veux faire pour cette partie ci
 </details>
