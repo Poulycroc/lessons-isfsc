@@ -1,0 +1,134 @@
+/* 
+    Évite que la navbar ne se superpose avec 
+    le début des sections quand on clique sur 
+    un élément du menu
+*/
+:target:before {
+    content: "";
+    display: block;
+    height: 100px;
+    margin-top: -100px;
+}
+
+:root {
+    --bs-primary-rgb: 220,53,69;
+}
+
+.hero {
+    background-color: #000;
+    /* background-image: url(../images/cordonnier.jpg); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.hero header {
+    position: relative;
+    height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .h1 {
+    text-align: center;
+}
+
+.hero .h1 span,
+.hero .h1 small {
+    display: inline-block;
+    padding: 5px 8px;
+}
+
+.hero .h1 small {
+    font-size: .6em;
+}
+
+@media (min-width: 768px) {
+    .hero .h1 {
+        text-align: left;
+        margin-left: -10em;
+    }
+    
+    .hero .h1 small {
+        transform: translateY(-.5em);
+    }
+}
+
+.please-scroll {
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
+    padding: 15px 0 45px;
+    width: 100px;
+    text-align: center;
+    -webkit-animation-name: scroll-idle;
+            animation-name: scroll-idle; 
+    -webkit-animation-duration: 1s; 
+            animation-duration: 1s;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+    -webkit-animation-iteration-count: 3;
+            animation-iteration-count: 3;
+    -webkit-animation-delay: 5s;
+            animation-delay: 5s;
+}
+
+.please-scroll,
+.please-scroll:active,
+.please-scroll:focus,
+.please-scroll:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.please-scroll::after {
+    content: '';
+    border: 5px solid transparent;
+    border-top-color: #fff;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@-webkit-keyframes scroll-idle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1em);
+    }
+}
+
+@keyframes scroll-idle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1em);
+    }
+}
+
+.section {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+@media (min-width: 768px) {
+    .about img {
+        box-shadow: 30px 30px 0 0 rgb(var(--bs-primary-rgb));
+    }
+
+    .contact .row {
+        flex-direction: row-reverse;
+    }
+}
+
+.contact-map {
+    height: 400px;
+}

@@ -251,7 +251,7 @@ je me retrouve donc avec ça:
         &copy; SuperShoes 2022, tous droits résérvés
       </div>
     </footer>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
@@ -841,6 +841,38 @@ on pourra évidement proposer a notre client de lui faire un carousel [comme cel
 <details>
 <summary>La section Contact</summary>
 
+Je vais maintenant m'attaquer au formulaire de contacte
+<details>
+<summary>Le code de notre formulaire ressemble acutellement a ça:</summary>
+
+```html
+<div class="row">
+  <form action="#" class="col-md">
+    <p class="form-group">
+      <label for="name">Votre nom et prénom</label>
+      <input name="name" id="name" type="text" class="form-control">
+    </p>
+    <p class="form-group">
+      <label for="subject">Sujet</label>
+      <select name="subject" id="subject" class="form-control">
+        <option value="0">Choisissez un sujet</option>
+        <option value="devis">Demande de devis</option>
+        <option value="question">Question</option>
+        <option value="other">Autres</option>
+      </select>
+    </p>
+    <p class="form-group">
+      <label for="message">Votre message</label>
+      <textarea name="message" id="message" class="form-control" rows="5"></textarea>
+    </p>
+    <p class="text-right">
+      <button class="btn btn-primary">Envoyer</button>
+    </p>
+  </form>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10987.242951252556!2d4.37044401754503!3d50.85271187329156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c370c43d6195%3A0x94b0e4b9ad97de02!2sHaute%20%C3%89cole%20ISFSC!5e0!3m2!1sfr!2sbe!4v1602328508492!5m2!1sfr!2sbe" class="col-md-8 contact-map" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
+```
+</details>
 Pour cette partie on va utiliser ce qu'on appel un [short code](https://www.wpbeginner.com/wp-tutorials/how-to-add-a-shortcode-in-wordpress/) dans WordPress ça va nous permettre de générer des petits ou grand bout de code depuis une chaine de carractère dans notre editeur d'article ou de page
 
 par example avec (dans notre `functions.php`:
@@ -862,7 +894,169 @@ pour notre formulaire de contact je vais donc créer une page `Contact` dans mon
 
 1. ajouter un block `html` avec l'option <br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.27.png" alt="ajouter un block html">
 2. notre page `Contact` <br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.33.png" alt="notre page html">
-3. ici je vais charger le 
+3. je vais ajouter `[contact-form]` dans le contact
+
+
+on récupère la balise `<script></script>` qui permet de générer la carte:
+```html
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10987.242951252556!2d4.37044401754503!3d50.85271187329156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c370c43d6195%3A0x94b0e4b9ad97de02!2sHaute%20%C3%89cole%20ISFSC!5e0!3m2!1sfr!2sbe!4v1602328508492!5m2!1sfr!2sbe" class="col-md-8 contact-map" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+```
+
+et je vais le copier dans le fomulaire je peux donc ajouter ça dans le formulaire de contact
+
+```html
+[contact-form]
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10987.242951252556!2d4.37044401754503!3d50.85271187329156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c370c43d6195%3A0x94b0e4b9ad97de02!2sHaute%20%C3%89cole%20ISFSC!5e0!3m2!1sfr!2sbe!4v1602328508492!5m2!1sfr!2sbe" class="col-md-8 contact-map" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+```
+je devrais avoir ça:<br><img src=".screenshots/Screenshot 2022-12-05 at 10.25.06.png" alt="contact form">
+
+on va construire `[contact-form]` dans `index.php` a la place du formulaire et de la carte je vais ajouter le code php qui me permetra de récupérer le contenu de la page contact
+```php
+<div class="row">
+  <?php
+    $contactPage = get_page_by_title( 'contact' ); // je récupère la page contact
+    echo apply_filters('the_content', $contactPage->post_content); // j'affiche le contenu qui vient de la page contact
+  ?>
+</div>
+``` 
+dans mon fichier `functions.php` je vais ajouter le code suivant
+```php
+add_shortcode('contact-form', 'display_contact_form');
+/**
+ * Cette fonction affiche les messages de validation, le message de réussite, le conteneur des messages de 
+ * validation et le formulaire de contact.
+ */
+function display_contact_form() {
+	?>
+  <div class="col-md">
+    <!-- c'est la div dans la quel on va envoyer nos erreurs -->
+    <div id="validation-messages-container"></div>
+
+    <form id="contact-form" action="<?php echo esc_url( get_permalink() ); ?>" method="post">
+      <input type="hidden" name="contact_form">
+
+      <p class="form-group">
+        <label for="name"><?php echo esc_html( 'Votre nom et prénom', 'supershoes-theme' ); ?></label>
+        <input type="text" id="name" name="name" class="form-control">
+      </p>
+
+      <p class="form-group">
+        <label for="subject"><?php echo esc_html( 'Subject', 'supershoes-theme' ); ?></label>
+        <select name="subject" id="subject" class="form-control">
+          <option value="0">Choisissez un sujet</option>
+          <option value="devis">Demande de devis</option>
+          <option value="question">Question</option>
+          <option value="other">Autres</option>
+        </select>
+      </p>
+
+      <p class="form-group">
+        <label for="message"><?php echo esc_html( 'Message', 'supershoes-theme' ); ?></label>
+        <textarea id="message" name="message" class="form-control"></textarea>
+      </p>
+
+      <button type="submit" class="btn btn-primary" id="contact-form-submit">
+        <?php echo esc_attr( 'Submit', 'supershoes-theme' ); ?>
+      </button>
+
+    </form>
+  </div>
+	<?php
+}
+```
+
+je vais me retrouver avec quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-12-05 at 14.13.48.png" alt="première vision de notre formulaire"><br>
+c'est bien mais ça ne fonctionne pas encore je ne reçois pas encore de mail et rien n'est la pour indiquer un envoi quelconque de mail a l'utilisateur
+
+je vais donc devoir ajouter un peu de `php` pour ça 
+```php
+add_shortcode('contact-form', 'display_contact_form');
+/**
+ * Cette fonction affiche les messages de validation, le message de réussite, le conteneur des messages de 
+ * validation et le formulaire de contact.
+ */
+function display_contact_form() {
+  $validation_messages = [];
+	$success_message = '';
+
+	if (isset($_POST['contact_form']) && $_POST['contact_form'] === 'true') {
+
+		// Assainir les données
+    // wordpress utilise "sanitize_text_field" pour récupérer les données de formulaire
+		$name = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
+		$subject = isset( $_POST['subject'] ) ? sanitize_text_field( $_POST['subject'] ) : '';
+		$message = isset( $_POST['message'] ) ? sanitize_textarea_field( $_POST['message'] ) : '';
+
+		// on vérifie les datas c'est par example ici que l'on pourra vérrifier si l'utilisateur a entré un email correct
+		if ( strlen( $name ) === 0 ) {
+			$validation_messages[] = esc_html__('Entrez un nom valide.', 'supershoes-theme');
+		}
+
+		if ( strlen( $message ) === 0 ) {
+			$validation_messages[] = esc_html__('Entre un messaage valide.', 'supershoes-theme');
+		}
+
+		// envoyer l'mail a l'administrateur wordpress si il n'y a pas d'erreur
+		if ( empty( $validation_messages ) ) {
+			$mail    = get_option( 'admin_email' );
+			$adminSubject = 'New message from ' . $name;
+			$message = $message . ' - The email address of the customer is: ' . $mail;
+
+			wp_mail( $mail, $adminSubject, $message );
+			$success_message = esc_html__( 'Your message has been successfully sent.', 'supershoes-theme' );
+		}
+	} 
+  
+  // on montre les erreur que l'utilisateur a pu faire
+  if ( ! empty( $validation_messages ) ) {
+    foreach ( $validation_messages as $validation_message ) {
+      echo '<div class="alert alert-danger" role="alert">' . esc_html( $validation_message ) . '</div>';
+    }
+  }
+
+  // on montre que tous c'est bien passé 
+  if ( strlen( $success_message ) > 0) {
+    echo '<div class="alert alert-success" role="alert">' . esc_html( $success_message ) . '</div>';
+  }
+	?>
+    <div class="col-md">
+
+      <!-- c'est la div dans la quel on va envoyer nos erreurs -->
+      <div id="validation-messages-container"></div>
+
+      <form id="contact-form" action="<?php echo esc_url( get_permalink() ); ?>" method="post">
+        <input type="hidden" name="contact_form" value="true">
+
+        <p class="form-group">
+          <label for="name"><?php echo esc_html( 'Votre nom et prénom', 'supershoes-theme' ); ?></label>
+          <input type="text" id="name" name="name" class="form-control">
+        </p>
+
+        <p class="form-group">
+          <label for="subject"><?php echo esc_html( 'Subject', 'supershoes-theme' ); ?></label>
+          <select name="subject" id="subject" class="form-control">
+            <option value="0">Choisissez un sujet</option>
+            <option value="devis">Demande de devis</option>
+            <option value="question">Question</option>
+            <option value="other">Autres</option>
+          </select>
+        </p>
+
+        <p class="form-group">
+          <label for="message"><?php echo esc_html( 'Message', 'supershoes-theme' ); ?></label>
+          <textarea id="message" name="message" class="form-control"></textarea>
+        </p>
+
+        <button type="submit" class="btn btn-primary" id="contact-form-submit">
+          <?php echo esc_attr( 'Submit', 'supershoes-theme' ); ?>
+        </button>
+
+      </form>
+    </div>
+	<?php
+}
+```
 
 </details>
 

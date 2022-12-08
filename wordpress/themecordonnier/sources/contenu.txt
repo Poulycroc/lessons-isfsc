@@ -1,0 +1,39 @@
+SuperShoes
+Accueil
+À propos
+Services
+Contact
+
+Ici, on répare vos chaussures
+pour que vous repartiez du bon pied
+Scrollez vers le bas
+Notre entreprise
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt reprehenderit hic eligendi assumenda quos animi consequatur tenetur atque nam. Quos aspernatur placeat fuga excepturi veritatis eos eveniet nemo magni facere.
+[=== img ===]
+Nos services
+[=== img ===]
+Réparation
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium?
+[=== img ===]
+Entretien
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium?
+[=== img ===]
+Sur mesure
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium?
+Contactez-nous
+[=== form ===]
+    Votre nom et prénom
+    [=== input ===]
+    Sujet
+    [=== select ===]
+        Choisissez un sujet
+        Demande de devis
+        Question
+        Autres
+    [=== /select ===]
+    Votre message
+    [=== textarea ===]
+    [=== button submit ===]
+[=== /form ===]
+[=== Google Map ===]
+&copy; SuperShoes 2020, tous droits résérvés
