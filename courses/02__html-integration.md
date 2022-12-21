@@ -3,9 +3,11 @@
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/02__html-integration.md)
 
 ## Le but ?
-L'idée d'utiliser le php dans le monde du webdev est de dynamiser les pages `HTML`
+PHP (acronyme de "PHP: Hypertext Preprocessor") est un langage de programmation de scripts côté serveur utilisé principalement pour développer des sites web dynamiques. Il est exécuté sur le serveur et permet de générer du contenu HTML, qui est ensuite envoyé au navigateur de l'utilisateur.
 
-par exemple afficher les informations de l'utilisateur (Nom, prénom,...) directement dans l'affichage des pages du site
+Le PHP est particulièrement utile pour gérer les données stockées dans une base de données, pour gérer les sessions utilisateur, pour créer des formulaires et pour gérer les données soumises par l'intermédiaire de ces formulaires. Il permet également de créer des scripts pour envoyer des emails automatisés, de gérer les fichiers sur le serveur et de créer du contenu dynamique en fonction des actions des utilisateurs.
+
+En résumé, le PHP est un outil très utile pour développer des sites web interactifs et dynamiques, en permettant de créer du contenu personnalisé en fonction des actions des utilisateurs et de gérer les données stockées sur le serveur.
 
 
 ## MAMP ?
