@@ -8,7 +8,7 @@ L'idée d'utiliser le php dans le monde du webdev est de dynamiser les pages `HT
 par exemple afficher les informations de l'utilisateur (Nom, prénom,...) directement dans l'affichage des pages du site
 
 
-### Installation de notre serveur php
+## MAMP ?
 
 Pour lire des fichiers `fichier.php` nous allons avoir besoin d'un serveur php de type [Apache](https://fr.wikipedia.org/wiki/Apache_HTTP_Server), nous allons pour ça utiliser MAMP
 
