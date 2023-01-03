@@ -577,3 +577,19 @@ get_header(); ?>
 ```
 
 dans ce fichier rien de bien fou on reconnait notre boucle while `<?php while ( have_posts() ): the_post(); ?>` qui va simplement retourner nos articles filtré par notre recherche et `<?php echo get_search_query(); ?>`  qui va retourner la string de ce qu'on a tapé dans la bar de recherche je pourrais don ajouter un lien dans chaque card pour avoir plus de détails sur l'article en question
+
+### Et si on ne veux voir les résultats que pour services ?
+Effectivement si je ne veux pas voir mes article qui ont les même références que mes `services` je vais devoir dire a mon formulaire qu'il ne doit filtrer que les ces fameux `services` pour ça j'ajoute
+```php
+<input type="hidden" name="post_type" value="services" />
+```
+dans mon fichier `searchform.php`
+
+ce qui nous donne quelque chose comme ça
+```php
+<form class="d-flex" role="search" action="<?php echo home_url(); ?>">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="s" value="<?php echo get_search_query(); ?>">
+  <input type="hidden" name="post_type" value="services" />
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+```
