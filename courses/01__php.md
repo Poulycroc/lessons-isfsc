@@ -7,8 +7,8 @@
 [PHP net](https://www.php.net/manual/fr/language.variables.basics.php)
 
 
-#### C'est quoi ?
-Une variable est un conteneur servant à stocker des informations de manière temporaire, comme une chaine de caractères (un texte) ou un nombre par exemple.
+#### Qu'est-ce que c'est ?
+Une variable est un conteneur servant à stocker des informations de manière temporaire, comme une chaîne de caractères (un texte) ou un nombre par exemple.
 
 Le propre d’une variable est de pouvoir varier, c’est-à-dire de pouvoir stocker différentes valeurs au fil du temps.
 
@@ -21,18 +21,20 @@ En PHP, les variables ne servent à stocker une information que temporairement. 
   $Var = 'Paul';
   echo "$var, $Var";          // affiche "Jean, Paul"
 
-  $4site = 'pas encore';      // invalide : commence par un nombre
+  // $4site = 'pas encore';      // invalide : commence par un nombre
   $_4site = 'pas encore';     // valide : commence par un souligné
   $täyte = 'mansikka';        // valide : 'ä' est ASCII (étendu) 228.
 ?>
 ```
+> [!IMPORTANT]  
+> Le nom d'une variable en *PHP* commence toujours par le symbole du dollar (`$`). Il ne peut pas commencer par un nombre.
 
 ## Les tableaux
 
 [PHP net](https://www.php.net/manual/fr/language.types.array.php#:~:text=Un%20tableau%20en%20PHP%20est,d'attente%20et%20probablement%20plus.)
 
 
-#### C'est quoi ?
+#### Qu'est-ce que c'est ?
 Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui associe des valeurs à des clés. Ce type est optimisé pour différentes utilisations ; il peut être considéré comme un tableau, une liste, une table de hachage, un dictionnaire, une collection, une pile, une file d'attente et probablement plus.
 
 #### Déclaration et initialisation de tableaux
@@ -43,7 +45,7 @@ Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui ass
   $fruits = array(); // ancienne manière
  
   // Déclaration d'un tableau indexé numériquement
-  $legumes = ['carotte', 'poivron', 'aubergine', 'chou']
+  $legumes = ['carotte', 'poivron', 'aubergine', 'chou'];
  
   // Déclaration d'un tableau associatif
   $identite = [
@@ -54,6 +56,10 @@ Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui ass
   ];
 ?>
 ```
+> [!IMPORTANT]  
+> Un tableau peut être déclaré de deux manières différentes en PHP : avec les crochets [] ou avec la fonction array(). Les deux sont correctes, mais la première est plus récente et généralement plus utilisée.
+
+
 #### Ajout d'une nouvelle entrée dans un tableau
 ```php
 <?php
@@ -69,6 +75,9 @@ Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui ass
   $legumes[20] = 'piment';
 ?>
 ```
+> [!IMPORTANT]  
+> Vous pouvez ajouter de nouveaux éléments à un tableau existant en utilisant la syntaxe `$tableau[] = 'nouvelle valeur';`. Si le tableau est numérique, l'index du nouvel élément sera automatiquement défini comme le dernier index du tableau +1.
+
 #### Récupération de données
 
 ##### Tableau non indéexé
@@ -95,6 +104,9 @@ Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui ass
   echo $identite['prenom']; // retourne 'Hugo'
 ?>
 ```
+> [!IMPORTANT]  
+> Dans un tableau associatif, on utilise le nom de la clé pour accéder à la valeur correspondante.
+
 ##### Tableau multidimensionnels
 ```php
 <?php
@@ -107,6 +119,9 @@ Un tableau en PHP est en fait une carte ordonnée. Une carte est un type qui ass
   echo $matrice[1][1]; // retourne 'X'
 ?>
 ```
+> [!IMPORTANT]  
+> Un tableau multidimensionnel est un tableau qui contient un ou plusieurs tableaux. Pour accéder à une valeur, on doit spécifier tous les indices.
+
 #### Parcours d'un tableau
 ```php
 <?php
@@ -121,8 +136,10 @@ foreach($leTableau as $cle => $valeur) {
 }
 ?>
 ```
-
 Cette structure prend en paramètre le nom du tableau à parcourir puis les données qu'il faut récupérer (valeurs uniquement ou bien valeurs et clés). Dans la première syntaxe, la valeur de l'élément courant du tableau est directement assignée à la variable $valeur. Dans la seconde, la clé courante de l'élément du tableau est affectée à la variable $cle et sa valeur stockée dans la variable $valeur.
+
+> **Exercice**
+> Créez un tableau associatif contenant votre nom, prénom et âge. Utilisez une boucle foreach pour > afficher toutes les valeurs.
 
 ##### Parcours d'un tableau à indexes numériques contigus avec une boucle `for()`
 ```php
@@ -158,114 +175,143 @@ Array
     [taille] => 180  
 ) 
 ```
+La fonction `print_r()` permet d'afficher de manière lisible pour une ressource humaine, information sur une variable, y compris ses valeurs privées, statiques et protégées en cas d'objets. 
+
+Le tag HTML `<pre>` préserve les espaces et les sauts de ligne qui sont présents dans le texte. 
 
 ## Les conditions
 
 [PHP net](https://www.php.net/manual/fr/control-structures.if.php)
 
-
-#### C'est quoi ?
-L'instruction if est une des plus importantes instructions de tous les langages, PHP inclus. Elle permet l'exécution conditionnelle d'une partie de code. Les fonctionnalités de l'instruction if sont les mêmes en PHP qu'en C :
-
-```
-<?php>
+#### Qu'est-ce que c'est ?
+Les structures de contrôle sont des éléments du langage qui altèrent le flux d'exécution en fonction de certaines conditions.
+```php
 if (expression)
   commandes
 ```
+
+#### Les opérateurs de comparaison
+```php
+$a == $b   // Égal à. Vrai si $a est égal à $b après conversion de type.
+$a === $b  // Identique à. Vrai si $a est égal à $b, et qu'ils sont du même type.
+$a != $b   // Non égal à. Vrai si $a n'est pas égal à $b après conversion de type.
+$a <> $b   // Non égal à. Vrai si $a n'est pas égal à $b après conversion de type.
+$a !== $b  // Non identique à. Vrai si $a n'est pas égal à $b, ou s'ils ne sont pas du même type.
+$a < $b    // Inférieur à. Vrai si $a est strictement inférieur à $b.
+$a > $b    // Supérieur à. Vrai si $a est strictement supérieur à $b.
+$a <= $b   // Inférieur ou égal à. Vrai si $a est inférieur ou égal à $b.
+$a >= $b   // Supérieur ou égal à. Vrai si $a est supérieur ou égal à $b.
+```
+
+#### Les opérateurs logiques
+```php
+$a and $b  // And. Vrai si $a et $b sont vrais.
+$a or $b   // Or. Vrai si $a ou $b est vrai.
+$a xor $b  // Xor. Vrai si soit $a soit $b est vrai, mais pas les deux.
+! $a       // Not. Vrai si $a n'est pas vrai.
+$a && $b   // And. Vrai si $a et $b sont vrais.
+$a || $b   // Or. Vrai si $a ou $b est vrai.
+```
+
+#### if - elseif - else ?
+```php
+<?php
+  $a = 5;
+  $b = 10;
+
+  if ($a > $b) {
+    echo "$a est supérieur à $b";
+  } elseif ($a == $b) {
+    echo "$a est égal à $b";
+  } else {
+    echo "$a est inférieur à $b";
+  }
+?>
+```
+> **Note**: La structure `if - elseif - else` permet d'exécuter différentes parties du code en fonction de conditions spécifiques. Si la condition `if` est vraie, son bloc de code associé est exécuté. Si elle est fausse, PHP vérifie les conditions `elseif` (si elles existent) dans l'ordre. Si une condition `elseif` est vraie, le bloc de code correspondant est exécuté. Si aucune des conditions `if` ou `elseif` n'est vraie, le bloc de code `else` est exécuté (s'il existe).
+
 Comme nous l'avons vu dans le paragraphe consacré aux expressions, expression est convertie en sa valeur booléenne. Si l'expression vaut true, PHP exécutera l'instruction et si elle vaut false, l'instruction sera ignorée. Plus de détails sur les valeurs qui valent false sont disponibles dans la section [Conversion en booléen](https://www.php.net/manual/fr/language.types.boolean.php#language.types.boolean.casting).
 
-#### Exemple
+#### switch
 ```php
 <?php
-if ($a > $b) {
-  echo "a est plus grand que b";
-}
+  $note = 15;
+
+  switch ($note) {
+    case 0:
+      echo "Tu es vraiment nul !";
+      break;
+
+    case 5:
+      echo "Tu es très mauvais";
+      break;
+
+    case 10:
+      echo "La moyenne, tu peux mieux faire !";
+      break;
+
+    case 15:
+      echo "Pas mal !";
+      break;
+
+    case 20:
+      echo "Parfait !";
+      break;
+
+    default:
+      echo "Désolé, je n'ai pas de message à afficher pour cette note";
+  }
 ?>
 ```
+> **Note**: La structure switch est similaire à une série de if sur la même expression. Elle sert à comparer une expression à différentes valeurs possibles et à exécuter le bloc de code correspondant. Si aucune valeur ne correspond, le bloc de code default est exécuté (s'il existe).
 
-##### dans un fichier `html`
-```php
-<?php if (condition): ?>
-
-html code to run if condition is true
-
-<?php else: ?>
-
-html code to run if condition is false
-
-<?php endif ?>
-```
-##### simplicité === rapidité
-```php
-<?php
-if( $a == 1 || $a == 2 ) {
-    if( $b == 3 || $b == 4 ) {
-        if( $c == 5 || $ d == 6 ) {
-          // faire quelque chose ici
-        }
-    }
-}
-?>
-
-// vous pouvez simplement faire ça:
-
-<?php
-if( ($a==1 || $a==2) && ($b==3 || $b==4) && ($c==5 || $c==6) ) {
-  // faire quelque chose ici
-}
-?>
-```
 
 ## Les Fonctions
-
 [PHP net](https://www.php.net/manual/fr/functions.user-defined.php)
 
 
-#### C'est quoi ?
-C'est un bout de code qui pourra être utilisé un peu partout dans votre application
+#### Qu'est-ce que c'est ?
+Une fonction est une portion de code qui réalise une tâche précise et qui peut être appelée à n'importe quel endroit de votre programme, évitant ainsi de réécrire le même code plusieurs fois.
 
-
-#### Exemple
+#### Définition d'une fonction
 ```php
 <?php
-function foo($arg_1, $arg_2, /* ..., */ $arg_n)
-{
-    echo "Exemple de fonction.\n";
-    return $retval;
-}
+  function salut($nom) {
+    echo 'Salut ' . $nom;
+  }
 ?>
 ```
+> **Note**: Une fonction est définie avec le mot-clé `function`, suivi du nom de la fonction et d'une paire de parenthèses (). Les arguments de la fonction sont spécifiés dans les parenthèses. Vous pouvez définir autant d'arguments que vous le souhaitez, séparés par des virgules.
 
-Tout code PHP, correct syntaxiquement, peut apparaître dans une fonction et dans des définitions de classe.
-
-Les noms de fonctions suivent les mêmes règles que les autres labels en PHP. Un nom de fonction valide commence par une lettre ou un souligné, suivi par un nombre quelconque de lettres, de nombres ou de soulignés. Ces règles peuvent être représentées par l'expression rationnelle suivante : ^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$
-
-#### Comment ça marche
-
+#### Appel d'une fonction
 ```php
 <?php
-    $prenom = 'Pierre';
-    $x = 4;
-    $y = 5;
-    
-    function bonjour($p){
-        echo 'Bonjour ' .$p. '<br>';
-    }
-    
-    function addition($p1, $p2){
-        echo $p1. ' + ' .$p2. ' = ' .($p1 + $p2). '<br>';
-    }
-    
-    bonjour($prenom);
-    bonjour('Mathilde');
-    addition($x, $y);
-    addition(1, 1);
+  salut('Hugo');
 ?>
 ```
--> retourne
-```html
-Bonjour Pierre
-Bonjour Mathilde
-4 + 5 = 9
-1 + 1 = 2
+> **Note**: Une fois la fonction définie, elle peut être appelée à n'importe quel endroit de votre programme en utilisant son nom suivi d'une paire de parenthèses.
+
+#### Fonctions avec plusieurs arguments
+```php
+<?php
+  function addition($nombre1, $nombre2) {
+    $somme = $nombre1 + $nombre2;
+    echo 'La somme est ' . $somme;
+  }
+?>
 ```
+> **Note**: Une fonction peut avoir plusieurs arguments. Il suffit de les séparer par une virgule.
+
+#### Fonction avec valeur de retour
+```php
+<?php
+  function addition($nombre1, $nombre2) {
+    $somme = $nombre1 + $nombre2;
+    return $somme;
+  }
+
+  $resultat = addition(5, 10);
+  echo 'La somme est ' . $resultat;
+?>
+```
+> **Note**: Une fonction peut retourner une valeur en utilisant le mot-clé `return`. Cette valeur peut ensuite être utilisée ou stockée dans une variable.
