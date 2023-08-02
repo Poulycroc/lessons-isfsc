@@ -7,9 +7,9 @@
 
 [source](https://www.youtube.com/watch?v=8SWt8bc2gK0&list=PLjwdMgw5TTLWF1VV9TFWrsUTvWjtGS7Qt&index=9)
 
-Nous allons donc mettre en place la navigation parce-que notre site commence a prendre forme mais il est assez difficile de naviguer entre les pages, on va avoir envie de dans un premier temps de gérer notre menu dans les configuration de WordPress malheureusement notre theme ne le supporte pas encore on va donc devoir lui demander de le faire
+Nous allons donc mettre en place la navigation parce que notre site commence à prendre forme, mais il est assez difficile de naviguer entre les pages. Dans un premier temps, nous allons avoir envie de gérer notre menu dans les configurations de WordPress. Malheureusement, notre thème ne le supporte pas encore. Nous allons donc devoir lui demander de le faire.
 
-dans notre fichier `functions.php` je vais ajouter une function `add_theme_support`
+Dans notre fichier `functions.php` je vais ajouter une function `add_theme_support`.
 
 ```php
 add_theme_support('title-tag'); // support de mon title tag
@@ -17,12 +17,12 @@ add_theme_support('post-thumbnails'); // support du thumbnail sur mes articles
 add_theme_support('menus'); // support des menus par notre theme
 ```
 
-dans notre administration WordPress je devrais maintenant avoir la possibilité de gérer mes menus..<br><img src=".screenshots/Screenshot 2022-11-21 at 18.25.39.png" alt="gestion des menus dans apparence">
+Dans notre administration WordPress je devrais maintenant avoir la possibilité de gérer mes menus.<br><img src=".screenshots/Screenshot 2022-11-21 at 18.25.39.png" alt="gestion des menus dans apparence">
 
-malheureusement on n'a pas encore les emplacement de menus je vais devoir revenir dans mon fichier `functions.php` pour ajouter ça.. WordPress nous donne accès a 2 functions pour ça [register_nav_menu](https://developer.wordpress.org/reference/functions/register_nav_menu/) et [register_nav_menus](https://developer.wordpress.org/reference/functions/register_nav_menus/) dans notre cas on va utiliser `register_nav_menu()`
+Malheureusement on n'a pas encore les emplacement de menus, je vais devoir revenir dans mon fichier `functions.php` pour ajouter ça.. WordPress nous donne accès a 2 functions pour ça [register_nav_menu](https://developer.wordpress.org/reference/functions/register_nav_menu/) et [register_nav_menus](https://developer.wordpress.org/reference/functions/register_nav_menus/) dans notre cas on va utiliser `register_nav_menu()`
 
-1. `register_nav_menu` permet d'enregistrer une bar de navigation
-2. `register_nav_menus` permet d'en ajouter plusieurs
+1. `register_nav_menu` permet d'enregistrer une bar de navigation.
+2. `register_nav_menus` permet d'en ajouter plusieurs.
 
 ```php
 register_nav_menu('header', 'En tête du menu');
@@ -30,14 +30,14 @@ register_nav_menu('header', 'En tête du menu');
 // En tête du menu -> description de notre menu
 ```
 
-on ajoute donc cette ligne dans notre fichier `functions.php`
+On ajoute donc cette ligne dans notre fichier `functions.php`.
 
 <details>
 <summary>Note</summary>
 
 ---
 
-Notre fichier `functions.php` pour le moment
+Notre fichier `functions.php` pour le moment :
 
 ```php
 <?php
@@ -65,9 +65,9 @@ add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
 
 ---
 
-1. quand on retourne dans notre configuration, a première vue rien de bien fou je vois simplement que j'ai la possibilité de sélectionner "en tête du menu"<br><img src=".screenshots/Screenshot 2022-11-21 at 18.41.30.png"  alt="après l'enregistrement du register_nav_menu">
-2. je vais pouvoir continuer la configuration..<br><img src=".screenshots/Screenshot 2022-11-21 at 18.43.43.png" alt="menu configuration">
-3. je vais pouvoir ajouter des pages a mon menu<br><img src=".screenshots/Screenshot 2022-11-21 at 18.46.50.png" alt="ajouter des pages a mon menu header">
+1. Quand on retourne dans notre configuration, a première vue rien de bien fou je vois simplement que j'ai la possibilité de sélectionner "en tête du menu".<br><img src=".screenshots/Screenshot 2022-11-21 at 18.41.30.png"  alt="après l'enregistrement du register_nav_menu">
+2. Je vais pouvoir continuer la configuration..<br><img src=".screenshots/Screenshot 2022-11-21 at 18.43.43.png" alt="menu configuration">
+3. Je vais pouvoir ajouter des pages a mon menu<br><img src=".screenshots/Screenshot 2022-11-21 at 18.46.50.png" alt="ajouter des pages a mon menu header">
 
 ---
 
@@ -75,13 +75,13 @@ add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
 
 On va pouvoir retourner dans notre partie "affichage"
 
-Pour afficher un joli menu dans notre site on va aller chercher un [bout de code chez Bootstrap](https://getbootstrap.com/docs/5.2/components/navbar/) on veut quelque chose qui ressemble a ça: <br><img src=".screenshots/Screenshot 2022-11-21 at 18.53.07.png" alt="notre future navigation">
+Pour afficher un joli menu dans notre site on va aller chercher un [bout de code chez Bootstrap](https://getbootstrap.com/docs/5.2/components/navbar/), on veut quelque chose qui ressemble a ceci : <br><img src=".screenshots/Screenshot 2022-11-21 at 18.53.07.png" alt="notre future navigation">
 
-on copie simplement le code qui est présenté dans la documentation... et on va le coller dans notre `header.php` juste avant notre `<div class="container">`
+On copie simplement le code qui est présenté dans la documentation,  et on va le coller dans notre `header.php` juste avant notre `<div class="container">`.
 
-J'aimerais aussi commenter la partie `<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>` histoire de travailler plus tranquillement
+J'aimerais aussi commenter la partie `<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>` histoire de travailler plus tranquillement.
 
-notre fichier `header.php`
+Notre fichier `header.php` :
 
 ```php
 <!DOCTYPE html>
@@ -135,15 +135,15 @@ notre fichier `header.php`
 <div class="container">
 ```
 
-On va maintenant pouvoir y intégrer notre navigation générée par WordPress grace a la function [wp_nav_menu()](https://developer.wordpress.org/reference/functions/wp_nav_menu/) on va avoir besoin de faire appel la methode `theme_location` qui permetra de faire appel a la navigation que l'on a appelé `header`
+On va maintenant pouvoir y intégrer notre navigation générée par WordPress grace a la function [wp_nav_menu()](https://developer.wordpress.org/reference/functions/wp_nav_menu/), on va avoir besoin de faire appel la methode `theme_location`, qui permetra de faire appel a la navigation que l'on a appelé `header`.
 
-donc:
+Donc:
 
 ```php
 <?php wp_nav_menu(['theme_location' => 'header']); ?>
 ```
 
-que je vais du coup placer juste avant le `<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>` que j'ai commenté
+Que je vais du coup placer juste avant le `<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>` que j'ai commenté.
 
 <details>
 <summary>Code du fichier header.php pour le moment</summary>
@@ -207,9 +207,9 @@ que je vais du coup placer juste avant le `<ul class="navbar-nav me-auto mb-2 mb
 
 </details>
 
-ça devrait nous donner quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-11-21 at 22.43.23.png" alt="premier affichage de la navbar" />
+Ça devrait nous donner quelque chose comme ceci:<br><img src=".screenshots/Screenshot 2022-11-21 at 22.43.23.png" alt="premier affichage de la navbar" />
 
-si on inspecte le code que WordPress nous a généré on voit que ce n'est pas tout a fait le code qu'on aimerais pour notre template
+Si on inspecte le code que WordPress nous a généré, on voit que ce n'est pas tout a fait le code qu'on aimerais pour notre template.
 
 ```html
 <div class="menu-navigation-container">
@@ -234,14 +234,14 @@ si on inspecte le code que WordPress nous a généré on voit que ce n'est pas t
 </div>
 ```
 
-les classes et autre éléments ne corresponde pas vraiment a ce que Bootstrap me demande faire pour avoir une belle navigation je vais donc devoir customiser un peu ça...
+Les classes et autres éléments ne correspondent pas vraiment à ce que Bootstrap demande pour obtenir une belle navigation. Je vais donc devoir personnaliser tout ça un peu...
 
-on va déjà commencer par nettoyer un peu ce que nous propose WordPress
+On va déjà commencer par nettoyer un peu ce que nous propose WordPress.
 
-1. retirer le container `<div class="menu-navigation-container"></div>` qui entour mon menu
-2. changer le la classe par défaut de mon `<ul id="menu-navigation" class="menu">`
+1. Retirer le container `<div class="menu-navigation-container"></div>` qui entour mon menu
+2. Changer la classe par défaut de mon `<ul id="menu-navigation" class="menu">`
 
-pour ce faire je vais ajouter des options dans mon ma function `wp_nav_menu`
+Pour ce faire je vais ajouter des options dans mon ma function `wp_nav_menu`
 
 ```php
 <?php wp_nav_menu([
@@ -251,16 +251,16 @@ pour ce faire je vais ajouter des options dans mon ma function `wp_nav_menu`
 ]); ?>
 ```
 
-voila ce que ça donne quand je change ces options:<br><img src=".screenshots/Screenshot 2022-11-21 at 22.56.15.png" alt="après une première couche d'options">
+Voila ce que ça donne quand je change ces options:<br><img src=".screenshots/Screenshot 2022-11-21 at 22.56.15.png" alt="après une première couche d'options">
 
-c'est bien mais c'est encore loin de ressembler a ce que Bootstrap nous propose... pour aller plus loins dans la customisation de notre navbar je vais devoir retrouner dans notre chère et bie aimé `functions.php`
+C'est bien mais c'est encore loin de ressembler a ce que Bootstrap nous propos. Pour aller plus loins dans la customisation de notre navbar je vais devoir retourner dans notre chère et bie aimé `functions.php`.
 
-je vais devoir:
+Je vais devoir:
 
-1. changer mes `<li class="menu-item">` par des `<li class="nav-item">`
-1. changer mes `<a>` par des `<a class="nav-link">`
+1. Changer mes `<li class="menu-item">` par des `<li class="nav-item">`.
+1. Changer mes `<a>` par des `<a class="nav-link">`.
 
-je me rend donc dans mon fichier `functions.php` pour y ajouter 2 [add_filter](https://developer.wordpress.org/reference/functions/add_filter/)
+Je me rend donc dans mon fichier `functions.php` pour y ajouter 2 [add_filter](https://developer.wordpress.org/reference/functions/add_filter/) :
 
 ```php
 function montheme_menu_class($classes) {
@@ -370,7 +370,7 @@ ps: pour remplacer "Navbar" de notre nav bar par le titre de notre application j
 
 [source](https://www.youtube.com/watch?v=3khRV9BGRo0&list=PLjwdMgw5TTLWF1VV9TFWrsUTvWjtGS7Qt&index=10)
 
-On va rendre le formulaire de recherche du code qu'on a récupéré sur bootstrap
+On va rendre le formulaire de recherche du code qu'on a récupéré sur bootstrap :
 
 ```html
 <form class="d-flex" role="search">
@@ -384,15 +384,15 @@ On va rendre le formulaire de recherche du code qu'on a récupéré sur bootstra
 </form>
 ```
 
-dans un premier temps on va ajouter une petite function de génération de formulaire de recherche qui nous vient directement de wordpress `get_search_form()` on va placer
+Dans un premier temps on va ajouter une petite function de génération de formulaire de recherche qui nous vient directement de wordpress `get_search_form()`, et on va placer
 
 ```php
 <?php echo get_search_form(); ?>
 ```
 
-entre `</nav>` et `<div class="container">` pour voir un peu ce que ça nous rend..<br>
+entre `</nav>` et `<div class="container">` pour voir un peu ce que ça nous rend.<br>
 ça devrait nous rendre quelque chose dans le genre<br><img src=".screenshots/Screenshot 2022-11-27 at 19.11.37.png" alt="search input"><br>
-niveau `html` ça nous a écrit quelque chose comme ça
+niveau `html` ça nous a écrit quelque chose comme ceci :
 
 ```html
 <div>
@@ -402,15 +402,15 @@ niveau `html` ça nous a écrit quelque chose comme ça
 </div>
 ```
 
-un code assez simple donc
+Un code assez simple donc
 
-j'aimerais évidement remplacer le code actuel de bootstrap avec le code généré par wordpress histoire que ce soit un peu plus sympa, pour ça il faudra créer notre propre formulaire de recherche
+J'aimerais évidement remplacer le code actuel de bootstrap avec le code généré par wordpress histoire que ce soit un peu plus sympa, pour ça il faudra créer notre propre formulaire de recherche :
 
-1. on va créer un fichier `searchform.php` a la racine de notre theme
-2. on va y coller le code html de notre formulaire qui vient de bootstrap<br><img src=".screenshots/Screenshot 2022-11-27 at 19.19.00.png" alt="notre formulaire de recherche">
-3. on va mtn ajouter les functions de wordpress qui active la recherche automatique
+1. On va créer un fichier `searchform.php` a la racine de notre theme.
+2. on va y coller le code html de notre formulaire qui vient de bootstrap<br><img src=".screenshots/Screenshot 2022-11-27 at 19.19.00.png" alt="notre formulaire de recherche">.
+3. On va mtn ajouter les functions de wordpress qui active la recherche automatique.
 
-voila donc notre résultat
+Voila donc notre résultat :
 
 ```php
 <form class="d-flex" role="search" action="<?php echo esc_url(home_url('/')); ?>">
@@ -419,15 +419,15 @@ voila donc notre résultat
 </form>
 ```
 
-1. dans `<form>` -> `action="<?php echo esc_url(home_url('/')); ?>"` on indique ici l'url de notre page de recherche
-2. dans `<input>` -> `name="s"` le nom de notre input doit oblicatiorement s'appeler 's' (c'est important pour WordPress)
-3. toujours dans `<input>` -> `value="<?php echo get_search_query(); ?>"` c'est la recherche qu'on vient de faire
+1. Dans `<form>` -> `action="<?php echo esc_url(home_url('/')); ?>"` on indique ici l'url de notre page de recherche.
+2. dans `<input>` -> `name="s"` le nom de notre input doit obligatiorement s'appeler 's' (c'est important pour WordPress).
+3. Toujours dans `<input>` -> `value="<?php echo get_search_query(); ?>"` c'est la recherche qu'on vient de faire.
 
-voila ce que ça donne:<br><img src=".screenshots/Screenshot 2022-11-27 at 19.25.16.png" alt="le résultat de notre première recherche"><br>
+Voila ce que ça donne:<br><img src=".screenshots/Screenshot 2022-11-27 at 19.25.16.png" alt="le résultat de notre première recherche"><br>
 
-il ne me reste plus donc qu'a remplacer l'input du code bootstrap par notre fameux formulaire
+Il ne me reste plus donc qu'a remplacer l'input du code bootstrap par notre fameux formulaire.
 
-donc ce code la:
+Donc ce code la :
 
 ```html
 <form class="d-flex" role="search">
@@ -441,13 +441,13 @@ donc ce code la:
 </form>
 ```
 
-par celui-ci:
+par celui-ci :
 
 ```php
 <?php echo get_search_form(); ?>
 ```
 
-ça nous donne donc ça:
+ça nous donnera donc ceci :
 
 ```php
 <!DOCTYPE html>
@@ -521,13 +521,13 @@ par celui-ci:
 
 ### Plus de personalisation pour la recherches
 
-dans cet exemple je vais ajouter une suite de custom `post type` "services" (que l'on a déjà utilisé pour l'application [supershoes](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/09__integration_cordonnier.md#services))
+Dans cet exemple, je vais ajouter une suite de custom `post type` "services" (que l'on a déjà utilisé pour l'application [supershoes](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/09__integration_cordonnier.md#services)) :
 
 <img src=".screenshots/Screenshot 2023-01-03 at 14.02.14.png" alt="page services" /><br>
 
-ce que j'aimerais c'est avoir une page spécial pour récupérer mes données de recherche comme celle-ci par exemple:<br><img src=".screenshots/Screenshot 2023-01-03 at 14.15.30.png" alt="page de résultats de recherches"><br>
+Ce que j'aimerais ? c'est avoir une page spécial pour récupérer mes données de recherche comme celle-ci par exemple :<br><img src=".screenshots/Screenshot 2023-01-03 at 14.15.30.png" alt="page de résultats de recherches"><br>
 
-**c'est parti!**, on connait déjà notre fichier `searchform.php`
+**C'est parti!**, On connait déjà notre fichier `searchform.php`
 
 ```php
 <form class="d-flex" role="search" action="<?php echo home_url(); ?>">
@@ -536,7 +536,7 @@ ce que j'aimerais c'est avoir une page spécial pour récupérer mes données de
 </form>
 ```
 
-j'aimerais avoir une page spécial pour voir mes résultats.. pour ce faire je vais simplement ajouter une nouvelle page `search.php`
+J'aimerais avoir une page spécial pour voir mes résultats.. pour ce faire je vais simplement ajouter une nouvelle page `search.php`
 
 dans cette page je vais ajouter le code suivant..
 
@@ -576,16 +576,16 @@ get_header(); ?>
 <?php get_footer(); ?>
 ```
 
-dans ce fichier rien de bien fou on reconnait notre boucle while `<?php while ( have_posts() ): the_post(); ?>` qui va simplement retourner nos articles filtré par notre recherche et `<?php echo get_search_query(); ?>`  qui va retourner la string de ce qu'on a tapé dans la bar de recherche je pourrais don ajouter un lien dans chaque card pour avoir plus de détails sur l'article en question
+Dans ce fichier rien de bien fou, on reconnait notre boucle while `<?php while ( have_posts() ): the_post(); ?>` qui va simplement retourner nos articles filtré par notre recherche et `<?php echo get_search_query(); ?>`  qui va retourner la string de ce qu'on a tapé dans la bar de recherche je pourrais don ajouter un lien dans chaque card pour avoir plus de détails sur l'article en question.
 
 ### Et si on ne veux voir les résultats que pour services ?
-Effectivement si je ne veux pas voir mes article qui ont les même références que mes `services` je vais devoir dire a mon formulaire qu'il ne doit filtrer que les ces fameux `services` pour ça j'ajoute
+Effectivement si je ne veux pas voir mes article qui ont les même références que mes `services`, je vais devoir dire a mon formulaire qu'il ne doit filtrer que les ces fameux `services` pour ça j'ajoute :
 ```php
 <input type="hidden" name="post_type" value="services" />
 ```
-dans mon fichier `searchform.php`
+Dans mon fichier `searchform.php`
 
-ce qui nous donne quelque chose comme ça
+Ce qui nous donne quelque chose comme ceci :
 ```php
 <form class="d-flex" role="search" action="<?php echo home_url(); ?>">
   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="s" value="<?php echo get_search_query(); ?>">
