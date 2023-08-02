@@ -26,7 +26,9 @@ Ils peuvent être ajoutés, modifiés, et gérés dans le menu `Apparence > Thè
 
 ### Création du theme (le fun commence!)
 1. Créer un dossier au nom de notre theme (dans mon cas `montheme`)
-2. Créer 2 fichiers `index.php` et `style.css` <br/>les fichiers se présente comme suit
+2. Créez deux fichiers : index.php et style.css.
+
+Le contenu des fichiers est le suivant :
 
 `index.php`
 ```html
@@ -41,23 +43,23 @@ Theme Name: Mon Super Theme
 ```
 <details>
 <summary>Note</summary>
-`Theme Name: ` est important c'est lui qui va permettre d'avoir un nom dans notre WordPress
+Theme Name: est important, car c'est lui qui va permettre d'avoir un nom dans notre WordPress.
 </details>
 
-3. Dans notre WordPress (L'administration de notre application) se rendre dans `Apparence > Thèmes`<br/><img src="./.screenshots/Screenshot 2022-11-13 at 17.58.46.png" alt="apparence theme wordpress" />
-4. Une foi sur cette page vous devriez trouver votre theme<br/><img src="./.screenshots/Screenshot 2022-11-13 at 17.59.36.png" alt="notre nouveau theme" />
-5. Il ne nous reste plus qu'a l'activer<br/><img src="./.screenshots/Screenshot 2022-11-13 at 18.01.07.png" alt="activer le theme" />
-6. Quand on se rend sur notre site en allant dans l'onglet en haut a gauche on devrait tomber sur une page blanche avec l'inscription "Bonjour tout le monde"<br /><img src="./.screenshots/Screenshot 2022-11-13 at 18.06.12.png" alt="se rendre sur la page d'accueil de notre site" />
+3. Dans notre WordPress (l'administration de notre application), rendez-vous dans `Apparence > Thèmes.`<br/><img src="./.screenshots/Screenshot 2022-11-13 at 17.58.46.png" alt="apparence theme wordpress" />
+4. Une fois sur cette page, vous devriez trouver votre thème.<br/><img src="./.screenshots/Screenshot 2022-11-13 at 17.59.36.png" alt="notre nouveau theme" />
+5. Il ne nous reste plus qu'à l'activer.<br/><img src="./.screenshots/Screenshot 2022-11-13 at 18.01.07.png" alt="activer le theme" />
+6. Quand on se rend sur notre site en allant dans l'onglet en haut à gauche, on devrait arriver sur une page blanche avec l'inscription "Bonjour tout le monde".<br /><img src="./.screenshots/Screenshot 2022-11-13 at 18.06.12.png" alt="se rendre sur la page d'accueil de notre site" />
 
 ## Super... et maintenant ?
 
-On va avoir envie de créer notre propre `html` et pour se faire on va devoir se familiariser avec les propriété de de wordpress 
+On va avoir envie de créer notre propre contenu HTML, et pour ce faire, on va devoir se familiariser avec les fonctionnalités de WordPress.
 
-notre site pour le moment ne paie pas de mine : <img src=".screenshots/Screenshot 2022-11-14 at 07.57.04.png" alt="notre site bonjour tout le monde" />
+Notre site, pour le moment, ne paye pas de mine :<img src=".screenshots/Screenshot 2022-11-14 at 07.57.04.png" alt="notre site bonjour tout le monde" />
 
-dans un premier temps on va avoir envie de récupérer notre `header` et `footer` et pour ça rien de plus simple.. 
+Dans un premier temps, on va avoir envie de récupérer notre en-tête (`header`) et pied de page (`footer`), et pour cela, rien de plus simple...
 
-on a les deux [function](https://www.php.net/manual/en/language.functions.php) proposée par WordPress qui vont nous aider `get_header()` et `get_footer()`
+On a les deux [function](https://www.php.net/manual/en/language.functions.php) proposées par WordPress, les fonctions `get_header()` et `get_footer()` vont nous aider.
 
 <details>
 <summary>get_header()</summary>
@@ -73,14 +75,14 @@ pour l'utiliser:
 
 voila ce que ça donne: <img src="./.screenshots/Screenshot 2022-11-14 at 08.18.19.png" alt="juste avec le get_header()" />
 
-on peut ajouter des argument dans notre fichier `header.php` si on en a un.. par exemple
+On peut ajouter des arguments dans notre fichier  `header.php` si on en a un.. par exemple
 
 `index.php`
 ```php
 // in index.php or where you want to include header
-<?php get_header( '', array( 'name' => 'Ruhul Amin', 'age' => 23 ) ); ?>
+<?php get_header('', array('name' => 'Ruhul Amin', 'age' => 23)); ?>
 
-Bonjour tout le monde
+<p>Bonjour tout le monde</p>
 ```
 
 `header.php`
@@ -89,7 +91,7 @@ Bonjour tout le monde
 <p>Hey, <?php echo $args['name']; ?>, You are <?php echo $args['age']; ?> years old</p>
 ```
 
-de qui va donner: <img src="./.screenshots/Screenshot 2022-11-14 at 08.22.51.png" alt="avec un get_header() qui a des options" />
+Ce qui va donner: <img src="./.screenshots/Screenshot 2022-11-14 at 08.22.51.png" alt="avec un get_header() qui a des options" />
 
 ------------------------------------------------------------------
 </details>
@@ -98,14 +100,14 @@ de qui va donner: <img src="./.screenshots/Screenshot 2022-11-14 at 08.22.51.png
 
 ------------------------------------------------------------------
 
-Va nous premettre d'importer la barre d'outil WordPress avec quelque information sur notre site
+Cela va nous permettre d'importer la barre d'outils WordPress avec quelques informations sur notre site.
 
 pour l'utiliser:
 ```php
 <?php get_footer(); ?>
 ```
 
-si on l'utilise seul comme ça dans notre `index.php`
+Si on l'utilise seul comme ça dans notre `index.php`:
 ```php
 Bonjour tout le monde
 
@@ -113,37 +115,41 @@ Bonjour tout le monde
 ```
 ça va nous donner ça: <img src="./.screenshots/Screenshot 2022-11-14 at 08.35.36.png" alt="utilisation seul de notre get_footer()" /> 
 
-a noter que ne vois plus notre "Bonjour tout le monde" parcequ'il est caché derrière la bar d'options wordpress
+À noter que nous ne voyons plus notre "Bonjour tout le monde" parce qu'il est caché derrière la barre d'options WordPress.
 
 ------------------------------------------------------------------
 </details>
 
-si on les appliques...
+Si on les applique...
 ```php
 <?php get_header(); ?>
 
-Bonjour tout le monde
+<p>Bonjour tout le monde</p>
 
 <?php get_footer(); ?>
 ```
-ça donne ça...<img src="./.screenshots/Screenshot 2022-11-14 at 08.05.39.png" alt="notre site avec le get_header() et le get_footer()" /> 
+Ça donne ça...<img src="./.screenshots/Screenshot 2022-11-14 at 08.05.39.png" alt="notre site avec le get_header() et le get_footer()" /> 
 
 
 ## Super pour l'import de Header et Footer mais on fait quoi maintenant ?
 
 [source](https://capitainewp.io/formations/developper-theme-wordpress/header-footer-theme/)
 
-On va donc aller un peu plus loin dans notre découpage.. pour ce faire:
+On va donc aller un peu plus loin dans notre découpage. Pour ce faire :
 
-On va donc isoler le haut et le bas du site dans des fichiers à part afin d’éviter toute répétition de code dans la suite de la formation.
+On va isoler le haut et le bas du site dans des fichiers à part afin d'éviter toute répétition de code dans la suite de la formation.
 
-Je vous invite alors à créer 2 nouveaux fichiers à la racine de votre thème :
+Je vous invite alors à créer deux nouveaux fichiers à la racine de votre thème :
 
 1. `header.php` : où l’on mettra la base du HTML et le haut du site ;
 2. `footer.php` : où l’on mettra le bas du site et les balises fermantes de notre page.
 2. `functions.php` : Ce fichier est essentiel puisque c’est ici que l’on va activer toutes les fonctionnalités nécessaires de WordPress, mais également ajouter nos propres fonctions sur mesure.
+--
+**NOTE**
+Ne pas oublier le 's' a `functions`.(sinon ça marchera pas)
+---
 
-on va avoir quelque chose comme ça dans notre dossier de travail: <img src=".screenshots/Screenshot 2022-11-14 at 09.01.50.png" alt="notre dossier de travail">
+On va avoir quelque chose comme ceci dans notre dossier de travail :<img src=".screenshots/Screenshot 2022-11-14 at 09.01.50.png" alt="notre dossier de travail">
 
 On commence par `functions.php`:
 ```php
@@ -180,23 +186,23 @@ puis dans `footer.php` on ajout:
 </html>
 ```
 
-dans notre `index.php` on garde (évidement on peut changer "Bonjour tout le monde" par "coucou")
+Dans notre `index.php` on garde (évidement on peut changer "Bonjour tout le monde" par "coucou").
 ```php
 <?php get_header(); ?>
 Coucou
 <?php get_footer(); ?>
 ```
 
-on devrait avoir quelque chose comme ça: <img src=".screenshots/Screenshot 2022-11-14 at 08.49.48.png" alt="notre premier découpage plus avancé" />
+On devrait avoir quelque chose comme ceci :<img src=".screenshots/Screenshot 2022-11-14 at 08.49.48.png" alt="notre premier découpage plus avancé" />
 
-Si la manipulation a bien fonctionné, vous devriez voir apparaitre la barre d’administration WordPress (en noir en haut du site) et le titre dans l’onglet du navigateur. Concernant le code de la page via l’inspecteur, on remarque qu’il y a bien plus de HTML que ce qu’on en a écrit ! C’est dû aux fonctions que l’on vient d’ajouter et que l’on va analyser juste après.
+Si la manipulation a bien fonctionné, vous devriez voir apparaître la barre d’administration WordPress (en noir en haut du site) et le titre dans l’onglet du navigateur. En ce qui concerne le code de la page via l'inspecteur, on remarque qu'il y a bien plus de HTML que ce que nous avons écrit ! Cela est dû aux fonctions que nous venons d'ajouter et que nous allons analyser juste après.
 
 De manière générale, on utilisera les fonctions `get_header()` et `get_footer()` sur tous les templates de page que l’on créera par la suite avec WordPress.
 
 
 ### Découverte de nouvelles fonctions WordPress
 
-Je reviens sur le code que l’on a écrit plus haut. Comme vous avez pu le remarquer on a ajouté quelques fonctions de WordPress dans notre HTML.
+Je reviens sur le code que l'on a écrit plus tôt. Comme vous avez pu le remarquer, on a ajouté quelques fonctions de WordPress dans notre HTML.
 
 ### dans `functions.php`
 <details>
@@ -222,7 +228,7 @@ La première chose que l’on demande, c’est d’activer la prise en charge de
 <br/>
 <strong>Activer la gestion automatique du titre de la page</strong>
 
-On lui demande également de créer automatiquement la balise `title` dans l’en-tête. C’est le titre qui apparait dans l’onglet du navigateur, il est d’ailleurs important pour le référencement naturel.
+On lui demande également de créer automatiquement la balise `title` dans l'en-tête. C’est le titre qui apparaît dans l'onglet du navigateur ; il est d'ailleurs important pour le référencement naturel.
 <img src="https://capitainewp.io/wp-content/uploads/2019/01/titre-site-wp.jpg.webp" alt="page title" />
 
 <br/><hr/>
@@ -249,21 +255,22 @@ On lui demande également de créer automatiquement la balise `title` dans l’e
 ------------------------------------------------------------------
 </details>
 
-Tout d’abord, on remarque la fonction `language_attributes()` qui permet de définir automatiquement la langue du document. Cette valeur est basée sur le réglage WordPress dans `Réglages > Général > Langue` du site.
+Tout d'abord, on remarque la fonction `language_attributes()`qui permet de définir automatiquement la langue du document. Cette valeur est basée sur le réglage WordPress dans `Réglages > Général > Langue du site`.
 
-Vient ensuite la fonction `bloginfo('charset')` qui permet de définir l’encodage du site. Par défaut c’est `UTF-8` et c’est très bien comme ça : votre site prendra en charge les caractères spéciaux, accents, caractères non-latins…
+Vient ensuite la fonction `bloginfo('charset')` qui permet de définir l'encodage du site. Par défaut, c'est `UTF-8`, et c'est très bien comme ça : votre site prendra en charge les caractères spéciaux, les accents, les caractères non-latins, etc.
 
 Cette fonction nous permettra de récupérer [d’autres informations](https://developer.wordpress.org/reference/functions/bloginfo/) utiles pour notre site.
 
 Je continue pour tomber sur une fonction `wp_head()` qui a une importance capitale : c’est par cette fonction que WordPress, votre thème et les extensions vont pouvoir venir déclarer le chargement des scripts et des styles. On verra un peu plus tard comment en tirer parti.
 
-<strong>La fonction `wp_head()` est essentielle au bon fonctionnement de votre thème alors ne l’oubliez pas !</strong>
+<strong>La fonction `wp_head()` est essentielle au bon fonctionnement de votre thème alors ne l’oubliez pas!
+<strong>
 
 D’ailleurs c’est via cette fonction que WordPress va venir écrire la balise `title` que l’on a activé dans le `functions.php` juste avant.
 
 Ensuite, la fonction `body_class()` nous permet d’obtenir des noms de classe CSS en fonction de la page visitée, ce qui pourra nous faciliter la création de nos styles.
 
-voila ce que ça donne en `html`
+Voila ce que ça donne en `html`
 ```html
 <!DOCTYPE html>
 <html lang="fr-FR">
@@ -280,14 +287,14 @@ voila ce que ça donne en `html`
 <summary>Ce que ça veut dire</summary>
 
 ------------------------------------------------------------------
-La langue est définie sur fr-FR, l’encodage sur UTF-8, et dans les body classes on peut voir :
+La langue est définie sur fr-FR, l'encodage sur UTF-8, et dans les classes du `body`, on peut voir :
 
 1. `home` car on est sur la page d’accueil ;
 2. `blog` car par défaut la page d’accueil de WordPress affiche les derniers articles (on pourra changer ce réglage) ;
 3. `logged-in` car on est un utilisateur connecté ;
 4. `admin-bar` car la barre d’administration est affichée en haut du site.
 
-Cette dernière classe nous sera très utile si on veut faire un menu fixe en position absolue ou fixe : la barre d’admin va décaler le site de 32px vers le bas (sa propre hauteur). On pourra donc appliquer un style de ce genre pour compenser :
+Cette dernière classe nous sera très utile si on veut créer un menu fixe en position absolue ou fixe : la barre d’administration va décaler le site de 32px vers le bas (sa propre hauteur). On pourra donc appliquer un style de ce genre pour compenser :
 
 ```css
 .menu {
@@ -302,7 +309,7 @@ Cette dernière classe nous sera très utile si on veut faire un menu fixe en po
 
 La classe `home` vous permettra d’appliquer des styles différents des autres pages par exemple. On reverra ça plus tard, mais au moins vous avez compris leur utilité. D’ailleurs rien ne vous oblige à utiliser la fonction `body_class()`. Mais si vous le faites, pensez à ne pas réutiliser ces noms de classe proposés par WordPress afin d’éviter des conflits de styles.
 
-<p>Enfin, la fonction `wp_body_open()` a été ajoutée dans WordPress 5.2 afin de permettre à des extensions d’écrire du code au début du body. C’est utile notamment pour Yoast qui vient y placer le Google Tag Manager et autres codes de scripts.</p>
+<p>Enfin, la fonction `wp_body_open()` a été ajoutée dans WordPress 5.2 afin de permettre à des extensions d’écrire du code au début du `body`. C’est utile notamment pour Yoast qui vient y placer le Google Tag Manager et autres codes de scripts.</p>
 
 ------------------------------------------------------------------
 </details>
@@ -335,7 +342,7 @@ On va profiter du fichier `header.php` pour ajouter la partie haute du site, qui
 
 Pour l’instant on va ajouter simplement un `logo`. Plus tard on mettra également un `menu`.
 
-Tout d’abord a la racine de notre theme (`montheme` dans mon cas) on va créer un dossier `assets` dans le quel on va créer un dossier `img` à la racine du thème, et poser notre logo au format `PNG` à l’intérieur (ou format `SVG`, comme vous voulez).
+Tout d'abord, à la racine de notre thème (`montheme` dans mon cas) on va créer un dossier `assets` dans lequel on va créer un dossier `img` à la racine du thème, et poser notre logo au format `PNG` à l’intérieur (ou format `SVG`, comme vous voulez).
 
 Ajoutez ensuite le code suivant dans le body:
 ```php
@@ -365,9 +372,9 @@ On peut bien sûr étoffer à volonté cet en-tête et c’est d’ailleurs ce q
 
 dans un premier temps je vais devoir ajouter une feuille de `style` css histoire de pouvoir agir directement sur mon image et mon header
 
-dans notre dossier `assets` je vais ajouter un nouveau dossier `css` dans le quel je vais ajouter un fichier que je vais appeler `app.css`
+dans notre dossier `assets` je vais créer un nouveau dossier `css` dans le quel je vais ajouter un fichier que je vais appeler `app.css`
 
-pour ça je vais ajouter cette ligne dans mon `<head></head>`
+Pour cela, je vais ajouter cette ligne dans mon `<head></head>`
 ```php
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/app.css">
 ```
@@ -390,7 +397,7 @@ pour ça je vais ajouter cette ligne dans mon `<head></head>`
 ------------------------------------------------------------------
 </details>
 
-pour tester que notre `css` sera bien applliqué j'ai envie de faire quelque chose de visible... pour ça rien de mieu que du rouge.. partout
+Pour tester que notre CSS sera bien appliqué, j'ai envie de faire quelque chose de visible... Pour cela, rien de mieux que d'utiliser du rouge partout.
 
 dans notre `app.css` 
 ```css
@@ -399,13 +406,12 @@ body {
 }
 ```
 
-ça devrait nous donner ça:
+Ça devrait nous donner ceci :
 <img src=".screenshots/Screenshot 2022-11-14 at 18.07.49.png" alt="result red">
 
 pour designer de manière "final"
 
-je vais ajouter dans mon css
-dans notre `app.css`
+Je vais ajouter dans mon CSS, dans notre fichier `app.css`.
 ```css
 body {
   margin: 0; /* pour éviter d'avoir une bordure blanche autour de notre contenu */
@@ -430,5 +436,5 @@ header.header > a.logo > img {
 }
 ```
 
-ce qui devrait nous donner quelque chose comme ça
+Ce qui devrait nous donner quelque chose comme ceci :
 <img src=".screenshots/Screenshot 2022-11-15 at 11.15.01.png" alt="notre résultat final" />
