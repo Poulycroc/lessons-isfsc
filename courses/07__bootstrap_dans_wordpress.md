@@ -220,7 +220,7 @@ Donc, lorsque vous saisissez une URL qui n'existe pas dans votre application, vo
 
 ---
 
-## Une home
+## Un home
 
 Actuellement, nous avons une page d'accueil qui affiche simplement la liste de nos `articles`. Cependant, si je souhaite créer une page d'accueil plus sexy, comment puis-je procéder ?
 
