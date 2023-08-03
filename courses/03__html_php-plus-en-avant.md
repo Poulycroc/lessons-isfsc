@@ -200,14 +200,33 @@ et que j'ai envie de naviguer entre mes différentes pages...
   echo $url; 
 ?>
 ```
+<details>
+<summary>explication du code</summary>
+
+<ol>
+  <li>Les premières lignes utilisent la variable $_SERVER['HTTPS'] pour vérifier si la page est chargée via une connexion sécurisée (HTTPS). Si c'est le cas, la variable $url est initialisée avec "https", sinon avec "http".</li>
+  <li>Ensuite, la ligne $url .= "://"; est utilisée pour ajouter les "://" à l'URL. Cela prépare la structure de base de l'URL.</li>
+  <li>La ligne suivante, $url .= $_SERVER['HTTP_HOST'];, ajoute le nom de domaine ou l'adresse IP du serveur à l'URL. Cela permet de spécifier l'emplacement du site.</li>
+  <li>Enfin, $url .= $_SERVER['REQUEST_URI']; ajoute la partie spécifique de l'URL qui indique l'emplacement et le nom du fichier actuel.</li>
+  <li>En utilisant echo $url;, l'URL complète est affichée dans la page.</li>
+</ol>
+
+</details
 
 Si je veux savoir sur quelle page je suis afin de mettre en "active" un lien, par exemple.
 ```php
 <a href="/index.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/index.php'): ?>active<?php endif; ?>">Home</a>
 <a href="/about.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/about.php'): ?>active<?php endif; ?>">About</a>
 <a href="/contact.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/contact.php'): ?>active<?php endif; ?>">Contact</a>
-
 ```
+
+<details>
+<summary>explication du code de haut dessus</summary>
+<ol>
+  <li>Cela ressemble à une instruction pour créer un lien. "a" signifie lien, et "href" est comme l'adresse du lien. L'adresse indiquée ici est "/contact.php", ce qui est comme l'endroit où se trouve la page "Contact" sur le site web.</li>
+  <li>class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/contact.php'): ?>active<?php endif; ?>" : Cela signifie que ce lien aura une sorte d'apparence spéciale. Si la page que vous regardez est la page "contact.php", le lien sera "actif", ce qui signifie qu'il sera un peu différent pour que vous sachiez que vous êtes sur la page "Contact".</li>
+</ol>
+</details>
 
 Si je veux récupérer les paramètres de requête (query), je peux...
 ```php
