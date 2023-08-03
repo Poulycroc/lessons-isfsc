@@ -6,14 +6,14 @@
 ## Quelque sites utils pour commencer
 
 1. [WordPress.org](https://wordpress.org/) (pour la doc en anglais)
-2. [wpfr](https://wpfr.net/) (pour la doc en fr)
+2. [wpfr](https://wpfr.net/) (pour la doc en français)
 3. [Grafikart](https://www.youtube.com/watch?v=fjm5jaQsvSw&list=PLjwdMgw5TTLWF1VV9TFWrsUTvWjtGS7Qt) (une suite de vidéos très complète sur l'utilisation de WordPress)
 
 PS: en parlant de Grafikart il a une [suite de vidéos](https://www.youtube.com/watch?v=B_vCy1uTg68&list=PLjwdMgw5TTLXQ7eBAiC7giFbm4NUisryc) sur la découverte de WordPress si vous voulez compléter n'hésitez pas..
 
 ## C'est quoi en fait ?
 
-Dans WordPress, un `thème` est un ensemble de fichiers modèles (`templates`) et de feuilles de style utilisés pour définir l’apparence et la présentation du contenu d’un site. On pourrait vulgairement appeler cela un design de site.
+Dans WordPress, un `thème` est un ensemble de fichiers modèles (`templates`) et de feuilles de style (`CSS`) utilisés pour définir l’apparence et la présentation du contenu d’un site. On pourrait vulgairement appeler cela un design de site.
 
 Ils peuvent être ajoutés, modifiés, et gérés dans le menu `Apparence > Thèmes`.
 
@@ -66,14 +66,14 @@ On a les deux [function](https://www.php.net/manual/en/language.functions.php) p
 
 ------------------------------------------------------------------
 
-Va nous premettre d'importer un header prédéfini a notre theme, si on n'a pas de fichier `header.php` dans notre projet alors il va aller chercher le header de WordPress pas défaut
+Va nous premettre d'importer un header prédéfini a notre theme, si on n'a pas de fichier `header.php` dans notre projet alors il va aller chercher le header de WordPress par défaut
 
-pour l'utiliser:
+Pour l'utiliser :
 ```php
 <?php get_header(); ?>
 ```
 
-voila ce que ça donne: <img src="./.screenshots/Screenshot 2022-11-14 at 08.18.19.png" alt="juste avec le get_header()" />
+Voila ce que ça donne : <img src="./.screenshots/Screenshot 2022-11-14 at 08.18.19.png" alt="juste avec le get_header()" />
 
 On peut ajouter des arguments dans notre fichier  `header.php` si on en a un.. par exemple
 
@@ -143,10 +143,10 @@ Je vous invite alors à créer deux nouveaux fichiers à la racine de votre thè
 
 1. `header.php` : où l’on mettra la base du HTML et le haut du site ;
 2. `footer.php` : où l’on mettra le bas du site et les balises fermantes de notre page.
-2. `functions.php` : Ce fichier est essentiel puisque c’est ici que l’on va activer toutes les fonctionnalités nécessaires de WordPress, mais également ajouter nos propres fonctions sur mesure.
---
+2. `functions.php` : Ce fichier est essentiel puisque c’est ici que l’on va activer toutes les fonctionnalités nécessaires de WordPress, mais également ajouter nos propres fonctions sur mesure.<br>
+---
 **NOTE**
-Ne pas oublier le 's' a `functions`.(sinon ça marchera pas)
+Ne pas oublier le 's' a `functions`.(sinon ça marchera pas ^^')
 ---
 
 On va avoir quelque chose comme ceci dans notre dossier de travail :<img src=".screenshots/Screenshot 2022-11-14 at 09.01.50.png" alt="notre dossier de travail">
@@ -395,7 +395,7 @@ Pour cela, je vais ajouter cette ligne dans mon `<head></head>`
 </head>
 ```
 ------------------------------------------------------------------
-</details>
+</details> <br>
 
 Pour tester que notre CSS sera bien appliqué, j'ai envie de faire quelque chose de visible... Pour cela, rien de mieux que d'utiliser du rouge partout.
 
