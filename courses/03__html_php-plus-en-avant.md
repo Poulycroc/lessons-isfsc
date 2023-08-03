@@ -94,6 +94,8 @@ Pour inclure un fichier dans un autre en utilisant PHP, on utilise l'instruction
 <?php require "fichier2.html"; ?>
 ```
 
+- il est utilisé pour inclure le contenu d'un fichier HTML (ou d'autres types de fichiers) dans une page PHP. Cela signifie que le contenu du fichier fichier2.html sera inséré à l'endroit où cette ligne de code est placée.
+
 Dans quels cas de figure peut-on avoir besoin de mutualiser le code entre différents fichiers ? Pour toutes les parties qui se répètent sur un site !
 
 <ul>

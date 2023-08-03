@@ -41,7 +41,7 @@ prendre 'MAMP & MAMP PRO 5.0.5'
 </details>
 <details>
 <summary>Utilisation</summary>
-#### À quoi cela a l'air ?
+#### À quoi cela resemble ?
 
 Vous pouvez appuyer sur "Start" 
 
@@ -110,11 +110,26 @@ Collez-y le code-ci dessous
 <img alt="premier code dans notre index" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 15.46.31.png" />
 
 allez dans votre navigateur préféré et entrez [http://localhost:8888/monpremiersite/](http://localhost:8888/monpremiersite/) 
---
-**NOTE:**
-<p>C'est un exemple, il faut ouvrir votre navigateur et copier/coller l'url dans la barre de recherche </p>
 
----
+<details>
+<summary>explication pour voir son premier site</summary>
+
+- Pour commencer, Aller dans les préférences de `MAMP`.<br>
+<img src="../courses/.screenshots/etape1.png"></img><br>
+- Vérifier votre port dans `Port`. (les deux premier et rentenez-le, le 3ème c'est votre base de donnée)<br>
+<img src="../courses/.screenshots/PORTMAMP.png"><br>
+- Ensuite aller dans `Servers` et cliquer sur `Open in Finder`.<br>
+<Img src="../courses/.screenshots/servers MAMP.png"><br>
+- Regarder après le dossier que vous venez de créer ('Pour ma part sa sera "`monpremiersite`" et retenez-le)<br>
+<img src="../courses/.screenshots/htdoc.png"><br>
+- Maintenant aller sur votre navigateur préférer
+et dans l'url c'est a dire la barre de recherche en haut taper : http://localhost:8888/ + le nom de votre dossier et appuyer sur entrer <br>
+<img src="../courses/.screenshots/exemplesite.png">
+--> le port doit être celui du 2ème point 
+
+
+</details> <br>
+
 Vous devriez avoir quelque chose qui ressemble a ceci<br>
 <img alt="premier site" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 15.49.33.png" />
 
@@ -124,6 +139,7 @@ Vous devriez avoir quelque chose qui ressemble a ceci<br>
 ```php
 <?php phpinfo(); ?>
 ```
+- Le code <?php phpinfo(); ?> en PHP est utilisé pour obtenir des informations détaillées sur la façon dont le langage PHP est configuré sur un serveur. Cela peut être utile pour résoudre des problèmes, vérifier les fonctionnalités disponibles ou ajuster les performances de votre site web. Cependant, il faut faire attention à ne pas l'utiliser sur un site en ligne, car cela pourrait rendre certaines informations sensibles accessibles aux pirates.
 
 ## Entrainez vous! 
 
