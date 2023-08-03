@@ -228,7 +228,7 @@ On applique les changements :
   </div>
 <?php get_footer(); ?>
 ```
-Voyons ce que ça donne en `html`
+Voyons ce que ça donne en `html` :
 ```html
 <div class="container">
   <h1>Mes articles</h1>
@@ -250,7 +250,8 @@ Voyons ce que ça donne en `html`
   </ul>
 </div>
 ```
-et sur notre site...<br><img src=".screenshots/Screenshot 2022-11-20 at 19.48.58.png" alt="première image"><br>
+et sur notre site :<br>
+<img src=".screenshots/Screenshot 2022-11-20 at 19.48.58.png" alt="première image"><br>
 
 
 ----
