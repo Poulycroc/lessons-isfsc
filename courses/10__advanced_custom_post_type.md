@@ -23,24 +23,35 @@ En résumé, ACF vous permet de créer des champs personnalisés pour votre site
 <details>
 <summary>Installation</summary>
 
-1. On se rend comme toujours (quand on veut installer un 'plugin' ou un 'extention') dans `extentions`<br><img src=".screenshots/Screenshot 2022-12-08 at 10.22.18.png" alt="installer une extention ACF">
-2. On se rend dans la section Ajouter.<br><img src=".screenshots/Screenshot 2022-12-08 at 10.22.27.png" alt="installer une extention ACF">
+1. On se rend comme toujours (quand on veut installer un 'plugin' ou un 'extention') dans `extentions`.<br>
+<img src=".screenshots/Screenshot 2022-12-08 at 10.22.18.png" alt="installer une extention ACF">
+2. On se rend dans la section Ajouter.<br>
+<img src=".screenshots/Screenshot 2022-12-08 at 10.22.27.png" alt="installer une extention ACF">
 3. On cherche l'extention `ACF`.<br><img src=".screenshots/Screenshot 2022-12-08 at 10.22.34.png" alt="installer une extention ACF">
-4. Une fois trouvé on clique sur "Installer".<br><img src=".screenshots/Screenshot 2022-12-08 at 10.22.51.png" alt="lancer l'installation ACF">
-5. On active le `plugin`.<br><img src=".screenshots/Screenshot 2022-12-08 at 10.22.59.png" alt="activer extention ACF">
+4. Une fois trouvé on clique sur "Installer".<br>
+<img src=".screenshots/Screenshot 2022-12-08 at 10.22.51.png" alt="lancer l'installation ACF">
+5. On active le `plugin`.<br>
+<img src=".screenshots/Screenshot 2022-12-08 at 10.22.59.png" alt="activer extention ACF">
 
 </details>
 <br>
 
 ### Utilisation
 
-On peut maintenant se rendre dans l'écran `ACF`<br><img src=".screenshots/Screenshot 2022-12-08 at 10.23.11.png" alt="se rendre dans l'écran ACF"><br>
-Dans cet écran on va donc pouvoir créer des `groupes de champs`.<br><img src=".screenshots/Screenshot 2022-12-08 at 10.23.52.png" alt="se rendre dans l'écran ACF"><br>dans ce cas ci je vais ajouter un `groupe de champs` pour des services... Dans ce contexte j'ai envie d'ajouter quelque infos sur les services que je propose a mes possible clients.<br><img src=".screenshots/Ajouter gdc.png"><br>Je vais donc ajouter un `champ`.<br><img src=".screenshots/exemple remplissage.png" alt="de mon champ"><br> Dans l'exemple que je propose ici, il sera en type `number`, qui se nomera `Services` (évidement `services` sans majuscules ni auter pour le coté code), on peut aussi noter que je précise a mon future utilisateur que l'unité de mon champ `services` est en `euro`, une fois mon champ créé je vais devoir lier le `groupe de champs` à un type de publication, dans l'exemple ici je vais le lier a mes `Custom post type` de type `services`.<br><img src=".screenshots/reglage.png" alt="j'ajoute mon groupe de champs avec un type de publication"><br>Quand je vais me rendre dans le `type de publications` qui a été lié a ce fameux `groupe de champs` je vais me retrouver avec une nouvelle section dans ma page de modification.<br><img src=".screenshots/champs.png" alt="le champs"><br>Pour afficher la nouvelle valeur que j'ai entré dans mon `custom field` je vais simplement ajouter dans la boucle de mon type post lié.
+On peut maintenant se rendre dans l'écran `ACF`<br>
+<img src=".screenshots/Screenshot 2022-12-08 at 10.23.11.png" alt="se rendre dans l'écran ACF"><br>
+Dans cet écran on va donc pouvoir créer des `groupes de champs`.<br>
+<img src=".screenshots/Screenshot 2022-12-08 at 10.23.52.png" alt="se rendre dans l'écran ACF"><br>
+dans ce cas ci je vais ajouter un `groupe de champs` pour les services... Dans ce contexte j'ai envie d'ajouter quelque infos sur les services que je propose à mes possible clients.<br>
+<img src=".screenshots/Ajouter gdc.png"><br>
+Je vais donc ajouter un `champ`.<br>
+<img src=".screenshots/exemple remplissage.png" alt="de mon champ"><br> 
+Dans l'exemple que je propose ici, il se normera '`Services`' et sera en type `number`, (évidement `services` sans majuscules ni auter pour le coté code), on peut aussi noter que je précise a mon future utilisateur que l'unité de mon champ `services` est en `euro`, une fois mon champ créé je vais devoir lier le `groupe de champs` à un type de publication, dans l'exemple ici je vais le lier a mes `Custom post type` de type `services`.<br><img src=".screenshots/reglage.png" alt="j'ajoute mon groupe de champs avec un type de publication"><br>Quand je vais me rendre dans le `type de publications` qui a été lié a ce fameux `groupe de champs` je vais me retrouver avec une nouvelle section dans ma page de modification.<br><img src=".screenshots/champs.png" alt="le champs"><br>Pour afficher la nouvelle valeur que j'ai entré dans mon `custom field` je vais simplement ajouter dans la boucle de mon type post lié.
 ```php
 <?php echo get_field('services'); ?>
 ```
 
-Par exemple dans la boucle qui me permettait d'afficher les services du cordonnier je vais pouvoir ajouter `get_field('prix')` par exemple juste en dessous du `the_content()`.
+Par exemple dans la boucle qui me permettait d'afficher les services du cordonnier je vais pouvoir ajouter `get_field('services')` par exemple juste en dessous du `the_content()`.
 ```php
 <?php
   $services = new WP_Query([ 
