@@ -49,8 +49,8 @@ register_nav_menu('header', 'En tête du menu');
 
 function wpbootstrap_styles_scripts() {
   wp_enqueue_style('style', get_stylesheet_uri());
-  wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css');
-  wp_enqueue_script('bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js', false, '1.0.0', true);
+  wp_enqueue_style('bootstrap', '	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css');
+  wp_enqueue_script('bootstrap-bundle', '	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js', false, '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
 
@@ -67,11 +67,11 @@ add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
 
 1. Quand on retourne dans notre configuration, a première vue rien de bien fou je vois simplement que j'ai la possibilité de sélectionner "en tête du menu".<br><img src=".screenshots/Screenshot 2022-11-21 at 18.41.30.png"  alt="après l'enregistrement du register_nav_menu">
 2. Je vais pouvoir continuer la configuration..<br><img src=".screenshots/Screenshot 2022-11-21 at 18.43.43.png" alt="menu configuration">
-3. Je vais pouvoir ajouter des pages a mon menu<br><img src=".screenshots/Screenshot 2022-11-21 at 18.46.50.png" alt="ajouter des pages a mon menu header">
+3. Je vais pouvoir ajouter mes pages à mon menu<br><img src=".screenshots/Screenshot 2022-11-21 at 18.46.50.png" alt="ajouter des pages a mon menu header">
 
 ---
 
-</details>
+</details><br>
 
 On va pouvoir retourner dans notre partie "affichage"
 
@@ -205,7 +205,7 @@ Que je vais du coup placer juste avant le `<ul class="navbar-nav me-auto mb-2 mb
 
 ---
 
-</details>
+</details><br>
 
 Ça devrait nous donner quelque chose comme ceci:<br><img src=".screenshots/Screenshot 2022-11-21 at 22.43.23.png" alt="premier affichage de la navbar" />
 
@@ -314,7 +314,7 @@ add_filter('nav_menu_link_attributes', 'montheme_menu_link_class');
 
 ---
 
-</details>
+</details><br>
 
 ça devrait donner quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-11-21 at 23.08.28.png" alt="notre navbar ressemble de plus en plus a celle de Bootstrap">
 
@@ -407,8 +407,8 @@ Un code assez simple donc
 J'aimerais évidement remplacer le code actuel de bootstrap avec le code généré par wordpress histoire que ce soit un peu plus sympa, pour ça il faudra créer notre propre formulaire de recherche :
 
 1. On va créer un fichier `searchform.php` a la racine de notre theme.
-2. on va y coller le code html de notre formulaire qui vient de bootstrap<br><img src=".screenshots/Screenshot 2022-11-27 at 19.19.00.png" alt="notre formulaire de recherche">.
-3. On va mtn ajouter les functions de wordpress qui active la recherche automatique.
+2. On va y coller le code html de notre formulaire qui vient de bootstrap<br><img src=".screenshots/Screenshot 2022-11-27 at 19.19.00.png" alt="notre formulaire de recherche">.
+3. On va maintenant ajouter les functions de wordpress qui active la recherche automatique.
 
 Voila donc notre résultat :
 
