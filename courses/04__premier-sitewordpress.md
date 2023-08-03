@@ -30,7 +30,7 @@ Comme indiqué, nous allons devoir créer notre base de données. Pour ce faire.
 
 ### Base de données
 1. Sur mon application MAMP je clique sur WebStart <br/><img alt="Trouver WebStart sur MAMP" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 18.18.05.png" />
-2. Sur la page qui devrait s'ouvrire je vais dans "Tools/phpMyAdmin" (en haut a gauche) <br/><img alt="Cliquer sur phpMyAdmin" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 18.17.52.png" />
+2. Sur la page qui devrait s'ouvrire je vais dans "Tools/phpMyAdmin" (en haut à gauche) <br/><img alt="Cliquer sur phpMyAdmin" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 18.17.52.png" />
 3. Sur la page qui vient de s'ouvrir, je cherche en haut à gauche "Nouveau" (ou "New" en anglais). <br/><img alt="Create DataBase" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 18.22.49.png" />
 4. Je crée donc un nom pour ma base : mabaseamoi. N'oublions pas de cliquer sur "Créer" (ou "Create" en anglais) sinon ça ne fonctionnera pas. <br/><img alt="Nom de ma base de donnée" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 18.24.56.png" />
 5. Voilà, nous devrions avoir cet écran : <br/><img alt="Final database" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 18.27.29.png" />
