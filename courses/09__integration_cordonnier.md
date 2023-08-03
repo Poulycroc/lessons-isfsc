@@ -384,7 +384,7 @@ On peut aussi remarquer que pour `jQuery`, je n'ai pas eu besoin de préciser à
 
 La seul chose à faire ici c'est de se rendre dans les réglages :<br><img src=".screenshots/Screenshot 2022-12-04 at 23.43.22.png" alt="changer le titre de l'app"><br>
 
-Ensuite partout ou l'on retrouvera "SuperShoes" on aura juste a mettre :
+Ensuite partout ou l'on retrouvera "SuperShoes" (dans l'éditeur )on aura juste a mettre :
 ```php
 <?php echo bloginfo('name'); ?>
 ```
@@ -774,7 +774,7 @@ ensuite j'ajoute mon code php dans `index.php` comme indiqué au dessus:
       while ($services->have_posts()): // la je lance ma boucle sur mes posts contenu dans services
       $services->the_post(); // la récupère mon post
     ?>
-      <div class="col-sm">
+      <div class="col-4">
         <div class="card">
           <img 
             src="<?php the_post_thumbnail_url(); ?>" // je vais chercher le lien de mon image
