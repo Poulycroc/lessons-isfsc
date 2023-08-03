@@ -202,9 +202,9 @@ Dans ma page `header.php` :
 Pour cacher la bar d'option wordpress
 </summary>
 
-Comme mon membre nouvellement inscrit est un utilisateur de mon application wordpress il a accès a notre barre d'outil wordpress, c'est pas super pratique pour nous on va donc devoir ajouter une condition dans notre code `fucntions.php` qui va déterminer qui a le droit ou non de voir cette fameuse barre .
+Comme mon membre nouvellement inscrit est un utilisateur de mon application wordpress il a accès a notre barre d'outil wordpress, c'est pas super pratique pour nous on va donc devoir ajouter une condition dans notre code `functions.php` qui va déterminer qui a le droit ou non de voir cette fameuse barre .
 
-dans `fucntions.php` :
+dans `functions.php` :
 ```php
 function tf_check_user_role( $roles ) {
 	// si pas connecté alors je sors de la function
