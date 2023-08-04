@@ -92,5 +92,23 @@
 
  <br>
 
+ # Exercice 9
+
+ Voici un tableau php :
+ ```php
+    $voitures = array(
+            array("marque" => "Toyota", "modèle" => "Corolla", "année" => 2022),
+            array("marque" => "Honda", "modèle" => "Civic", "année" => 2021),
+            array("marque" => "Ford", "modèle" => "Mustang", "année" => 2020),
+            array("marque" => "Chevrolet", "modèle" => "Camaro", "année" => 2022)
+        ); 
+ ```
+ <ol>
+    <li>Déclarez un tableau associatif nommé $voitures contenant au moins quatre voitures avec les clés "marque", "modèle" et "année".</li>
+    <li>Utilisez une boucle `foreach` pour parcourir le tableau `$voitures`.</li>
+    <li>À l'intérieur de la boucle, affichez chaque voiture sous forme de ligne dans un tableau HTML. Utilisez les clés du tableau associatif pour accéder aux informations de chaque voiture.</li>
+    <li>Assurez-vous d'afficher les informations dans des cellules appropriées (colonne) du tableau HTML.</li>
+ </ol>
+
 
  
