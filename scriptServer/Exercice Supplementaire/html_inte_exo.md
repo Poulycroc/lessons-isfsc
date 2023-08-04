@@ -110,5 +110,13 @@
     <li>Assurez-vous d'afficher les informations dans des cellules appropriées (colonne) du tableau HTML.</li>
  </ol>
 
+ # Exercice 10
+
+ Calculatrice simple :
+
+ - Créez une page HTML contenant un formulaire avec deux champs de texte pour saisir deux nombres et des boutons radio pour sélectionner une opération : addition, soustraction, multiplication ou division. Lorsque l'utilisateur soumet le formulaire, affichez le résultat de l'opération sélectionnée.
+
+ - N'hesitez pas à faire du css pour que votre résultat sois plus jolis
+
 
  
