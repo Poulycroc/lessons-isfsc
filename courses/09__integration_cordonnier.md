@@ -6,52 +6,52 @@
 ## Introduction
 
 Récupérer le projet sur le [Github](https://github.com/gregholvoet/supershoes)
-il y a 3 branches sur ce projet 
-1. **start** le projet de départ sans aucunes modification, sans `html` ni `css`
-2. **static** le projet est maintenant terminé sans de manière `static` donc le contenu est écrit en dur et n'est donc pas `dynamique`
-3. **wordpress** branche de travail pour notre projet wordpress on va donc rendre notre le contenu `dynamique` 
+Il y a 3 branches sur ce projet :
+1. **start** : Le projet de départ sans aucunes modification, sans `html` ni `css`.
+2. **static** : Le projet est maintenant terminé sans de manière `static` donc le contenu est écrit en dur et n'est donc pas `dynamique`.
+3. **wordpress** : branche de travail pour notre projet wordpress on va donc rendre notre le contenu `dynamique`.
 
 <details>
 <summary>Télécharger et placer le dossier</summary>
 
-1. on va donc se rendre sur [le Github](https://github.com/gregholvoet/supershoes) et sélectionner la branche `static`<br><img src=".screenshots/Screenshot 2022-11-29 at 11.55.35.png" alt="selcetionner la banche static">
-2. télécharger cette branche dans l'onglet **Code** > **Download Zip**<br><img src=".screenshots/Screenshot 2022-11-29 at 12.06.13.png" alt="télécharger la branche static">
-3. on va simplement placer le dossier télécharger dans notre **wordpress** > **wp-content** > **themes** et renommer le dossier en "supershoes"<br><img src=".screenshots/Screenshot 2022-11-29 at 12.10.04.png" alt="placer le dossier dans themes">
+1. On va donc se rendre sur [le Github](https://github.com/gregholvoet/supershoes) et sélectionner la branche `static` :<br><img src=".screenshots/Screenshot 2022-11-29 at 11.55.35.png" alt="selcetionner la banche static">
+2. Télécharger cette branche dans l'onglet **Code** > **Download Zip** :<br><img src=".screenshots/Screenshot 2022-11-29 at 12.06.13.png" alt="télécharger la branche static">
+3. On va simplement placer le dossier télécharger dans notre **wordpress** > **wp-content** > **themes** et renommer le dossier en "supershoes" :<br><img src=".screenshots/Screenshot 2022-11-29 at 12.10.04.png" alt="placer le dossier dans themes">
 </details>
 <details>
 <summary>Activer notre theme au yeux de wordpress</summary>
 
-A la racine de notre nouveau projet on va ajouter `2 nouveaux fichiers` 
+A la racine de notre nouveau projet on va ajouter `2 nouveaux fichiers` :
 1. **functions.php** 
 2. **style.css**
 
-et finalement modifier le **index.html** en **index.php** 
+Et finalement modifier le **index.html** en **index.php**.
 
-dans notre fichier **style.css** on va simplement ajouter le nom de notre theme
+Dans notre fichier **style.css** on va simplement ajouter le nom de notre theme :
 ```css
 /*
 Theme Name: Super Shoes
 */
 ```
 
-c'est parti il ne reste plus qu'a activer notre theme<br><img src=".screenshots/Screenshot 2022-11-29 at 12.30.33.png" alt="activer notre nouveau theme">
+C'est parti il ne reste plus qu'a activer notre thème.<br><img src=".screenshots/Screenshot 2022-11-29 at 12.30.33.png" alt="activer notre nouveau theme">
 
 </details>
 <br>
 
 ## On entre dans le vif du sujet
-Je vais donc m'attaquer a cette intégration dans **WordPress** comme on a déjà vu de manière plus détaillée chaque élémént d'un développement WordPress j'irais beaucoup plus rapidement sur les différente étapes n'hésitez donc pas a revenir dans les cours précédent si vous ne comprennez pas ce que je fais 
+Je vais donc m'attaquer a cette intégration dans **WordPress** ,comme on a déjà vu de manière plus détaillée chaque élémént d'un développement WordPress, j'irais beaucoup plus rapidement sur les différente étapes, n'hésitez donc pas a revenir dans les cours précédent si vous ne comprennez pas ce que je fais. 
 
 <details>
 <summary>On découpe un peu l'application</summary>
 
 ---
-on va déjà commencer par séparer notre header et footer du corps de notre theme histoire d'avoir quelque chose de plus propre..
-on créer donc 2 fichiers
+On va déjà commencer par séparer notre header et footer du corps de notre theme histoire d'avoir quelque chose de plus propre..
+On créer donc 2 fichiers.
 1. **header.php** qui va donc accueillir la partie `<head></head>` et `<header></header>` (dans la quel on a notre navigation)
 2. **footer.php** qui va donc accueillir la partie `<footer></footer>`
 
-dans notre fichier `index.php` on récupère
+Dans notre fichier `index.php` on récupère :
 ```html
 <html lang="fr">
 <head>
@@ -82,13 +82,13 @@ dans notre fichier `index.php` on récupère
     </nav>
   </header>
 ```
-qu'on placer dans le fichier `header.php`
-opn va évidement penser a y mettre la function `get_header()` a la place de que l'on vient de retirer
+Qu'on placer dans le fichier `header.php`.
+On va évidement penser a y mettre la function `get_header()` a la place de que l'on vient de retirer.
 ```php
 <?php get_header(); ?>
 ```
 
-pour le footer pareil!.. on récupère:
+Pour le footer pareil ! On récupère:
 ```html
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -96,7 +96,7 @@ pour le footer pareil!.. on récupère:
 </body>
 </html>
 ```
-que l'on va placer dans `footer.php` on oublie évidement pas non plus de remplacer ce code par la function `get_footer()`
+Ensuite on va le placer dans `footer.php` on oublie évidement pas non plus de remplacer ce code par la function `get_footer()`
 ```php
 <?php get_footer(); ?>
 ```
@@ -268,7 +268,7 @@ je me retrouve donc avec ça:
 <summary>On s'occupe du header.php</summary>
 
 ---
-comme vu dans le cours je vais avoir besoin d'ajouter pas mal de petit élément de functions propre a wordpress
+Comme vu dans le cours je vais avoir besoin d'ajouter pas mal de petit élément de functions propre a wordpress.
 
 ```php
 <!DOCTYPE html>
@@ -302,20 +302,20 @@ comme vu dans le cours je vais avoir besoin d'ajouter pas mal de petit élément
   </header>
 ```
 
-1. remplacer l'attribu `lang` de notre balise `<html>` pour le rendre dynamique
-2. on retir notre balise `<title></title>` puisqu'elle sera chargnée dans `functions.php`
-3. on supprime les lignes `<link />` qui chargent le css de bootstrap et notre css custom
-4. on ajoute `<?php wp_head(); ?>` pour charger le header de worpress
-5. on va customiser le lien `navbar-brand` avec `bloginfo()` et `home_url()`
-6. on ajoute `body_class()` au cas ou on aurait besoin dans notre design
-7. ajoute finalement `wp_body_open()` pour prévenir wordpress qu'on ouvre le body a cet endroit
+1. Remplacer l'attribut `lang` de notre balise `<html>` pour le rendre dynamique.
+2. On retire notre balise `<title></title>` puisqu'elle sera chargée dans `functions.php`.
+3. On supprime les lignes `<link />` qui chargent le css de bootstrap et notre css custom.
+4. On ajoute `<?php wp_head(); ?>` pour charger le header de wordpress.
+5. On va customiser le lien `navbar-brand` avec `bloginfo()` et `home_url()`.
+6. On ajoute `body_class()` au cas ou on aurait besoin dans notre design.
+7. On ajoute finalement `wp_body_open()` pour prévenir wordpress qu'on ouvre le body a cet endroit.
 ---
 </details>
 <details>
 <summary>On s'occupe du footer.php</summary>
 
 ---
-dans le footer ça ira un peu plus vite
+Dans le footer ça ira un peu plus vite.
 
 ```php
   <footer class="bg-secondary">
@@ -329,15 +329,15 @@ dans le footer ça ira un peu plus vite
 </html>
 ```
 
-1. retirer toutes les lignes de `<scripts>` (on les ajoutera dans functions.php)
-2. ajouter la function `wp_footer()`
+1. Retirer toutes les lignes de `<scripts>` (on les ajoutera dans functions.php).
+2. ajouter la function `wp_footer()`.
 ---
 </details>
 <details>
 <summary>Dans notre fichier préféré... functions.php</summary>
 
 ---
-pour ce theme si j'ai envie de cahrger mes style perso directement dans `functions.php` pour vous montrer comment ça marche
+Pour ce thème-ci, j'ai envie de charger mes style perso directement dans `functions.php` pour vous montrer comment ça marche.
 
 
 ```php
@@ -358,19 +358,19 @@ function wpbootstrap_styles_scripts() {
 add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
 ```
 
-1. J'ajoute mes `add_theme_support()`
-2. j'ajoute `wpbootstrap_styles_scripts()` dans le quel je charge `bootstrap` **css** et **bundle** 
+1. J'ajoute mes `add_theme_support()`.
+2. J'ajoute `wpbootstrap_styles_scripts()` dans le quel je charge `bootstrap` **css** et **bundle** .
 
-donc si jamais:
+Donc si jamais:
 ```php
 wp_enqueue_style('style', get_template_directory_uri() .'/css/style.css', ['bootstrap'], true);
 ```
-la je charge mon style perso en lui précisent qu'il a besoin de "bootstrap" avant d'être chargé.. même chose pour nos script js perso, sauf que lui il a besoin de [jQuery](https://jquery.com/)
+L'étape suivante consiste à charger mon style personnalisé en lui précisant qu'il a besoin de "bootstrap" avant d'être chargé, même chose pour nos script js perso, sauf que lui il a besoin de [jQuery](https://jquery.com/).
 ```php
 wp_enqueue_script('scripts', get_template_directory_uri().'/js/script.js', ['jquery'], '1.0.0', true);
 ```
 
-on peut aussi remarquer que pour `jQuery` je n'ai pas eu besoind de préciser a wordpress ou le trouver, c'est simplement parcequ'il embarque cette librairie directement avec lui donc il l'a connait
+On peut aussi remarquer que pour `jQuery`, je n'ai pas eu besoin de préciser à wordpress où le trouver, c'est simplement parcequ'il embarque cette librairie directement avec lui, donc il l'a connait.
 
 ---
 </details>
@@ -382,9 +382,9 @@ on peut aussi remarquer que pour `jQuery` je n'ai pas eu besoind de préciser a 
 <details>
 <summary>La section NavBar</summary>
 
-la seul chose a faire ici c'est de se rendre dans les réglages:<br><img src=".screenshots/Screenshot 2022-12-04 at 23.43.22.png" alt="changer le titre de l'app"><br>
+La seul chose à faire ici c'est de se rendre dans les réglages :<br><img src=".screenshots/Screenshot 2022-12-04 at 23.43.22.png" alt="changer le titre de l'app"><br>
 
-en suite partout ou l'on retrouvera "SuperShoes" on aura juste a mettre:
+Ensuite partout ou l'on retrouvera "SuperShoes" (dans l'éditeur )on aura juste a mettre :
 ```php
 <?php echo bloginfo('name'); ?>
 ```
@@ -398,7 +398,7 @@ ce qui retrounera par défaut le titre de notre site
 <details>
 <summary>La section Header</summary>
 
-pour le moment dans la section **header** j'ai un html qui ressemble a ça..
+Pour le moment dans la section **header**, j'ai un html qui ressemble a ceci :
 ```html
 <section class="hero" id="home">
   <header>
@@ -414,13 +414,13 @@ pour le moment dans la section **header** j'ai un html qui ressemble a ça..
 
 j'aimerais évidement pouvoir rendre le contenu dynamique... je vais avoir **4 sections distincte** 
 1. `main-title` "Ici, on répare vos chaussures"
-2. `under-title` "pour que vous repartiez du bon pied"
+2. `under-title` "Pour que vous repartiez du bon pied"
 3. `scroll-label` "Scrollez vers le bas"
-4. `background-url` l'image en arrière plant
+4. `background-url` L'image en arrière plant.
 
-(oui c'est moi qui ai inventé les termes) j'ai plusieur solutions pour le faire mais pour cette section de page si je vais opter pour la création `d'une page admin`.. dans mon `functions.php` (que j'aime tant) je vais ajouter une nouvelle **function** qui va utiliser la méthode [add_menu_page()](https://developer.wordpress.org/reference/functions/add_menu_page/) de wordpress 
+(oui c'est moi qui ai inventé les termes) j'ai plusieur solutions pour le faire mais pour cette section de page si je vais opter pour la création `d'une page admin` dans mon `functions.php` (que j'aime tant), je vais ajouter une nouvelle **function** qui va utiliser la méthode [add_menu_page()](https://developer.wordpress.org/reference/functions/add_menu_page/) de wordpress .
 
-dans mon fichier `functions.php` j'ajoute: 
+Dans mon fichier `functions.php` j'ajoute: 
 ```php
 function my_admin_menu() {
 	add_menu_page(
@@ -439,11 +439,11 @@ function my_admin_page__header_hero__contents() {
   echo '<h1>COUCOU</h1>';
 }
 ```
-ce qui devrait me permettre d'afficher: <br><img src=".screenshots/Screenshot 2022-12-04 at 23.17.14.png" alt="admin menu page" /><br>
+Ce qui devrait me permettre d'afficher : <br><img src=".screenshots/Screenshot 2022-12-04 at 23.17.14.png" alt="admin menu page" /><br>
 
-c'est cool évidement mais ça ne me permet pas encore de pouvoir entrer les donnée que je veux ni même de pouvoir les récuperer dans le html de mon theme
+C'est cool évidement mais ça ne me permet pas encore de pouvoir entrer les donnée que je veux ni même de pouvoir les récuperer dans le html de mon thème.
 
-la première chose que je vais devoir faire c'est donc créer un formulaire directement dans ma function `my_admin_page__header_hero__contents()`, voici le code complet pour ma page d'option du hero header
+La première chose que je vais devoir faire c'est donc créer un formulaire directement dans ma function `my_admin_page__header_hero__contents()`, voici le code complet pour ma page d'option du hero header :
 ```php
 function my_admin_menu() {
 	add_menu_page(
@@ -541,11 +541,11 @@ function my_admin_page__header_hero__contents() {
   </div><?php 
 }
 ```
-ps: je sais c'est un code un peu avancé mais je vous encourage a tester des votre coté avec un peu moins de données peut-être quelque chose de plus simple ?
+ps: je sais c'est un code un peu avancé mais je vous encourage à tester de votre coté avec un peu moins de données, peut-être quelque chose de plus simple ?
 
-ça devrait nous donner quelque chose comme ça dans notre administration:<br><img src=".screenshots/Screenshot 2022-12-04 at 23.39.56.png" alt="notre formulaire hero header terminé"><br>
+ça devrait nous donner quelque chose comme ça dans notre administration :<br><img src=".screenshots/Screenshot 2022-12-04 at 23.39.56.png" alt="notre formulaire hero header terminé"><br>
 
-dans mon `html` maintenant il ne me reste plus qu'a changer les textes `static` par des donnée `dynamique`:
+Dans mon `html` maintenant il ne me reste plus qu'a changer les textes `static` par des donnée `dynamique`:
 <details>
 <summary>mon html d'avant:</summary>
 
@@ -563,10 +563,10 @@ dans mon `html` maintenant il ne me reste plus qu'a changer les textes `static` 
 ```
 </details>
 
-je vais donc utiliser la même `function` que j'ai utilisé dans mon `functions.php` a savoir [get_option](https://developer.wordpress.org/reference/functions/get_option/) avec le nom du champs que je veux dans mon cas j'ai `4 champs` a récupérer ('`header-hero_background-url`', '`header-hero_main-title`', '`header-hero_under-title`', '`header-hero_scroll-label`')
+Je vais donc utiliser la même `function` que j'ai utilisé dans mon `functions.php`, à savoir [get_option](https://developer.wordpress.org/reference/functions/get_option/) avec le nom du champs que je veux. Dans mon cas j'ai `4 champs` à récupérer ('`header-hero_background-url`', '`header-hero_main-title`', '`header-hero_under-title`', '`header-hero_scroll-label`').
 
 
-ce qui me donnera ça dans mon code:
+Ce qui me donnera ça dans mon code :
 ```php
 <section 
   class="hero" 
@@ -604,19 +604,19 @@ ps: j'utilise `get_template_directory_uri` pour m'assurer que le lien de mon ima
 <details>
 <summary>La section About</summary>
 
-pour la section about je vais devoir plus tôt créer une "page" dans mon administration qui va me permettre de pouvoir gérer le **titre**, le **text** et **l'image**
+Pour la section about je vais devoir plus tôt créer une "page" dans mon administration qui va me permettre de pouvoir gérer le **titre**, le **text** et **l'image**.
 
-1. dans mon administration je me rend dans l'onglet `pages`
-2. j'ajoute une page au nom de `About` (histoire de s'y retrouver)
+1. Dans mon administration je me rend dans l'onglet `pages`.
+2. J'ajoute une page au nom de `About` (histoire de s'y retrouver).
 3. J'ajoute mon contenu dans la page en question<br><img src=".screenshots/Screenshot 2022-12-03 at 16.04.48.png" alt="page about">
-4. je pense évidement a publier ma page sinon ça ne marche pas 
+4. Je pense évidement a publier ma page sinon ça ne marche pas 
 
-dans notre code on va pouvoir utiliser la function [get_page_by_title()](https://developer.wordpress.org/reference/functions/get_page_by_title/)
+Dans notre code on va pouvoir utiliser la function [get_page_by_title()](https://developer.wordpress.org/reference/functions/get_page_by_title/).
 
-qui va me permettre d'aller chercher le contenu de la page en question (**content** et **thumbnail**)
+Qui va me permettre d'aller chercher le contenu de la page en question (**content** et **thumbnail**).
 
 <details>
-<summary>mon html avant:</summary>
+<summary>Mon html avant:</summary>
 
 ```html
 <section class="container section about" id="about">
@@ -637,7 +637,7 @@ qui va me permettre d'aller chercher le contenu de la page en question (**conten
 ```
 </details>
 
-on se retrouve donc avec un code comme celui-ci
+On se retrouve donc avec un code comme celui-ci :
 ```php
 <section class="container section about" id="about">
   <div class="row align-items-center">
@@ -655,7 +655,7 @@ on se retrouve donc avec un code comme celui-ci
 </section>
 ```
 
-on se retrouve donc avec quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-12-03 at 16.36.22.png" alt="about section result">
+On se retrouve donc avec quelque chose comme ça :<br><img src=".screenshots/Screenshot 2022-12-03 at 16.36.22.png" alt="about section result">
 
 </details>
 
@@ -666,15 +666,15 @@ on se retrouve donc avec quelque chose comme ça:<br><img src=".screenshots/Scre
 <details>
 <summary>La section Services</summary>
 
-pour le moment j'ai quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-11-29 at 14.00.29.png" alt="mes services sans les images"><br>
-c'est évidement problématique pour plusiers raisons
+Pour le moment j'ai quelque chose comme ça :<br><img src=".screenshots/Screenshot 2022-11-29 at 14.00.29.png" alt="mes services sans les images"><br>
+C''est évidement problématique pour plusieurs raisons.
 
-1. le contenu n'est pas mofifiable a moin d'aller le faire dans notre fichier `index.php`
-2. les images manquent
+1. Le contenu n'est pas modifiable à moins d'aller le faire dans notre fichier `index.php`
+2. Les images manquent.
 
-ce que je propose ici c'est de rendre tout ça dynamique avec WordPress on va créer un "type d'article" que l'on va appeler `servcices`
+Ce que je propose ici, c'est de rendre tout ça dynamique avec WordPress. On va créer un "type d'article" que l'on va appeler `servcices`.
 
-1. on va donc se rendre dans notre fichier `functions.php` et ajouter:
+1. On va donc se rendre dans notre fichier `functions.php` et ajouter :
 ```php
 function create_post_type() {	 // function dans la quel j'ajouterais tous mes type de contenu
 	register_post_type('services'/* le nom de mon type de contenu */, [ // tableau avec mes options 
@@ -691,7 +691,7 @@ function create_post_type() {	 // function dans la quel j'ajouterais tous mes ty
 }
 add_action('init', 'create_post_type');
 ```
-ça donne ça dans l'admin wordpress<br>
+ça donne ça dans l'admin wordpress :<br>
 <img src=".screenshots/Screenshot 2022-11-29 at 14.14.59.png" alt="post type services">
 
 <details>
@@ -703,7 +703,7 @@ Je peux retrouver la liste d'icons pour les menu wordpress [ici](https://develop
 ---
 </details>
 
-on se rend maintenant dans `index.php` au niveau de nos services..
+On se rend maintenant dans `index.php` au niveau de nos services.
 ```html
 <div class="row">
   <div class="col-sm">
@@ -774,7 +774,7 @@ ensuite j'ajoute mon code php dans `index.php` comme indiqué au dessus:
       while ($services->have_posts()): // la je lance ma boucle sur mes posts contenu dans services
       $services->the_post(); // la récupère mon post
     ?>
-      <div class="col-sm">
+      <div class="col-4">
         <div class="card">
           <img 
             src="<?php the_post_thumbnail_url(); ?>" // je vais chercher le lien de mon image
@@ -841,9 +841,9 @@ on pourra évidement proposer a notre client de lui faire un carousel [comme cel
 <details>
 <summary>La section Contact</summary>
 
-Je vais maintenant m'attaquer au formulaire de contacte
+Je vais maintenant m'attaquer au formulaire de contacte.
 <details>
-<summary>Le code de notre formulaire ressemble acutellement a ça:</summary>
+<summary>Le code de notre formulaire ressemble acutellement a ça :</summary>
 
 ```html
 <div class="row">
@@ -873,45 +873,45 @@ Je vais maintenant m'attaquer au formulaire de contacte
 </div>
 ```
 </details>
-Pour cette partie on va utiliser ce qu'on appel un [short code](https://www.wpbeginner.com/wp-tutorials/how-to-add-a-shortcode-in-wordpress/) dans WordPress ça va nous permettre de générer des petits ou grand bout de code depuis une chaine de carractère dans notre editeur d'article ou de page
+Pour cette partie on va utiliser ce qu'on appel un [short code](https://www.wpbeginner.com/wp-tutorials/how-to-add-a-shortcode-in-wordpress/) dans WordPress, ça va nous permettre de générer des petits ou grand bout de code depuis une chaine de caractère dans notre editeur d'article ou de page.
 
-par example avec (dans notre `functions.php`:
+par example dans notre `functions.php`:
 ```php
 function create_shortcode(){
     return "<h2>Hello world !</h2>";
 }
 add_shortcode('my_shortcode', 'create_shortcode');
 ```
-on va pouvoir utiliser:
+On va pouvoir utiliser:
 ```html
 [my_shortcode]
 ```
-dans notre éditeur d'article:<br><img src=".screenshots/Screenshot 2022-12-05 at 10.07.51.png" alt="notre premier shortcode"><br>
+Dans notre éditeur d'article:<br><img src=".screenshots/Screenshot 2022-12-05 at 10.07.51.png" alt="notre premier shortcode"><br>
 
-ce qui va du coup va écire `<h2>Hello world !</h2>` dans notre content pour la page Contact par exemple mais ça peut marcher pour tout un tas d'autre article ou type d'article
+Ce qui va du coup écrire `<h2>Hello world !</h2>` dans notre content pour la page Contact, par exemple mais ça peut marcher pour tout un tas d'autre article ou type d'article.
 
-pour notre formulaire de contact je vais donc créer une page `Contact` dans mon administration, ce que j'aimerais faire ici c'est ajouter du `html` directement dans mon article...
+Pour notre formulaire de contact je vais donc créer une page `Contact` dans mon administration, ce que j'aimerais faire ici c'est ajouter du `html` directement dans mon article.
 
-1. ajouter un block `html` avec l'option <br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.27.png" alt="ajouter un block html">
-2. notre page `Contact` <br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.33.png" alt="notre page html">
-3. je vais ajouter `[contact-form]` dans le contact
+1. Ajouter un block `html` avec l'option :<br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.27.png" alt="ajouter un block html">
+2. notre page `Contact` :<br><img src=".screenshots/Screenshot 2022-12-05 at 10.24.33.png" alt="notre page html">
+3. Je vais ajouter `[contact-form]` dans le contact.
 
 
-on récupère la balise `<script></script>` qui permet de générer la carte:
+On récupère la balise `<script></script>` qui permet de générer la carte :
 ```html
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10987.242951252556!2d4.37044401754503!3d50.85271187329156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c370c43d6195%3A0x94b0e4b9ad97de02!2sHaute%20%C3%89cole%20ISFSC!5e0!3m2!1sfr!2sbe!4v1602328508492!5m2!1sfr!2sbe" class="col-md-8 contact-map" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 ```
 
-et je vais le copier dans le fomulaire je peux donc ajouter ça dans le formulaire de contact
+Et je vais le copier dans le fomulaire je peux donc ajouter ça dans le formulaire de contact :
 
 ```html
 [contact-form]
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10987.242951252556!2d4.37044401754503!3d50.85271187329156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c370c43d6195%3A0x94b0e4b9ad97de02!2sHaute%20%C3%89cole%20ISFSC!5e0!3m2!1sfr!2sbe!4v1602328508492!5m2!1sfr!2sbe" class="col-md-8 contact-map" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 ```
-je devrais avoir ça:<br><img src=".screenshots/Screenshot 2022-12-05 at 10.25.06.png" alt="contact form">
+Je devrais avoir ça :<br><img src=".screenshots/Screenshot 2022-12-05 at 10.25.06.png" alt="contact form">
 
-on va construire `[contact-form]` dans `index.php` a la place du formulaire et de la carte je vais ajouter le code php qui me permetra de récupérer le contenu de la page contact
+On va construire `[contact-form]` dans `index.php` à la place du formulaire et de la carte je vais ajouter le code php qui me permetra de récupérer le contenu de la page contact.
 ```php
 <div class="row">
   <?php
@@ -920,7 +920,7 @@ on va construire `[contact-form]` dans `index.php` a la place du formulaire et d
   ?>
 </div>
 ``` 
-dans mon fichier `functions.php` je vais ajouter le code suivant
+Dans mon fichier `functions.php` je vais ajouter le code suivant :
 ```php
 add_shortcode('contact-form', 'display_contact_form');
 /**
@@ -966,10 +966,10 @@ function display_contact_form() {
 }
 ```
 
-je vais me retrouver avec quelque chose comme ça:<br><img src=".screenshots/Screenshot 2022-12-05 at 14.13.48.png" alt="première vision de notre formulaire"><br>
-c'est bien mais ça ne fonctionne pas encore je ne reçois pas encore de mail et rien n'est la pour indiquer un envoi quelconque de mail a l'utilisateur
+Je vais me retrouver avec quelque chose comme ceci :<br><img src=".screenshots/Screenshot 2022-12-05 at 14.13.48.png" alt="première vision de notre formulaire"><br>
+C'est bien mais ça ne fonctionne pas encore, je ne reçois pas encore de mail et rien n'est la pour indiquer un envoi quelconque du mail à l'utilisateur.
 
-je vais donc devoir ajouter un peu de `php` pour ça 
+Je vais donc devoir ajouter un peu de `php` pour ça :
 ```php
 add_shortcode('contact-form', 'display_contact_form');
 /**
@@ -1067,5 +1067,5 @@ function display_contact_form() {
 <details>
 <summary>La section Footer</summary>
 
-rien de particulier a faire ici, je pourrais évidement ajouter une option du même style que pour le hero-header... a toi de voir ce que tu veux faire pour cette partie ci
+Rien de particulier à faire ici, je pourrais évidement ajouter une option du même style pour le hero-header... à toi de voir ce que tu veux faire pour cette partie-ci
 </details>

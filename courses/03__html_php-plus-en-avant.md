@@ -3,7 +3,7 @@
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/03__html_php-plus-en-avant.md)
 
 ## L'intégration
-plusieurs solution pour afficher du `php`
+Plusieurs solution pour afficher du `php`
 ```php
 <h1>Bienvenue <?php echo $name; ?><h1>
 // ou
@@ -17,7 +17,7 @@ plusieurs solution pour afficher du `php`
 
 ## Les boucles dans un fichier php
 
-pour faciliter l'écriture de code `php` dans notre `html` on va écrire notre code légèrement différement 
+Pour faciliter l'écriture de code `php` dans notre `html` on va écrire notre code légèrement différement 
 
 dans un premier temps faisons un `Array`
 ```php
@@ -38,12 +38,12 @@ $eleves = [
 ];
 ```
 
-ensuite plutot que décrire 
+Ensuite, plutôt que d'écrire.
 ```php
 <ol>
   <?php 
     foreach($eleves as $eleve) {
-      echo '<li><b>' . $eleve['nom'] . '</b>' . $eleve['prenom'] . '</li>';
+      echo '<li><b>' . $eleve['nom'] . '</b> ' . $eleve['prenom'] . '</li>';
     }
   ?>
 </ol>
@@ -56,14 +56,14 @@ on va préférer écrire
   <?php endforeach; ?>
 </ol>
 ```
-pour se retourner avec ce résultat<br/>
+Pour se retourner avec ce résultat<br/>
 <img src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 16.36.06.png" />
 
 #### On peut évidement appliquer le même concept pour les conditions
 ```php
-<p> mon super contenu</p>
+<p>Mon super contenu</p>
 <?php if ($check === "c'est vrai"): ?>
-  <a href="lienversautrechose.php">autre chose</a>
+  <a href="lienversautrechose.php">Autre chose</a>
 <?php endif; ?>
 ```
 
@@ -72,43 +72,41 @@ pour se retourner avec ce résultat<br/>
 ### Le but ?
 [source](https://www.alsacreations.com/article/lire/254-le-point-sur-la-fonction-include-php.html)
 
-L'intérêt est de pouvoir "inclure" automatiquement des fichiers communs à l'ensemble - ou à une partie spécifique - du site. Il s'agit souvent de code HTML mais cela fonctionne avec tout ce qui est texte (CSS, JavaScript, etc). Note : ces structures ne sont pas des fonctions à proprement parler, même si l'on peut s'en servir ainsi par permissivité du langage PHP.
+
+L'intérêt est de pouvoir "inclure" automatiquement des fichiers communs à l'ensemble du site, ou à une partie spécifique de celui-ci. Il s'agit souvent de code HTML, mais cela fonctionne avec tout type de texte (CSS, JavaScript, etc). Note : ces structures ne sont pas des fonctions à proprement parler, même si on peut les utiliser comme telles grâce à la souplesse du langage PHP.
 
 <ul>
 	<li>
 		<a href="http://php.net/manual/fr/function.require.php">require</a>&nbsp;: inclut le contenu d'un autre fichier appelé, et provoque une erreur bloquante s'il est indisponible</li>
 	<li>
-		<a href="http://php.net/manual/fr/function.require-once.php">require_once</a>&nbsp;: même chose que require, mais ne le fait qu'une seule fois en tout et pour tout dans le même document, si require a déjà été appelé auparavant avec le même nom de fichier</li>
+		<a href="http://php.net/manual/fr/function.require-once.php">require_once</a>&nbsp;: La même chose que require, mais ne le fait qu'une seule fois au total dans le même document, si require a déjà été appelé précédemment avec le même nom de fichier.</li>
 	<li>
-		<a href="http://php.net/manual/fr/function.include.php">include</a>&nbsp;:&nbsp;inclut le contenu d'un autre fichier appelé, mais ne provoque pas d'erreur bloquante s'il est indisponible</li>
+		<a href="http://php.net/manual/fr/function.include.php">include</a>&nbsp;:&nbsp;Inclut le contenu d'un autre fichier appelé, mais ne génère pas d'erreur bloquante s'il est indisponible.</li>
 	<li>
-		<a href="http://php.net/manual/fr/function.include-once.php">include_once</a>&nbsp;: même chose que include, mais ne le fait qu'une seule fois en tout et pour tout dans le même documentsi require a déjà été appelé auparavant avec le même nom de fichier</li>
+		<a href="http://php.net/manual/fr/function.include-once.php">include_once</a>&nbsp;: La même chose que include, mais ne le fait qu'une seule fois au total dans le même document si require a déjà été appelé précédemment avec le même nom de fichier.</li>
 </ul>
 
 #### Usage
-Pour inclure un fichier dans un autre à l'aide de PHP, on place l'instruction require (ou include) suivie d'un espace puis du nom du fichier appelé, entre guillemets simples ' ou doubles ".
+Pour inclure un fichier dans un autre en utilisant PHP, on utilise l'instruction require (ou include), suivie d'un espace puis du nom du fichier appelé, entre guillemets simples ' ou doubles ".
 
 ```php
 // fichier1.php
 <?php require "fichier2.html"; ?>
 ```
 
-Dans quel cas de figure peut-on avoir besoin de mutualiser le code entre différents fichiers ? Pour toutes les parties qui se répètent sur un site !
+- il est utilisé pour inclure le contenu d'un fichier HTML (ou d'autres types de fichiers) dans une page PHP. Cela signifie que le contenu du fichier fichier2.html sera inséré à l'endroit où cette ligne de code est placée.
+
+Dans quels cas de figure peut-on avoir besoin de mutualiser le code entre différents fichiers ? Pour toutes les parties qui se répètent sur un site !
 
 <ul>
-	<li>
-		En-tête de page</li>
-	<li>
-		Pied de page</li>
-	<li>
-		Menu de navigation</li>
-	<li>
-		Barre contextuelle</li>
-	<li>
-		Paramètres communs PHP (par exemple connexion à MySQL, variables de configuration, chaînes de texte...)</li>
+	<li>En-tête de page</li>
+	<li>Pied de page</li>
+	<li>Menu de navigation</li>
+	<li>Barre contextuelle</li>
+	<li>Paramètres communs PHP (par exemple connexion à MySQL, variables de configuration, chaînes de texte...)</li>
 </ul>
 
-plus simplement voila l'exemple représenté de manière visuel
+Plus simplement, voici l'exemple représenté de manière visuelle :
 
 <img src="https://www.alsacreations.com/xmedia/doc/original/php-require.png" />
 
@@ -117,14 +115,14 @@ plus simplement voila l'exemple représenté de manière visuel
 
 ```php
 // header.php
-<!doctupe html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <title>Alsacréations vous conseille de manger des kiwis</title>
 <link rel="stylesheet" href="styles.css">
 </head>
-
+<body>
 <header>
   <h1>Titre commun à tout le site</h1>
   <nav>
@@ -161,17 +159,17 @@ plus simplement voila l'exemple représenté de manière visuel
 
 <p>Ceci est le formulaire de contact</p>
 <form>
- ...
+  <!-- ... -->
 </form>
 
 <?php require 'footer.php'; ?>
 ```
 
 ## navigation dans notre application 
-si mon projet se présente comme ça<br>
+Si mon projet se présente comme ceci :<br>
 <img alt="projet avec plusieurs pages" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 17.14.41.png" />
 
-et que j'ai envie de voyager entre mes différentes pages...
+et que j'ai envie de naviguer entre mes différentes pages...
 
 ```php
 <a href="/index.php">Home</a>
@@ -192,25 +190,45 @@ et que j'ai envie de voyager entre mes différentes pages...
   // Ajoutez // à l'URL.
   $url .= "://"; 
     
-  // Ajoutez l'hôte (nom de domaine, ip) à l'URL.
+  // Ajoutez l'hôte (nom de domaine, IP) à l'URL.
   $url .= $_SERVER['HTTP_HOST']; 
     
-  // Ajouter l'emplacement de la ressource demandée à l'URL
+  // Ajouter l'emplacement de la ressource demandée à l'URL.
   $url .= $_SERVER['REQUEST_URI']; 
       
-  // Afficher l'URL
+  // Afficher l'URL.
   echo $url; 
 ?>
 ```
+<details>
+<summary>explication du code</summary>
 
-si je veux savoir sur quel page je suis pour mettre en 'active' un lien par exemple
+<ol>
+  <li>Les premières lignes utilisent la variable $_SERVER['HTTPS'] pour vérifier si la page est chargée via une connexion sécurisée (HTTPS). Si c'est le cas, la variable $url est initialisée avec "https", sinon avec "http".</li>
+  <li>Ensuite, la ligne $url .= "://"; est utilisée pour ajouter les "://" à l'URL. Cela prépare la structure de base de l'URL.</li>
+  <li>La ligne suivante, $url .= $_SERVER['HTTP_HOST'];, ajoute le nom de domaine ou l'adresse IP du serveur à l'URL. Cela permet de spécifier l'emplacement du site.</li>
+  <li>Enfin, $url .= $_SERVER['REQUEST_URI']; ajoute la partie spécifique de l'URL qui indique l'emplacement et le nom du fichier actuel.</li>
+  <li>En utilisant echo $url;, l'URL complète est affichée dans la page.</li>
+</ol>
+
+</details
+
+Si je veux savoir sur quelle page je suis afin de mettre en "active" un lien, par exemple.
 ```php
 <a href="/index.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/index.php'): ?>active<?php endif; ?>">Home</a>
 <a href="/about.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/about.php'): ?>active<?php endif; ?>">About</a>
 <a href="/contact.php" class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/contact.php'): ?>active<?php endif; ?>">Contact</a>
 ```
 
-si je veux récupérer les query je peux 
+<details>
+<summary>explication du code de haut dessus</summary>
+<ol>
+  <li>Cela ressemble à une instruction pour créer un lien. "a" signifie lien, et "href" est comme l'adresse du lien. L'adresse indiquée ici est "/contact.php", ce qui est comme l'endroit où se trouve la page "Contact" sur le site web.</li>
+  <li>class="link <?php if ($_SERVER['SCRIPT_NAME'] === '/contact.php'): ?>active<?php endif; ?>" : Cela signifie que ce lien aura une sorte d'apparence spéciale. Si la page que vous regardez est la page "contact.php", le lien sera "actif", ce qui signifie qu'il sera un peu différent pour que vous sachiez que vous êtes sur la page "Contact".</li>
+</ol>
+</details>
+
+Si je veux récupérer les paramètres de requête (query), je peux...
 ```php
 // www.mysite.com/category/subcategory?q=myquery
 <?php echo $_GET['q']; // retournera: myquery ?>

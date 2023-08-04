@@ -3,7 +3,7 @@
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/02__html-integration.md)
 
 ## Le but ?
-PHP (acronyme de "PHP: Hypertext Preprocessor") est un langage de programmation de scripts côté serveur utilisé principalement pour développer des sites web dynamiques. Il est exécuté sur le serveur et permet de générer du contenu HTML, qui est ensuite envoyé au navigateur de l'utilisateur.
+PHP (acronyme de "PHP : Hypertext Preprocessor") est un langage de programmation côté serveur principalement utilisé pour développer des sites web dynamiques. Il s'exécute sur le serveur et permet de générer du contenu HTML, qui est ensuite envoyé au navigateur de l'utilisateur.
 
 Le PHP est particulièrement utile pour gérer les données stockées dans une base de données, pour gérer les sessions utilisateur, pour créer des formulaires et pour gérer les données soumises par l'intermédiaire de ces formulaires. Il permet également de créer des scripts pour envoyer des emails automatisés, de gérer les fichiers sur le serveur et de créer du contenu dynamique en fonction des actions des utilisateurs.
 
@@ -25,14 +25,14 @@ Pour lire des fichiers `fichier.php` nous allons avoir besoin d'un serveur php d
 #### Mac
 
 ##### si vous êtes sur M1 / M2 
-prendre 'MAMP & MAMP PRO 6.6 (M1)'
+Prendre 'MAMP & MAMP PRO 6.6 (M1)'
 
 ##### si vous êtes sur Intel
-prendre 'MAMP & MAMP PRO 6.6 (Intel)'
+Prendre 'MAMP & MAMP PRO 6.6 (Intel)'
 
 ---
 **NOTE:**
-Si vous ne savez pas: se rendre dans le menu 'pomme' puis 'a propos de ce mac' regarder section 'processeur'
+Si vous ne savez pas : rendez-vous dans le menu "Pomme", puis sélectionnez "À propos de ce Mac", et regardez la section "Processeur".
 
 ---
 
@@ -41,7 +41,7 @@ prendre 'MAMP & MAMP PRO 5.0.5'
 </details>
 <details>
 <summary>Utilisation</summary>
-#### De quoi ça a l'aire ? 
+#### À quoi cela resemble ?
 
 Vous pouvez appuyer sur "Start" 
 
@@ -96,7 +96,7 @@ créer un dossier que vous nommerez `monpremiersite` ouvrez ce dossier dans votr
 avec votre éditeur de code créer un fichier `index.php` vous devriez avoir quelque chose qui resssemble a ça<br />
 <img alt="Premier Fichier index dans vscode" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 15.43.31.png" />
 
-collez y le code-ci dessous
+Collez-y le code-ci dessous
 ```php
 <html>
   <head>
@@ -111,7 +111,26 @@ collez y le code-ci dessous
 
 allez dans votre navigateur préféré et entrez [http://localhost:8888/monpremiersite/](http://localhost:8888/monpremiersite/) 
 
-vous devriez avoir quelque chose qui ressemble a ça<br>
+<details>
+<summary>explication pour voir son premier site</summary>
+
+- Pour commencer, Aller dans les préférences de `MAMP`.<br>
+<img src="../courses/.screenshots/etape1.png"></img><br>
+- Vérifier votre port dans `Port`. (les deux premier et rentenez-le, le 3ème c'est votre base de donnée)<br>
+<img src="../courses/.screenshots/PORTMAMP.png"><br>
+- Ensuite aller dans `Servers` et cliquer sur `Open in Finder`.<br>
+<Img src="../courses/.screenshots/Capture d’écran 2023-08-04 à 14.53.29"><br>
+- Regarder après le dossier que vous venez de créer ('Pour ma part sa sera "`monpremiersite`" et retenez-le)<br>
+<img src="../courses/.screenshots/htdoc.png"><br>
+- Maintenant aller sur votre navigateur préférer
+et dans l'url c'est a dire la barre de recherche en haut taper : http://localhost:8888/ + le nom de votre dossier et appuyer sur entrer <br>
+<img src="../courses/.screenshots/exemplesite.png">
+--> le port doit être celui du 2ème point 
+
+
+</details> <br>
+
+Vous devriez avoir quelque chose qui ressemble a ceci<br>
 <img alt="premier site" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 15.49.33.png" />
 
 
@@ -120,8 +139,9 @@ vous devriez avoir quelque chose qui ressemble a ça<br>
 ```php
 <?php phpinfo(); ?>
 ```
+- Le code <?php phpinfo(); ?> en PHP est utilisé pour obtenir des informations détaillées sur la façon dont le langage PHP est configuré sur un serveur. Cela peut être utile pour résoudre des problèmes, vérifier les fonctionnalités disponibles ou ajuster les performances de votre site web. Cependant, il faut faire attention à ne pas l'utiliser sur un site en ligne, car cela pourrait rendre certaines informations sensibles accessibles aux pirates.
 
 ## Entrainez vous! 
 
-il serait intéressant de reprendre quelque exercices que nous avons fait ensemble dans [la section précédente](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md) et de les ajouter dans vos `fichier.php` 
+Il serait intéressant de reprendre quelque exercices que nous avons fait ensemble dans [la section précédente](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md) et de les ajouter dans vos `fichier.php` 
 

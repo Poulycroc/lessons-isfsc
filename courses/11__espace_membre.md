@@ -18,7 +18,7 @@ Pour que vos utilisateurs puissent créer du contenu sur votre site il va donc f
 
 ## Permettre a l'utilisateur de poster des articles ou autres
 
-[ce tuto](https://www.wpbeginner.com/wp-tutorials/how-to-allow-users-to-submit-posts-to-your-wordpress-site/) est très pratique pour ça mais il utilise WpForms qui permet de générer des formulaire pour que vos utilisateur puisse envoyer des données sur votre application je vous conseil aussi de suivre [la vidéo](https://www.youtube.com/watch?v=gCZ0ffQUs_0)
+[Ce tuto](https://www.wpbeginner.com/wp-tutorials/how-to-allow-users-to-submit-posts-to-your-wordpress-site/) est très pratique pour ça mais il utilise WpForms qui permet de générer des formulaire pour que vos utilisateur puisse envoyer des données sur votre application je vous conseil aussi de suivre [la vidéo](https://www.youtube.com/watch?v=gCZ0ffQUs_0)
 
 
 ## Sans plugins
@@ -32,16 +32,16 @@ Pour que vos utilisateurs puissent créer du contenu sur votre site il va donc f
 <details>
 <summary>1. Page de connection avec son formulaire</summary>
 
-1. ajouter une formulaire de connexion
-2. protéger la page (si on est déjà connecté on a pas envie de se re-connecter encore)
+1. Ajouter une formulaire de connexion.
+2. Protéger la page (si on est déjà connecté, on a pas envie de se re-connecter encore).
 
 <details>
 <summary>
 Page login
 </summary>
 
-pour cette page, on va utiliser le formulaire de connexion de base de WordPress...
-dans `page--login.php`
+Pour cette page, on va utiliser le formulaire de connexion de base de WordPress,
+dans `page--login.php`.
 
 ```php
 <?php
@@ -74,11 +74,12 @@ get_header();
 <?php get_footer(); ?>
 ```
 
-évidement je n'ai mis aucun design dans ce formulaire mais il fonctionne quelque points important...
+évidement je n'ai mis aucun design dans ce formulaire mais il fonctionne.<br> 
+Voici quelque points important :
 
-1. `<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>` envoi vos données vers le formulmaire de connection de wordpress il ne doit donc pas être changé
-2. `name="pwd"` de l'input de mon password est une donnée imoprtante
-3. `<input type="hidden" name="redirect_to" value="<?php echo esc_url( home_url('/') ); ?>">` indique au formulaire de **WordPress** la page sur la quel vous voulez que votre membre soit redirigé arpès sa connexion
+1. `<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>` Envoi vos données vers le formulaire de connection de wordpress, il ne doit donc pas être changé.
+2. `name="pwd"` Nom de l'input de mon password est une donnée importante.
+3. `<input type="hidden" name="redirect_to" value="<?php echo esc_url( home_url('/') ); ?>">` indique au formulaire de **WordPress** la page sur la quel vous voulez que votre membre soit redirigé après sa connection.
 
 </details>
 
@@ -87,9 +88,9 @@ get_header();
 Page registration
 </summary>
 
-ici on va devoir créer notre formulaire dans la page `page--register.php` et un peu de code dans `functions.php`
+Ici on va devoir créer notre formulaire dans la page `page--register.php` et un peu de code dans `functions.php`.
 
-dans `page--register.php`
+Dans `page--register.php` :
 ```php
 <?php
 /* Template Name: RegistrationPage */
@@ -112,7 +113,7 @@ get_header();
 <?php get_footer(); ?>
 ```
 
-dans `functions.php`
+Dans `functions.php` :
 ```php
 function create_account(){
 	//You may need some data validation here
@@ -183,9 +184,9 @@ var_dump($user);
 Se déconnecter ? 
 </summary>
 
-dans mon header ou ailleurs je vais pouvoir ajouter un lien de déconnexion
+Dans mon header ou ailleurs je vais pouvoir ajouter un lien de déconnexion.
 
-dans ma page `header.php`
+Dans ma page `header.php` :
 ```php
 <?php if (is_user_logged_in()): // si je suis connecté ?>
   <a href="<?php echo wp_logout_url(); // lien généré par wordpress pour déconnexion ?>">Déconnexion</a>
@@ -201,9 +202,9 @@ dans ma page `header.php`
 Pour cacher la bar d'option wordpress
 </summary>
 
-comme mon membre nouvellement inscrit est un utilisateur de mon application wordpress il a accès a notre barre d'outil wordpress... c'est pas super pratique pour nous on va donc devoir ajouter une condition dans notre code `fucntions.php` qui va déterminer qui a le droit ou non de voir cette fameuse bar 
+Comme mon membre nouvellement inscrit est un utilisateur de mon application wordpress il a accès a notre barre d'outil wordpress, c'est pas super pratique pour nous on va donc devoir ajouter une condition dans notre code `functions.php` qui va déterminer qui a le droit ou non de voir cette fameuse barre .
 
-dans `fucntions.php`
+dans `functions.php` :
 ```php
 function tf_check_user_role( $roles ) {
 	// si pas connecté alors je sors de la function
