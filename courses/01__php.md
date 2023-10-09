@@ -145,7 +145,8 @@ Cette structure prend en paramètre le nom du tableau à parcourir puis les donn
 ```php
 <?php 
  
-  // Calcul de la taille du tableau $legumes
+  // `sizeof()` Calcul de la taille du tableau $tailleLegumes
+  // on peut utiliser `count()`
   $tailleLegumes = sizeof($legumes);
  
   // Parcours du tableau
