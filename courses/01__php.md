@@ -183,6 +183,7 @@ Le tag HTML `<pre>` préserve les espaces et les sauts de ligne qui sont présen
 ## Les conditions
 
 [PHP net](https://www.php.net/manual/fr/control-structures.if.php)
+[lab - vu en cours](https://github.com/Poulycroc/lessons-isfsc/blob/master/lab-2023/01_intro/conditions.php)
 
 #### Qu'est-ce que c'est ?
 Les structures de contrôle sont des éléments du langage qui altèrent le flux d'exécution en fonction de certaines conditions.
