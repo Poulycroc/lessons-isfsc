@@ -19,21 +19,21 @@ $students = [
 ?>
 <html>
 <body>
-<ul>
-<?php foreach ($students as $student) { ?>
-<li>
-	<?php echo $student['name'] .' '.  $student['lastname']; ?>
-    <span
-     style="background-color:<?php if ($student['note'] < 10) {
-     	echo 'red';
-     }  else { 
-     	echo 'green'; 
-     } ?>;"
-    >
-    	<?php echo '(' . $student['note'] . ')'; ?>
-    </span>
-</li>
-<?php } ?>
-</ul>
+  <ul>
+    <?php foreach ($students as $student) { ?>
+      <li>
+        <?php echo $student['name'] .' '.  $student['lastname']; ?>
+          <span
+            style="background-color:<?php if ($student['note'] < 10) {
+              echo 'red';
+            }  else { 
+              echo 'green'; 
+            } ?>;"
+          >
+            <?php echo '(' . $student['note'] . ')'; ?>
+          </span>
+      </li>
+    <?php } ?>
+  </ul>
 </body>
 </html>
