@@ -21,21 +21,27 @@ $students = [
 <body>
 <ul>
 <?php 
-	foreach ($students as $student) { 
+  foreach ($students as $student) { 
+    // calcule de la moyenne des notes
     $note = array_sum($student['notes']) / count($student['notes']);
 ?>
-<li>
-	<?php echo $student['name'] .' '.  $student['lastname']; ?>
-    <span
-     style="background-color:<?php if ($note < 10) {
-     	echo 'red';
-     }  else { 
-     	echo 'green'; 
-     } ?>;"
-    >
-    	<?php echo '(' . $note . ')'; ?>
-    </span>
-</li>
+    <li>
+      <?php echo $student['name'] .' '.  $student['lastname']; ?>
+        <span
+         style="background-color:<?php if ($note < 10) {
+          echo 'red';
+         }  else { 
+          echo 'green'; 
+         } ?>;"
+        >
+          <!-- 
+          // peu $etre écrit comme ça 
+          <span
+         style="background-color:<?= $note < 10) ? 'red' : 'green' ?>;"
+        >-->
+          <?php echo '(' . $note . ')'; ?>
+        </span>
+    </li>
 <?php } ?>
 </ul>
 </body>
