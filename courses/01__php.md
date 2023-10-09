@@ -275,6 +275,30 @@ Comme nous l'avons vu dans le paragraphe consacré aux expressions, expression e
 #### Qu'est-ce que c'est ?
 Une fonction est une portion de code qui réalise une tâche précise et qui peut être appelée à n'importe quel endroit de votre programme, évitant ainsi de réécrire le même code plusieurs fois.
 
+Imaginons qu'une fonction soit comme une petite machine ou un outil dans une usine. Voici comment elle fonctionne schématiquement :
+
+```
+          +-------------------------+
+Entrée -> |                         | -> Sortie
+          |         Fonction        |
+Paramètre |                         | Résultat
+(s)       |          (Code)         |
+          +-------------------------+
+                |
+                v
+           Actions/Logique
+```
+
+1. **Entrée/Paramètre(s)** : Ces sont les informations que vous donnez à la fonction pour qu'elle puisse faire son travail. Dans l'exemple de code que vous avez donné précédemment, pour la fonction `salut`, le paramètre est `$nom`.
+
+2. **Fonction (Code)** : C'est ici que toutes les actions et la logique sont effectuées. C'est le cœur de la machine.
+
+3. **Sortie/Résultat** : Une fois que la fonction a traité les paramètres à l'aide de son code, elle produit généralement un résultat. Ce résultat est ce que renvoie la fonction. Pour certaines fonctions, comme `salut`, il n'y a pas de valeur renvoyée mais une action directe (affichage dans ce cas).
+
+4. **Actions/Logique** : C'est la partie du code à l'intérieur de la fonction qui traite l'entrée et produit la sortie. Par exemple, dans la fonction `moyenne`, la logique est de sommer tous les nombres et de diviser par leur nombre total pour obtenir la moyenne.
+
+L'idée principale derrière l'utilisation de fonctions est la modularité et la réutilisabilité. Au lieu d'écrire le même code encore et encore, vous pouvez l'écrire une fois dans une fonction et l'appeler autant de fois que nécessaire.
+
 #### Définition d'une fonction
 ```php
 <?php
