@@ -1,27 +1,37 @@
 <?php 
+// Définir une variable pour l'âge
 $age = 17;
-?> 
+?>
 <html>
-<style>
-.red {
-  background-color: red;
-}
-.yellow {
-  background-color: yellow;
-}
-.font-color {
-color: green ;
-}
-</style>
-<body 
-  class="font-color <?php if ($age >= 18) {echo 'red';} else { echo 'yellow'; }?>"
->
+  <style>
+    /* Style pour un fond rouge */
+    .red {
+      background-color: red;
+    }
+    /* Style pour un fond jaune */
+    .yellow {
+      background-color: yellow;
+    }
+    /* Style pour une couleur de texte verte */
+    .font-color {
+      color: green;
+    }
+  </style>
+  <body 
+    <?php // Appliquer une couleur de fond selon l'âge ?>
+    class="font-color <?php if ($age >= 18) {echo 'red';} else { echo 'yellow'; }?>"
+  >
+    <?php 
+      // Afficher un message différent selon l'âge
+      if ($age >= 18) { 
+    ?>
 
-<?php if ($age >= 18) { ?>
-  <h1>ok</h1>
-<?php } else { ?>
-  <h1>NON</h1>
-<?php } ?>
+        <h1>ok</h1>
+      <?php 
+        } else { 
+      ?>
+        <h1>NON</h1>
 
-</body>
+    <?php } ?>
+  </body>
 </html>

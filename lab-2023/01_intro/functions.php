@@ -1,36 +1,41 @@
 <?php
-// Cette function affiche un message de 'salutation'
-// récupération d'un text et retourne le un 'Salut ' suivi du text introduit
+
+// Une fonction pour saluer une personne par son prénom.
 function salut($nom) {
-  // impression du message par défaut suivit du text qu'on a ici appelé `$nom`
-	echo 'Salut ' . $nom;
+    // Concatène le mot 'Salut' avec le prénom donné en paramètre.
+    echo 'Salut ' . $nom;
 }
 
-// function qui calcule une moyenne 
-// on entre un tableau de chiffres `$nbrs`
+// Une fonction pour calculer la moyenne d'une liste de nombres.
 function moyenne($nbrs) {
-  // array_sum -> https://www.php.net/manual/en/function.array-sum.php
-  // count -> https://www.php.net/manual/en/function.count.php
-  // retourne une division des deux valeurs
-	return array_sum($nbrs) / count($nbrs);
+    // `array_sum` additionne tous les éléments d'un tableau.
+    // `count` compte le nombre d'éléments dans un tableau.
+    // La fonction retourne la somme divisée par le nombre d'éléments.
+    return array_sum($nbrs) / count($nbrs);
 }
 
-// retourn si un age est 'OK' ou 'NON'
+// Une fonction qui vérifie si l'âge est supérieur à 18.
 function ageOk($age) {
-  // condition -> si `$age` supérieur a `18`
-  if ($age > 18) {
-    // alors retourner 'OK'
-    return 'OK';
-  }
-
-  // sinon retourner 'NON'
-  return 'NON';
+    if ($age > 18) {
+        return 'OK';
+    }
+    return 'NON';
 }
+
+// Une fonction qui vérifie si le prénom est 'Jhon' et l'âge est supérieur ou égal à 18.
+function isNameAndAge($name, $age) {
+    return ($name === 'Jhon' && $age >= 18);
+}
+
 ?>
 
+<h1 style="background-color:<?php echo isNameAndAge('Jhon', 19) ? 'green' : 'red' ?>">
+  TITRE
+</h1>
 
 <span><?php salut('John'); ?></span>
 <br/>
 <span><?php echo moyenne([12, 23, 45]); ?></span>
 <br/>
 <span><?php echo ageOk(19); ?></span>
+
