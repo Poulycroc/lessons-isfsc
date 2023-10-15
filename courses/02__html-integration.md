@@ -11,7 +11,6 @@ En résumé, le PHP est un outil très utile pour développer des sites web inte
 
 
 ## MAMP ?
-
 Pour lire des fichiers `fichier.php` nous allons avoir besoin d'un serveur php de type [Apache](https://fr.wikipedia.org/wiki/Apache_HTTP_Server), nous allons pour ça utiliser MAMP
 
 
@@ -30,11 +29,8 @@ Prendre 'MAMP & MAMP PRO 6.6 (M1)'
 ##### si vous êtes sur Intel
 Prendre 'MAMP & MAMP PRO 6.6 (Intel)'
 
----
-**NOTE:**
-Si vous ne savez pas : rendez-vous dans le menu "Pomme", puis sélectionnez "À propos de ce Mac", et regardez la section "Processeur".
-
----
+> [!Attention]
+> Si vous ne savez pas : rendez-vous dans le menu "Pomme", puis sélectionnez "À propos de ce Mac", et regardez la section "Processeur".
 
 #### Windows
 prendre 'MAMP & MAMP PRO 5.0.5'
@@ -45,10 +41,8 @@ prendre 'MAMP & MAMP PRO 5.0.5'
 
 Vous pouvez appuyer sur "Start" 
 
----
-**NOTE:**
-Ne pas utiliser la version 'pro'
----
+> [!NOTE]
+> Ne pas utiliser la version 'pro'
 
 <img alt="MAMP mac" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 14.35.39.png" />
 <img alt="MAMP windows" src="https://raw.githubusercontent.com/Poulycroc/lessons-isfsc/master/courses/.screenshots/Screenshot 2022-10-23 at 14.40.35.png" />
@@ -86,11 +80,8 @@ l'information la plus importante pour nous c'est `Document root: /Applications/M
 
 Rendez dans votre espace de travail MAMP (`/Applications/MAMP/htdocs` sur mac et `/Local Disk (C:)/MAMP/htdocs` sur widnows)
 
----
-**NOTE:**
-<p>si vous n'êtes pas sur de l'endroit ou se trouve votre "espace de travail" allé sur `MAMP - Preference - Server - cliquez sur "Open in finder"`</p>
-
----
+> [!IMPORTANT]
+> <p>si vous n'êtes pas sur de l'endroit ou se trouve votre "espace de travail" allé sur `MAMP - Preference - Server - cliquez sur "Open in finder"`</p>
 
 créer un dossier que vous nommerez `monpremiersite` ouvrez ce dossier dans votre éditeur de code favori dans mon cas [VSCodium](https://vscodium.com/) (le plus connu étant [Visual Studio Code](https://code.visualstudio.com/) )
 avec votre éditeur de code créer un fichier `index.php` vous devriez avoir quelque chose qui resssemble a ça<br />
@@ -135,13 +126,11 @@ Vous devriez avoir quelque chose qui ressemble a ceci<br>
 
 
 ## Exemple #2 Récupération des informations du système depuis PHP
-
 ```php
 <?php phpinfo(); ?>
 ```
-- Le code <?php phpinfo(); ?> en PHP est utilisé pour obtenir des informations détaillées sur la façon dont le langage PHP est configuré sur un serveur. Cela peut être utile pour résoudre des problèmes, vérifier les fonctionnalités disponibles ou ajuster les performances de votre site web. Cependant, il faut faire attention à ne pas l'utiliser sur un site en ligne, car cela pourrait rendre certaines informations sensibles accessibles aux pirates.
+- Le code `<?php phpinfo(); ?>` en PHP est utilisé pour obtenir des informations détaillées sur la façon dont le langage PHP est configuré sur un serveur. Cela peut être utile pour résoudre des problèmes, vérifier les fonctionnalités disponibles ou ajuster les performances de votre site web. Cependant, il faut faire attention à ne pas l'utiliser sur un site en ligne, car cela pourrait rendre certaines informations sensibles accessibles aux pirates.
 
 ## Entrainez vous! 
-
 Il serait intéressant de reprendre quelque exercices que nous avons fait ensemble dans [la section précédente](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md) et de les ajouter dans vos `fichier.php` 
 
