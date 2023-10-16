@@ -110,7 +110,7 @@ allez dans votre navigateur préféré et entrez [http://localhost:8888/monpremi
 - Vérifier votre port dans `Port`. (les deux premier et rentenez-le, le 3ème c'est votre base de donnée)<br>
 <img src="../courses/.screenshots/PORTMAMP.png"><br>
 - Ensuite aller dans `Servers` et cliquer sur `Open in Finder`.<br>
-<Img src="../courses/.screenshots/Capture d’écran 2023-08-04 à 14.53.29"><br>
+<Img src="../courses/.screenshots/Screenshot 2023-10-16 at 10.03.42.png"><br>
 - Regarder après le dossier que vous venez de créer ('Pour ma part sa sera "`monpremiersite`" et retenez-le)<br>
 <img src="../courses/.screenshots/htdoc.png"><br>
 - Maintenant aller sur votre navigateur préférer
