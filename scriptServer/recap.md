@@ -3,10 +3,10 @@
 ## Exercice 1 
 
 Parmi les variables suivantes, lesquelles ont un nom valide : `$a`, `$_a`, `$a_a`, `$AAA`, `$a!`, `$1a` et `$a1` ?
-<!-- <details> -->
-<!-- <summary>Réponse 1</summary> -->
-<!-- Les variables valides sont: `$a`, `$_a`, `$a_a`, `$AAA`, `$a1`. -->
-<!-- </details> -->
+<details>
+<summary>Réponse 1</summary>
+Les variables valides sont: `$a`, `$_a`, `$a_a`, `$AAA`, `$a1`.
+</details>
 
 ## Exercice 2
 
@@ -20,19 +20,19 @@ Modifier le code ci-dessous pour calculer la moyenne des notes.
    echo 'La moyenne est de '.$moyenne.' / 20.';
 ?>
 ```
-<!-- <details> -->
-<!-- <summary>Réponse 2</summary> -->
-<!---->
-<!-- ```php -->
-<!-- <?php -->
-<!--    $note_maths = 15; -->
-<!--    $note_francais = 12; -->
-<!--    $note_histoire_geo = 9; -->
-<!--    $moyenne = ($note_maths + $note_francais + $note_histoire_geo) / 3; -->
-<!--    echo 'La moyenne est de '.$moyenne.' / 20.'; -->
-<!-- ?> -->
-<!-- ``` -->
-<!-- </details> -->
+<details>
+<summary>Réponse 2</summary>
+
+```php
+<?php
+   $note_maths = 15;
+   $note_francais = 12;
+   $note_histoire_geo = 9;
+   $moyenne = ($note_maths + $note_francais + $note_histoire_geo) / 3;
+   echo 'La moyenne est de '.$moyenne.' / 20.';
+?>
+```
+</details>
 
 ## Exercice 3
 
@@ -45,32 +45,32 @@ Calculer le prix TTC du produit.
    echo 'Le prix TTC du produit est de '.$prix_ttc.' €.';
 ?>
 ```
-<!-- <details> -->
-<!-- <summary>Réponse 3</summary> -->
-<!---->
-<!-- ```php -->
-<!-- <?php -->
-<!--    $prix_ht = 50; -->
-<!--    $tva = 20; -->
-<!--    $prix_ttc = $prix_ht + ($prix_ht * $tva / 100); -->
-<!--    echo 'Le prix TTC du produit est de '.$prix_ttc.' €.'; -->
-<!-- ?> -->
-<!-- ``` -->
-<!-- </details> -->
+<details>
+<summary>Réponse 3</summary>
+
+```php
+<?php
+   $prix_ht = 50;
+   $tva = 20;
+   $prix_ttc = $prix_ht + ($prix_ht * $tva / 100);
+   echo 'Le prix TTC du produit est de '.$prix_ttc.' €.';
+?>
+```
+</details>
 
 ## Exercice 4
 
 Déclarer une variable `$test` qui contient la valeur 42. En utilisant la fonction `var_dump()`, faire en sorte que le type de la variable `$test` soit string et que la valeur soit bien de 42
-<!-- <details> -->
-<!-- <summary>Réponse 4</summary> -->
-<!---->
-<!-- ```php -->
-<!-- <?php -->
-<!--    $test = "42"; -->
-<!--    var_dump($test); -->
-<!-- ?> -->
-<!-- ``` -->
-<!-- </details> -->
+<details>
+<summary>Réponse 4</summary>
+
+```php
+<?php
+   $test = "42";
+   var_dump($test);
+?>
+```
+</details>
 
 
 # LES CONDITIONS (IF, ELSE ET ELSEIF)
@@ -78,23 +78,23 @@ Déclarer une variable `$test` qui contient la valeur 42. En utilisant la foncti
 ## Exercice 5
 
 Déclarer une variable `$sexe` qui contient une chaîne de caractères. Créer une condition qui affiche un message différent en fonction de la valeur de la variable.
-<!-- <details> -->
-<!-- <summary>Réponse 5</summary> -->
-<!---->
-<!-- ```php -->
-<!-- <?php -->
-<!--     $sexe = "homme"; // exemple -->
-<!--     if ($sexe == "homme") { -->
-<!--         echo "C'est un homme."; -->
-<!--     } else { -->
-<!--         echo "C'est une femme."; -->
-<!--     } -->
-<!---->
-<!--     // aussi valable  -->
-<!--     echo "C'est un " . $sexe === 'homme' ? 'homme' : 'femme' . "." -->
-<!-- ?> -->
-<!-- ``` -->
-<!-- </details> -->
+<details>
+<summary>Réponse 5</summary>
+
+```php
+<?php
+    $sexe = "homme"; // exemple
+    if ($sexe == "homme") {
+        echo "C'est un homme.";
+    } else {
+        echo "C'est une femme.";
+    }
+
+    // aussi valable 
+    echo "C'est un " . $sexe === 'homme' ? 'homme' : 'femme' . "."
+?>
+```
+</details>
 
 ## Exercice 6
 
