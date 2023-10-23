@@ -100,18 +100,32 @@ Déclarer une variable `$sexe` qui contient une chaîne de caractères. Créer u
 
 Déclarer une variable `$budget` qui contient la somme de 1 553,89 €. Déclarer une variable `$achats` qui contient la somme de 1 554,76 €. Afficher si le budget permet de payer les achats.
 <details>
-
+<summary>Réponse 6</summary>
 
 ```php
 <?php
-   $budget = 1553.89;
-   $achats = 1554.76;
-   if ($budget >= $achats) {
+    $budget = 1553.89;
+    $achats = 1554.76;
+
+    if ($budget >= $achats) {
        echo "Le budget permet de payer les achats.";
-   } else {
+    } else {
        echo "Le budget ne permet pas de payer les achats.";
-   }
+    }
+
+// Autre réponse plus avancée
+
+    $total = $budget - $achats;
+
+    if ($total > 0) {
+        echo "Il reste $total";
+    } elseif ($total == 0) {
+       echo "Il n'y a plus de sous";
+    } else {
+       echo "Achats impossible";
+    }
 ?>
+
 ```
 </details>
 
