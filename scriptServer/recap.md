@@ -99,60 +99,60 @@ Déclarer une variable `$sexe` qui contient une chaîne de caractères. Créer u
 ## Exercice 6
 
 Déclarer une variable `$budget` qui contient la somme de 1 553,89 €. Déclarer une variable `$achats` qui contient la somme de 1 554,76 €. Afficher si le budget permet de payer les achats.
-<!-- <details> -->
-<!---->
-<!---->
-<!-- ```php -->
-<!-- <?php -->
-<!--    $budget = 1553.89; -->
-<!--    $achats = 1554.76; -->
-<!--    if ($budget >= $achats) { -->
-<!--        echo "Le budget permet de payer les achats."; -->
-<!--    } else { -->
-<!--        echo "Le budget ne permet pas de payer les achats."; -->
-<!--    } -->
-<!-- ?> -->
-<!-- ``` -->
-<!-- </details> -->
+<details>
+
+
+```php
+<?php
+   $budget = 1553.89;
+   $achats = 1554.76;
+   if ($budget >= $achats) {
+       echo "Le budget permet de payer les achats.";
+   } else {
+       echo "Le budget ne permet pas de payer les achats.";
+   }
+?>
+```
+</details>
 
 
 ## Exercice 7
 
 Déclarer une variable`$age` qui contient la valeur de type integer de votre choix. Réaliser une condition pour afficher si la personne est mineure ou majeure.
-<!-- <details> -->
-<!-- <summary>Réponse 7</summary> -->
-<!---->
-<!-- ```php -->
-<!-- <?php -->
-<!--    $age = 20; // exemple -->
-<!--    if ($age < 18) { -->
-<!--        echo "La personne est mineure."; -->
-<!--    } else { -->
-<!--        echo "La personne est majeure."; -->
-<!--    } -->
-<!-- ?> -->
-<!-- ``` -->
-<!-- </details> -->
+<details>
+<summary>Réponse 7</summary>
+
+```php
+<?php
+   $age = 20; // exemple
+   if ($age < 18) {
+       echo "La personne est mineure.";
+   } else {
+       echo "La personne est majeure.";
+   }
+?>
+```
+</details>
 
 ## Exercice 8
 
 Déclarer une variable `$heure` qui contient la valeur de type integer de votre choix comprise entre 0 et 24. Créer une condition qui affiche un message si l'heure est le matin, l'après-midi ou la nuit.
-<!-- <details> -->
-<!-- <summary>Réponse 8</summary> -->
-<!---->
-<!-- ```php -->
-<!-- <?php -->
-<!--    $heure = 15; // exemple -->
-<!--    if ($heure >= 0 && $heure < 12) { -->
-<!--        echo "C'est le matin."; -->
-<!--    } elseif ($heure >= 12 && $heure < 18) { -->
-<!--        echo "C'est l'après-midi."; -->
-<!--    } else { -->
-<!--        echo "C'est la nuit."; -->
-<!--    } -->
-<!-- ?> -->
-<!-- ``` -->
-<!-- </details> -->
+<details>
+<summary>Réponse 8</summary>
+
+```php
+<?php
+   $heure = 15; // exemple
+   if ($heure >= 0 && $heure < 12) {
+       echo "C'est le matin.";
+   } elseif ($heure >= 12 && $heure < 18) {
+       echo "C'est l'après-midi.";
+   } else {
+       echo "C'est la nuit.";
+   }
+?>
+```
+</details>
 
 # LES BOUCLES
 
