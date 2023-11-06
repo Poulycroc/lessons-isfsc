@@ -42,13 +42,18 @@ Premièrement on va vérifier si on a des articles avec la `function` [have_post
 
 Le code de ma page `index.php` devrait ressember a ceci :
 ```php
+<!-- Appel de notre 'header' sur la page -->
 <?php get_header(); ?>
-  <?php if (have_posts()): ?>
+
+<!-- La on place la condition "si articles alors..." -->
+<?php if (have_posts()): ?>
     <h1>Mes articles</h1>
-    // on fera ici une boucle sur les articles que jai écris
-  <?php else: ?>
+    <!-- C'est ici qu'on pourra afficher nos articles -->
+<?php else: ?>
     <h1>Aucun articles disponible pour le moment</h1>
-  <?php endif; ?>
+<?php endif; ?>
+
+<!-- Appel de notre 'footer' sur la page -->
 <?php get_footer(); ?>
 ```
 
@@ -68,9 +73,11 @@ Je peux donc intégrer ce code :
 dans ma condition `have_posts()` que l'on a vu plus tôt, ce qui va nous donner :
 ```php
 <?php get_header(); ?>
-  <div class="container">
+
+<div class="container">
     <?php if (have_posts()): ?>
       <h1>Mes articles</h1>
+
       <ul>
         <?php while(have_posts()): the_post(); ?>
           <li>
@@ -82,7 +89,8 @@ dans ma condition `have_posts()` que l'on a vu plus tôt, ce qui va nous donner 
     <?php else: ?>
       <h1>Aucun articles disponible pour le moment</h1>
     <?php endif; ?>
-  </div>
+</div>
+
 <?php get_footer(); ?>
 ```
 ce qui donne en `html`

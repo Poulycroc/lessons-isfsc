@@ -1,0 +1,33 @@
+body {
+  margin: 0; /* pour éviter d'avoir une bordure blanche autour de notre contenu */
+  font-family: Arial, Helvetica, sans-serif; /* je choisi une font */
+}
+
+header.header {
+  width: 100%;
+  height: 280px;
+  background-color: #303938;
+  padding-top: 20px;
+}
+
+header.header > a.logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto; /* on centre le logo */
+  text-decoration: none;
+}
+
+header.header > a.logo > img {
+  width: 100%;
+}
+
+header.header > a.logo > h1 {
+  color: #B79242;
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 980px;
+}
