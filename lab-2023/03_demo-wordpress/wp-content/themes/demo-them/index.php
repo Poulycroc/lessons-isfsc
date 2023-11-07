@@ -1,31 +1,36 @@
-<?php get_header(); ?>
-
-<header class="header">
-  <a class="logo" href="<?php echo home_url('/'); ?>">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png" alt="Logo">
-    <h1><?php bloginfo('title'); ?></h1>
-  </a>
-</header>
-
+<?php get_header(); // Inclut le fichier header.php ?>
 
 <main>
   <div class="container">
-    <?php if (have_posts()): ?>
+    <?php if (have_posts()): // Vérifie si des articles sont disponibles ?>
       <h1>Mes articles</h1>
-      <ul>
-        <?php while(have_posts()): the_post(); ?>
-          <li>
-            <?php the_post_thumbnail(); ?><br>
-            <?php the_title() ?> - <?php the_author(); ?>
-            <a href="<?php the_permalink(); ?>">lire l'article</a>
+      <ul class="articles--list">
+        <?php while(have_posts()): the_post(); // Boucle à travers les articles ?>
+          <li class="articles--list-item">
+            <div class="thumb-holder">
+              <?php if(has_post_thumbnail()): // Si l'article a une image mise en avant ?>
+                <?php the_post_thumbnail('thumbnail'); // Affiche l'image mise en avant ?>
+              <?php endif; ?>
+            </div>
+
+            <div class="content">
+              <h3><?php the_title(); ?></h3>
+              <article>
+                <p><?php the_excerpt(); ?></p>
+              </article>
+              
+              <div class="content--footer">
+                <small>Write by: <b><?php the_author(); ?></b> (<?php the_date(); ?>)</small>
+                <a href="<?php the_permalink(); ?>">lire l'article</a>
+              </div>
+            </div>
           </li>
         <?php endwhile; ?>
       </ul>
-    <?php else: ?>
+    <?php else: // si pas d'articles ?>
       <h1>Aucun articles disponible pour le moment</h1>
     <?php endif; ?>
   </div>
 </main>
 
-
-<?php get_footer(); ?>
+<?php get_footer(); // Inclut le fichier footer.php ?>
