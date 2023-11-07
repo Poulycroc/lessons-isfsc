@@ -1,0 +1,123 @@
+/* Variable css */
+:root {
+  --logo-color: #B79242;
+  --dark-bg-color: #303938;
+}
+
+
+html, body {
+  min-height: 100vh;
+}
+body {
+  margin: 0; /* pour éviter d'avoir une bordure blanche autour de notre contenu */
+  font-family: Arial, Helvetica, sans-serif; /* je choisi une font */
+}
+footer {
+  position: sticky;
+  top: 100%;
+  background-color: var(--dark-bg-color);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* 
+* ici une du code css plus avancé
+* attention ce code ne fonctionne pas sur tous les navigateurs
+*/
+ul {
+  margin: 0;
+  padding: 0;
+  & li {
+    list-style: none;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+/* fin du code avancé */
+
+header.header {
+  width: 100%;
+  height: 240px;
+  background-color: var(--dark-bg-color);
+  padding-top: 20px;
+}
+header.header > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header.header a.logo {
+  width: 150px;
+  text-decoration: none;
+}
+
+header.header a.logo > img {
+  width: 100%;
+}
+
+header.header h1 {
+  color: var(--logo-color);
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 980px;
+}
+
+li.articles--list-item {
+  display: flex;
+  flex-direction: row;
+}
+li.articles--list-item h3 {
+  margin-top: 0;
+}
+li.articles--list-item .thumb-holder {
+  margin-right: 20px;
+}
+li.articles--list-item .content {
+  display: flex;
+  flex-direction: column;
+}
+li.articles--list-item .content .content--footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/** design pour pages single article */
+body.single header.header {
+  height: 70px;
+  padding-top: 0;
+  & > .container {
+    flex-direction: row;
+    & a.logo {
+      width: 60px;
+    }
+    & h1 {
+      margin-left: 20px;
+    }
+  }
+}
+
+.post-page-header {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.post-page-header > img {
+  object-fit: cover;
+  width: 100%;
+}
+.single-post--footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
