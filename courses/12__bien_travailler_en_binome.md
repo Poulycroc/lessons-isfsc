@@ -36,7 +36,7 @@ Je vais commencer par créer un nouveau dépôt dans mon espace GitHub (un seul 
 4. On attend sa réponse<br><img src=".screenshots/Screenshot 2023-11-09 at 16.29.10.png" />
 </details>
 
-> [!Attention]
+> [!IMPORTANT]
 > On pense évidement a ajouter nos professeur préféré [Grégoire Holvoet](https://github.com/gregholvoet) et [Maxime Bartier](https://github.com/Poulycroc).
 
 
