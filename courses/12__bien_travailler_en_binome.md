@@ -42,7 +42,7 @@ Je vais commencer par créer un nouveau dépôt dans mon espace GitHub (un seul 
 
 ### 3. Creation de notre WordPress
 
-On va devoir télécharger une WordPress si ce n'est pas encore fait, en suite aura simplement a récupérer le projet directement depuis GitHub
+On va devoir télécharger une version de [WordPress](https://wordpress.org/download/) si ce n'est pas encore fait, ensuite on aura simplement a récupérer le projet directement depuis GitHub
 
 <details>
 <summary>Lier avec GitHub</summary>
@@ -85,9 +85,11 @@ On va just faire quelque fichiers dans un premier temps histoire de pouvoir voir
 7. on va pouvoir publier aussi sur la branche `main` histoire d'avoir plus facile pour la suite
 </details>
 
-### 5. On prépare nos branche de travail
+### 5. Pourquoi avoir plusieurs branches ?
 
 Pour travailler de la manière la plus propre possible on va en générale travailler sur `3 branches` comme dans cette image.
+
+On aura moins de problère, dans le cas d'une perte ou d'une destruction de notre projet on pourra facielement revenir en arrière.
 
 <img src="./.screenshots/git-branches-scehma.jpg" alt="git branches schema" />
 
