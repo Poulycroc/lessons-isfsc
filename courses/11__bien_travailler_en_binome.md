@@ -128,6 +128,22 @@ Une fois que vous avez terminé le travail sur une branche de fonctionnalité, v
 4. Sélectionnez la branche de fonctionnalité que vous souhaitez fusionner.
 5. Cliquez sur `Merge`.
 
+<details>
+<summary>Exemple Pull Request</summary>
+
+1. Allez sur la branche que vous voulez 'commit' et appuyer sur `preview pull request`
+<img src="./.screenshots/exemplepull1.png" alt="exemple depart pull request"/>
+
+2. Vous allez voir les changement faites sur la branche, selectionner en haut a gauche  la branche vers laquelle vous voulez que la branche se fussionne et ensuite vous pouvez cliquer sur `Create Pull Request`.
+<img src="./.screenshots/exemplepull2.png" alt="exemple2"/>
+
+3. Vous allez être rediriger vers le site de GitHub avec un "formulaire" avec le titre de votre commit. Vous pouvez toujours vérifier sur quel branche vous voulez commit votre changement juste au dessus de add a title
+<img src="./.screenshots/exmeplepull3.png" />
+
+4. Pour finir ceci va vous rediriger vers la fin ou vous n'aurez plus qu'a appuyer sur `Merge pull request` et ensuite une fois une mini verification appuyer sur `merge` ce qui va merger fussioner votre branche avec celle demander. 
+<img src="./.screenshots/exemplepull4.png" />
+</details>
+
 Pour les Pull Requests, qui sont des demandes de fusion sur le dépôt distant (GitHub en ligne), vous devrez utiliser le site web GitHub pour les créer et les gérer. Ce processus permet une revue de code par vos pairs avant que les changements ne soient intégrés à la branche principale.
 
 #### Conseil Important
