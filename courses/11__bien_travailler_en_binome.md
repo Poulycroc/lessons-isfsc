@@ -129,7 +129,7 @@ Une fois que vous avez terminé le travail sur une branche de fonctionnalité, v
 5. Cliquez sur `Merge`.
 
 <details>
-<summary>Exemple Pull Request</summary>
+<summary>Exemple Pull Request </summary>
 
 1. Allez sur la branche que vous voulez 'commit' et appuyer sur `preview pull request`
 <img src="./.screenshots/exemplepull1.png" alt="exemple depart pull request"/>
