@@ -140,6 +140,42 @@ En utilisant cette méthode, vous pouvez gérer vos branches et veiller à ce qu
 ### Exemple concrèt pour l'ajout d'un style css
 Dans GitHub Desktop, basculez sur la branche `develop`, créez une nouvelle branche `feature/style-update`. Ouvrez votre fichier CSS, apportez les modifications de style souhaitées. Committez vos changements avec un message descriptif, poussez sur GitHub. Ouvrez une Pull Request pour fusionner `feature/style-update` dans `develop`.
 
+
+---
+## Gérer un Projet Commencé Sans WordPress
+
+### Avez-vous commencé votre projet en simple HTML/CSS/JS sans WordPress ?
+
+Il arrive que certains étudiants débutent leur projet en se concentrant uniquement sur le front-end (HTML, CSS, JavaScript) sans intégrer WordPress dès le départ. Bien que cette approche puisse sembler simple au premier abord, elle présente certains défis lorsqu'il s'agit d'intégrer le travail dans un environnement WordPress par la suite.
+
+> [!WARNING]  
+> **Mise en garde**
+> Il est important de comprendre que commencer un projet WordPress directement avec l'environnement WordPress est la méthode recommandée. Cela permet une meilleure intégration des fonctionnalités spécifiques à WordPress et une cohérence plus forte entre le front-end et le back-end dès le début. Cependant, si vous avez déjà commencé votre projet en simple HTML/CSS/JS, il n'est pas trop tard pour l'adapter à WordPress.
+
+#### Utilisation d'une branche dédiée pour le front-end initial
+
+Pour gérer cette situation, vous pouvez créer une branche dédiée dans votre dépôt Git pour votre travail initial en HTML/CSS/JS. Voici comment procéder :
+
+1. **Créer la branche Front-End Initial** :
+   - Lancez GitHub Desktop et ouvrez le dépôt de votre projet WordPress.
+   - Créez une nouvelle branche nommée `initial-front-end` ou un nom similaire qui indique clairement son objectif.
+   - Commencez à y transférer vos fichiers HTML/CSS/JS existants.
+
+2. **Intégration avec WordPress** :
+   - Parallèlement, travaillez sur une autre branche dédiée à l'intégration de votre travail dans WordPress. Cette branche sera utilisée pour adapter et intégrer progressivement vos fichiers front-end dans le thème WordPress.
+
+3. **Fusion et transition** :
+   - Une fois que votre code front-end initial est adapté et intégré à WordPress, vous pouvez progressivement fusionner ces changements dans votre branche principale de développement WordPress.
+
+### Avantages de cette méthode :
+
+- **Flexibilité** : Permet de gérer les travaux initiaux tout en préparant une transition en douceur vers WordPress.
+- **Organisation** : Maintient une séparation claire entre le travail initial et le développement WordPress ultérieur.
+- **Sécurité** : Garantit que vous avez une sauvegarde de votre travail initial tout en progressant vers une intégration complète avec WordPress.
+
+En suivant cette méthode, vous pouvez efficacement gérer le passage d'un développement front-end simple à un projet WordPress complet, en assurant une transition organisée et sans heurts.
+
+---
 ## Explications complémentaires:
 
 - **GitHub Desktop** : C'est une interface graphique pour gérer vos dépôts GitHub sans utiliser la ligne de commande. Très pratique pour les débutants ou ceux qui préfèrent une interface visuelle.
