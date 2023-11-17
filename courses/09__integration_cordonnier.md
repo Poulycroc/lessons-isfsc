@@ -922,48 +922,48 @@ On va construire `[contact-form]` dans `index.php` à la place du formulaire et 
 ``` 
 Dans mon fichier `functions.php` je vais ajouter le code suivant :
 ```php
-add_shortcode('contact-form', 'display_contact_form');
 /**
  * Cette fonction affiche les messages de validation, le message de réussite, le conteneur des messages de 
  * validation et le formulaire de contact.
  */
-function display_contact_form() {
-	?>
-  <div class="col-md">
+
+function create_contact_form_shortcode(){
+  return "<div class='col-md'>
     <!-- c'est la div dans la quel on va envoyer nos erreurs -->
-    <div id="validation-messages-container"></div>
+    <div id='validation-messages-container'></div>
 
-    <form id="contact-form" action="<?php echo esc_url( get_permalink() ); ?>" method="post">
-      <input type="hidden" name="contact_form">
+    <form id='contact-form' action='esc_url( get_permalink() )' method='post'>
+      <input type='hidden' name='contact_form'>
 
-      <p class="form-group">
-        <label for="name"><?php echo esc_html( 'Votre nom et prénom', 'supershoes-theme' ); ?></label>
-        <input type="text" id="name" name="name" class="form-control">
+      <p class='form-group'>
+        <label for='name'>esc_html( 'Votre nom et prénom', 'supershoes-theme')</label>
+        <input type='text' id='name' name='name' class='form-control'>
       </p>
 
-      <p class="form-group">
-        <label for="subject"><?php echo esc_html( 'Subject', 'supershoes-theme' ); ?></label>
-        <select name="subject" id="subject" class="form-control">
-          <option value="0">Choisissez un sujet</option>
-          <option value="devis">Demande de devis</option>
-          <option value="question">Question</option>
-          <option value="other">Autres</option>
+      <p class='form-group'>
+        <label for='subject'>esc_html('Subject', 'supershoes-theme') </label>
+        <select name='subject' id='subject' class='form-control'>
+          <option value='0'>Choisissez un sujet</option>
+          <option value='devis'>Demande de devis</option>
+          <option value='question'>Question</option>
+          <option value='other'>Autres</option>
         </select>
       </p>
 
-      <p class="form-group">
-        <label for="message"><?php echo esc_html( 'Message', 'supershoes-theme' ); ?></label>
-        <textarea id="message" name="message" class="form-control"></textarea>
+      <p class='form-group'>
+        <label for='message'>esc_html( 'Message', 'supershoes-theme' )</label>
+        <textarea id='message' name='message' class='form-control'></textarea>
       </p>
 
-      <button type="submit" class="btn btn-primary" id="contact-form-submit">
-        <?php echo esc_attr( 'Submit', 'supershoes-theme' ); ?>
+      <button type='submit' class='btn btn-primary' id='contact-form-submit'>
+        esc_attr('Submit', 'supershoes-theme')
       </button>
 
     </form>
-  </div>
-	<?php
+  </div>";
 }
+
+add_shortcode('contact-form', 'display_contact_form');
 ```
 
 Je vais me retrouver avec quelque chose comme ceci :<br><img src=".screenshots/Screenshot 2022-12-05 at 14.13.48.png" alt="première vision de notre formulaire"><br>
