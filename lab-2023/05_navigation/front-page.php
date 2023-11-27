@@ -13,22 +13,24 @@
                   'post_type' => 'post'
               ));
               if ($recent_posts_query->have_posts()) :
-                  while ($recent_posts_query->have_posts()) : $recent_posts_query->the_post();
-                      ?>
-                      <div class="card">
-                        <div class="card-body">
-                          <article  <?php post_class(); ?>>
-                              <header class="entry-header">
-                                  <?php the_title(); ?>
-                              </header>
-                              <div class="entry-content">
-                                  <?php the_excerpt(); ?>
-                              </div>
-                          </article>
+              while ($recent_posts_query->have_posts()) : $recent_posts_query->the_post();
+              ?>
+                <div class="card">
+                  <div class="card-body">
+                    <article  <?php post_class(); ?>>
+                        <header class="entry-header">
+                            <h3><?php the_title(); ?></h3>
+                        </header>
+                        <div class="entry-content">
+                            <?php the_excerpt(); ?>
                         </div>
-                      </div>
-                      <?php
-                  endwhile;
+                    </article>
+            
+                    <a class="btn btn-primary" href="<?php the_permalink(); ?>">Voir</a>
+                  </div>
+                </div>
+            <?php
+              endwhile;
               endif;
             ?>
 
@@ -48,9 +50,9 @@
                     'post_type' => 'faqs',
                     'posts_per_page' => -1  // Affiche tous les posts de FAQ
                 ));
-                if ($faq_posts_query->have_posts()) :
-                $i = 0;
-                while ($faq_posts_query->have_posts()) : $faq_posts_query->the_post();
+                if ($faq_posts_query->have_posts()):
+                $count = 0;
+                while ($faq_posts_query->have_posts()): $faq_posts_query->the_post(); $count++;
               ?>
                   <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -58,22 +60,21 @@
                         class="accordion-button" 
                         type="button" 
                         data-bs-toggle="collapse" 
-                        data-bs-target="#faq_<?php echo $i; ?>" 
-                        aria-expanded="<?php echo $i === 1 ? 'true' : 'false' ?>" 
-                        aria-controls="faq_<?php echo $i; ?>"
+                        data-bs-target="#faq_<?= $count; ?>" 
+                        aria-controls="faq_<?= $count; ?>"
+                        <?php if ($count === 1) { echo "aria-expanded='true'"; } ?>
                       >
                         <?php the_title(); ?>
                       </button>
                     </h2>
                     <div 
-                      id="faq_<?php echo $i; ?>" 
+                      id="faq_<?= $count; ?>" 
                       class="accordion-collapse collapse show" 
                       data-bs-parent="#accordionExample"
                     >
                       <div class="accordion-body"><?php the_content(); ?></div>
                     </div>
                   </div>
-              <?php $i++; ?>
               <?php endwhile; endif; ?>
           </div>
         </section>
