@@ -1069,3 +1069,51 @@ function display_contact_form() {
 
 Rien de particulier à faire ici, je pourrais évidement ajouter une option du même style pour le hero-header... à toi de voir ce que tu veux faire pour cette partie-ci
 </details>
+
+----
+# Bonus
+---
+
+## Lien dans ma navigation
+Comme vous l'aurez sans doute compris ici ce ne sont pas des lien normaux...
+```html
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Accueil</a></li>
+<li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
+<li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+```
+
+ce que je vais pouvoir faire pour me rediriger même si je ne suis pas sur la bonne page c'est faire le code suivant pour me redirigé sur la page home mais avec une [Ancre HTML](https://developer.mozilla.org/fr/docs/Web/HTML/Element/a) 
+```php
+echo home_url('/#about');
+```
+
+ce qui devrait nous donner ce code la
+
+```php
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="<?= home_url('/'); ?>">Accueil</a></li>
+<li class="nav-item"><a class="nav-link" href="<?= home_url('/#about'); ?>">À propos</a></li>
+<li class="nav-item"><a class="nav-link" href="<?= home_url('/#services'); ?>">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="<?= home_url('/#contact'); ?>">Contact</a></li>
+```
+
+
+## Petit bonus pour la gestion des medias
+Ajouter une image directement dans la partie "Media" de notre backoffice peut aussi être solution intéressante elle pourrait permettre a notre client de plus facilement gérer ses fichiers..
+
+1. On se rend donc dans notre section "Media"<br><img src="./.screenshots/Screenshot 2023-12-03 at 21.45.28.png" />
+2. On click sur ajouter un media..<br><img src="./.screenshots/Screenshot 2023-12-03 at 21.33.31.png" />
+3. Nous voila donc avec notre photo <br><img src="./.screenshots/Screenshot 2023-12-03 at 21.34.10.png" />
+4. ce que j'ai envie d'éviter c'est de reprendre le lien direct de l'image.. parce que si je fais ça mon lien ne sera plus bon au moment de transférer mon site sur une autre serveur<br><img src="./.screenshots/Screenshot 2023-12-03 at 21.34.36.png" />
+5. ce qu'on veut c'est récupérer une information qui sera immuable (inchangée même si on changer d'environement), quand je clique pour afficher le détail d'une image je vois dans l'url de celle-ci un `id` il représente le numéro de post de mon media<br><img src="./.screenshots/Screenshot 2023-12-03 at 21.52.32.png" /><br>il peut aussi être écrit comme suit<br><img src="./.screenshots/Screenshot 2023-12-03 at 21.44.08.png" />
+6. Il ne me restera donc plus qu'a écrire une petite function qui me récupérera mon média via son `ID`
+```php
+<img 
+    src="<?= wp_get_attachment_image_url(41); ?>"
+    alt="Erreur 404 | <?= bloginfo('title'); ?>"
+    style="margin-top: 100px;" 
+/>
+```
+
+- Voila mon image<br><img src="./.screenshots/Screenshot 2023-12-03 at 21.58.24.png" />
+- On voit qu'au niveau du html généré on a bien quelque chose de "propre"<br><img src="./.screenshots/Screenshot 2023-12-03 at 21.58.35.png" />
