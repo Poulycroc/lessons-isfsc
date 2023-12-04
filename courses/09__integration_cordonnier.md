@@ -932,16 +932,16 @@ function create_contact_form_shortcode(){
     <!-- c'est la div dans la quel on va envoyer nos erreurs -->
     <div id='validation-messages-container'></div>
 
-    <form id='contact-form' action='esc_url( get_permalink() )' method='post'>
+    <form id='contact-form' action='". esc_url( get_permalink() ) ."' method='post'>
       <input type='hidden' name='contact_form'>
 
       <p class='form-group'>
-        <label for='name'>esc_html( 'Votre nom et prénom', 'supershoes-theme')</label>
+        <label for='name'>". esc_html( 'Votre nom et prénom', 'supershoes-theme') ."</label>
         <input type='text' id='name' name='name' class='form-control'>
       </p>
 
       <p class='form-group'>
-        <label for='subject'>esc_html('Subject', 'supershoes-theme') </label>
+        <label for='subject'>". esc_html('Subject', 'supershoes-theme') ."</label>
         <select name='subject' id='subject' class='form-control'>
           <option value='0'>Choisissez un sujet</option>
           <option value='devis'>Demande de devis</option>
@@ -951,19 +951,17 @@ function create_contact_form_shortcode(){
       </p>
 
       <p class='form-group'>
-        <label for='message'>esc_html( 'Message', 'supershoes-theme' )</label>
+        <label for='message'>". esc_html( 'Message', 'supershoes-theme' ) ."</label>
         <textarea id='message' name='message' class='form-control'></textarea>
       </p>
 
       <button type='submit' class='btn btn-primary' id='contact-form-submit'>
-        esc_attr('Submit', 'supershoes-theme')
+        ". esc_attr('Submit', 'supershoes-theme') ."
       </button>
-
     </form>
   </div>";
 }
-
-add_shortcode('contact-form', 'display_contact_form');
+add_shortcode('contact-form', 'create_contact_form_shortcode');
 ```
 
 Je vais me retrouver avec quelque chose comme ceci :<br><img src=".screenshots/Screenshot 2022-12-05 at 14.13.48.png" alt="première vision de notre formulaire"><br>
