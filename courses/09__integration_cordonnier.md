@@ -1,4 +1,4 @@
-# Bootstrap dans WordPress
+# Intégration Cordonnier
 
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/09__integration_cordonnier.md)<br>
 [le projet 'montheme' complet](https://github.com/Poulycroc/lessons-isfsc/tree/master/wordpress/themecordonnier)
