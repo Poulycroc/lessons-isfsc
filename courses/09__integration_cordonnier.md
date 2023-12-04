@@ -8,7 +8,7 @@
 Récupérer le projet sur le [Github](https://github.com/gregholvoet/supershoes)
 Il y a 3 branches sur ce projet :
 1. **start** : Le projet de départ sans aucunes modification, sans `html` ni `css`.
-2. **static** : Le projet est maintenant terminé sans de manière `static` donc le contenu est écrit en dur et n'est donc pas `dynamique`.
+2. **static** : Le projet est maintenant terminé de manière `static` donc le contenu est écrit en dur et n'est donc pas `dynamique`.
 3. **wordpress** : branche de travail pour notre projet wordpress on va donc rendre notre le contenu `dynamique`.
 
 <details>
