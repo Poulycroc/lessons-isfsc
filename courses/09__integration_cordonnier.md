@@ -834,6 +834,87 @@ on pourra évidement proposer a notre client de lui faire un carousel [comme cel
 
 </details>
 
+
+#### Ajouter une page pour chaque "service"
+dans un premier temps on peut simplement ajouter un lien [permalink](https://developer.wordpress.org/reference/functions/the_permalink/)
+```php
+<a class="btn btn-primary" href="<?php the_permalink(); ?>">En savoir plus</a>
+```
+
+<details>
+<summary>ça devrait donner une 'card' comme ça</summary>
+
+```php
+<?php
+  $servicesList = new WP_Query([
+    'post_type' => 'services',
+    'post_status' => 'publish',
+    'limit' => 3,
+    'orderby' => 'date',
+    'date' => true
+  ]);
+
+  if ($servicesList->have_posts()):
+?>
+  <div class="row">
+    <?php while ($servicesList->have_posts()): $servicesList->the_post(); ?>
+      <div class="col-sm">
+        <div class="card">
+          <img 
+            src="<?php the_post_thumbnail_url(); ?>"
+            class="card-img-top"
+            alt="<?php the_title() ?> | service | <?php bloginfo('name'); ?>"
+          >
+          <div class="card-body">
+            <h3 class="card-title h5"><?php the_title(); ?></h3>
+            <p class="card-text"><?php the_content(); ?></p>
+
+            <a class="btn btn-primary" href="<?php the_permalink(); ?>">En savoir plus</a>
+          </div><!-- end .card-body -->
+        </div><!-- end .card -->
+      </div><!-- end .col-sm -->
+    <?php endwhile; ?>
+  </div><!-- end .row -->
+<?php else: ?>
+  <h5>On a pas encore de services a vous proposer mais ça arrive !</h5>
+<?php endif; ?>
+```
+<details>
+
+pour ce qui est des page comme notre [Custom post type](https://developer.wordpress.org/plugins/post-types/registering-custom-post-types/) s'appelle `services` je vais créer une page `single-services.php` wordpress comprendra tout seul que c'est une page qui va accueillir un seul service 
+
+ma page `single-services.php`:
+```php
+<?php
+get_header(); 
+if (have_posts()): while (have_posts()): the_post();
+?>
+
+<header class="single-service-header">
+  <img src="<?php the_post_thumbnail_url(); ?>" />
+</header>
+
+<main>
+  <section class="container single-service">
+    <div class="row">
+      <div class="col-md-8">
+        <header class="single-service-header">
+          <h1 class="display-4"><?php the_title(); ?></h1>
+        </header>
+
+        <div class="single-service-content">
+          <?php the_content(); ?>
+        </div>
+    </div>
+  </section>
+</main>
+
+<?php
+endwhile; endif;
+get_footer();
+?>
+```
+
 ---
 ### Contact Form
 ---
