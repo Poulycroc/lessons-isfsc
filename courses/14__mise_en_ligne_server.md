@@ -45,6 +45,32 @@ dans le cas ou j'ai donc modifier le fichier `index.php` je vais simplement pouv
 > [!IMPORTANT]  
 > C'est une technique facile et qui marche bien mais il faut bien faire attention au fait que toute modification sur le serveur via **FileZilla** entraine la suppression du fichier conserner, il est donc important de bien se coordoner avec notre équipier pour éviter tout remplacement qui pourrait faire perdre l'avancement du travail
 
+### Exporter / importer les données de notre base de données
+
+
+1. Connectez-vous à l'administration de WordPress (wp-admin) du site source.
+2. Placez le curseur sur l'option "Outils".
+3. Cliquez sur "Exporter".
+4. Choisissez ce que vous voulez exporter.<br>Si vous exportez uniquement des articles, gardez à l'esprit que les images à la une ne seront pas transférées et devront être importées manuellement à nouveau sur le site de destination.
+5. Cliquez sur "Télécharger le fichier d'exportation".<br><img src="./.screenshots/migrate_posts_export-1024x649.png" />
+
+**Importation du contenu**
+
+Le contenu doit être exporté correctement avant de pouvoir être importé. Le fichier d'exportation doit être téléchargé de l'étape précédente avant de commencer.
+
+Assurez-vous de réaliser cette étape sur le site de destination, où le contenu doit être copié.
+
+1. Connectez-vous au tableau de bord d'administration de WordPress (wp-admin) du site de destination.
+2. Placez le curseur sur l'option "Outils".
+3. Cliquez sur "Importer".
+4. Cliquez sur "WordPress".
+5. Cliquez sur "Installer maintenant" et/ou "Exécuter l'importateur".<br>Si l'importateur WordPress n'est pas installé, une invite s'affichera pour installer le plugin.<br><img src="./.screenshots/migrate_posts_import-1024x611.png" />
+6. Parcourez l'ordinateur pour le fichier XML exporté du site source et sélectionnez-le.
+7. Cliquez sur **Téléverser le fichier et importer**.<br><img src="./.screenshots/migrate_posts_upload-1024x435.png" />
+8. Sélectionnez le nom de l'utilisateur auteur qui se verra attribuer les articles et les pages.
+9. (Facultatif) **Téléchargez et importez les pièces jointes des fichiers**.<br>Cochez cette case pour importer les photos et autres fichiers médias attachés à l'article.
+10. Cliquez sur "Soumettre".<br><img src="./.screenshots/migrate_posts_author-1024x482.png" />
+
 
 ## Solution 2: **La migration**
 
