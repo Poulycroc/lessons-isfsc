@@ -30,6 +30,9 @@ Si on se rend sur notre site (dans mon cas [demo.emu.isfsc.be](demo.emu.isfsc.be
 
 ## Solution 1: **Mise a jour continue**
 
+<details>
+<summary>Voir plus</summary>
+
 ### Ajout de notre theme dans le **WordPress** en ligne
 
 Dans **FileZilla** je vais pouvoir me diriger vers le dossier qui m'intéresse (dans mon cas `demo`)<br><img src="./.screenshots/Screenshot 2023-12-12 at 11.32.27.png"><br>une foi que je suis au niveau des themes WordPress je vias pouvoir y glisser le theme sur le quel j'ai travaillé avec mon binome<br><img src="./.screenshots/Screenshot 2023-12-12 at 11.36.41.png" /><br>une foi le transfère terminé je vais pouvoir le retrouver dans mon `backoffice` **WordPress** et donc pouvoir activer le theme 
@@ -71,8 +74,13 @@ Assurez-vous de réaliser cette étape sur le site de destination, où le conten
 9. (Facultatif) **Téléchargez et importez les pièces jointes des fichiers**.<br>Cochez cette case pour importer les photos et autres fichiers médias attachés à l'article.
 10. Cliquez sur "Soumettre".<br><img src="./.screenshots/migrate_posts_author-1024x482.png" />
 
+</summary>
 
 ## Solution 2: **La migration**
+
+
+<details>
+<summary>Voir plus</summary>
 
 ### Syncroniser le le serveur pour qu'il ressemble comme 2 goutes d'eau a notre projet en local
 
@@ -112,3 +120,5 @@ pour que ça fonctionne on va avoir besoin de répéter l'opération sur notre *
 5. comme l'indique le carton ici ça va éffacer et remplacer le **WordPress En ligne** <br><img src="./.screenshots/Screenshot 2023-12-04 at 15.23.59.png" />
 6. après confirmation on nous indique que tous s'est bien passé <br><img src="./.screenshots/Screenshot 2023-12-04 at 15.24.07.png" />
 7. on va être redirigé vers une page de connection -> la je vais devoir me connecter avec les identifiant que j'ai utilisé pour installer mon **WordPress** en local<br><img src="./.screenshots/Screenshot 2023-12-13 at 12.15.48.png" />
+
+</details>
