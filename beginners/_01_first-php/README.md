@@ -1,5 +1,11 @@
 # Backend CMS - ISFSC
 
+**sources**:
+
+- [http://maxime.gueriau.fr/teaching/iut_lyon1/info/programmation-web/php.html](Introduction au PHP)
+- [https://www.php.net/manual/fr/index.php](PHP: Hypertext Preprocessor)
+- [https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/01__php.md](Cours PHP - ISFSC)
+
 ## Introduction au PHP
 
 ### Le PHP, c’est quoi ?
