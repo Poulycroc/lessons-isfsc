@@ -2,7 +2,7 @@
 
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/10__advanced_custom_post_type.md)<br>
 
-## C'est quoi ? 
+## C'est quoi ?
 
 [ACF (Advanced Custom Fields)](https://www.advancedcustomfields.com/) est une extension pour WordPress qui vous permet de créer des champs personnalisés pour vos publications, pages et autres types de contenu sur votre site WordPress. Cela signifie que vous pouvez ajouter des champs supplémentaires à vos formulaires de publication pour stocker des données spécifiques que vous souhaitez afficher sur votre site, comme des informations de contact, des images ou des vidéos.
 
@@ -19,19 +19,32 @@ En résumé, ACF vous permet de créer des champs personnalisés pour votre site
 [source vidéo](https://www.youtube.com/watch?v=rMYMmW6jjDg&t=271s)<br>
 [source écrite](https://kinsta.com/fr/blog/advanced-custom-fields/)
 
-
 <details>
 <summary>Installation</summary>
 
+<details>
+<summary>Avant</summary>
+
 1. On se rend comme toujours (quand on veut installer un 'plugin' ou un 'extention') dans `extentions`.<br>
-<img src=".screenshots/Screenshot 2022-12-08 at 10.22.18.png" alt="installer une extention ACF">
+   <img src=".screenshots/Screenshot 2022-12-08 at 10.22.18.png" alt="installer une extention ACF">
 2. On se rend dans la section Ajouter.<br>
-<img src=".screenshots/Screenshot 2022-12-08 at 10.22.27.png" alt="installer une extention ACF">
+   <img src=".screenshots/Screenshot 2022-12-08 at 10.22.27.png" alt="installer une extention ACF">
 3. On cherche l'extention `ACF`.<br><img src=".screenshots/Screenshot 2022-12-08 at 10.22.34.png" alt="installer une extention ACF">
 4. Une fois trouvé on clique sur "Installer".<br>
-<img src=".screenshots/Screenshot 2022-12-08 at 10.22.51.png" alt="lancer l'installation ACF">
+   <img src=".screenshots/Screenshot 2022-12-08 at 10.22.51.png" alt="lancer l'installation ACF">
 5. On active le `plugin`.<br>
-<img src=".screenshots/Screenshot 2022-12-08 at 10.22.59.png" alt="activer extention ACF">
+   <img src=".screenshots/Screenshot 2022-12-08 at 10.22.59.png" alt="activer extention ACF">
+
+</details>
+
+<details>
+<summary>Nouvellle version de ACF</summary>
+
+1. Se rendre sur le site [ACF](https://www.advancedcustomfields.com/resources/installation/) et télécharger la version gratuite.<br>
+   <img src="https://www.advancedcustomfields.com/wp-content/uploads/2024/10/Install-ACF-Upload-Plugin-Zip.png" alt="se rendre sur le site ACF">
+2. suivre les étapes d'installations
+
+</details>
 
 </details>
 <br>
@@ -45,43 +58,45 @@ Dans cet écran on va donc pouvoir créer des `groupes de champs`.<br>
 dans ce cas ci je vais ajouter un `groupe de champs` pour les services... Dans ce contexte j'ai envie d'ajouter quelque infos sur les services que je propose à mes possible clients.<br>
 <img src=".screenshots/Ajouter gdc.png"><br>
 Je vais donc ajouter un `champ`.<br>
-<img src=".screenshots/exemple remplissage.png" alt="de mon champ"><br> 
+<img src=".screenshots/exemple remplissage.png" alt="de mon champ"><br>
 Dans l'exemple que je propose ici, il se normera '`Services`' et sera en type `number`, (évidement `services` sans majuscules ni auter pour le coté code), on peut aussi noter que je précise a mon future utilisateur que l'unité de mon champ `services` est en `euro`, une fois mon champ créé je vais devoir lier le `groupe de champs` à un type de publication, dans l'exemple ici je vais le lier a mes `Custom post type` de type `services`.<br><img src=".screenshots/reglage.png" alt="j'ajoute mon groupe de champs avec un type de publication"><br>Quand je vais me rendre dans le `type de publications` qui a été lié a ce fameux `groupe de champs` je vais me retrouver avec une nouvelle section dans ma page de modification.<br><img src=".screenshots/champs.png" alt="le champs"><br>Pour afficher la nouvelle valeur que j'ai entré dans mon `custom field` je vais simplement ajouter dans la boucle de mon type post lié.
+
 ```php
 <?php echo get_field('services'); ?>
 ```
 
 Par exemple dans la boucle qui me permettait d'afficher les services du cordonnier je vais pouvoir ajouter `get_field('services')` par exemple juste en dessous du `the_content()`.
+
 ```php
 <?php
-  $services = new WP_Query([ 
+  $services = new WP_Query([
     'post_type' => 'services',
     'post_status' => 'publish',
-    'limit' => 3, 
+    'limit' => 3,
     'orderby' => 'date',
-    'date' => true 
+    'date' => true
   ]);
 
-  if ($services->have_posts()): 
+  if ($services->have_posts()):
 ?>
   <div class="row">
-    <?php 
-      while ($services->have_posts()): 
-      $services->the_post(); 
+    <?php
+      while ($services->have_posts()):
+      $services->the_post();
     ?>
       <div class="col-sm">
         <div class="card">
-          <img 
-            src="<?php the_post_thumbnail_url(); ?>" 
+          <img
+            src="<?php the_post_thumbnail_url(); ?>"
             class="card-img-top"
-            alt="<?php the_title() ?> | service | <?php echo bloginfo('name'); ?>" 
+            alt="<?php the_title() ?> | service | <?php echo bloginfo('name'); ?>"
           >
           <div class="card-body">
-            <h3 class="card-title h5"><?php the_title(); ?></h3> 
-            <p class="card-text"><?php the_content(); ?></p> 
+            <h3 class="card-title h5"><?php the_title(); ?></h3>
+            <p class="card-text"><?php the_content(); ?></p>
 
             <span class="prix"><?php echo get_field('prix'); ?></span>
-            
+
           </div>
         </div>
       </div>
@@ -93,3 +108,4 @@ Par exemple dans la boucle qui me permettait d'afficher les services du cordonni
 ```
 
 [plus d'exemples de code](https://www.advancedcustomfields.com/resources/code-examples/)
+
