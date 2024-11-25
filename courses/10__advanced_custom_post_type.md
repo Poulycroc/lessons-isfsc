@@ -41,8 +41,12 @@ En résumé, ACF vous permet de créer des champs personnalisés pour votre site
 <summary>Nouvellle version de ACF</summary>
 
 1. Se rendre sur le site [ACF](https://www.advancedcustomfields.com/resources/installation/) et télécharger la version gratuite.<br>
-   <img src="https://www.advancedcustomfields.com/wp-content/uploads/2024/10/Install-ACF-Upload-Plugin-Zip.png" alt="se rendre sur le site ACF">
-2. suivre les étapes d'installations
+2. Se rendre dans `extentions`.<br>
+3. Se rendre dans la section `Ajouter`.<br>
+4. Cliquer sur `Téléverser une extension`.<br>
+5. Choisir le fichier téléchargé.<br>
+6. Cliquer sur `Installer maintenant`.<br>
+7. Activer l'extension.<br>
 
 </details>
 
