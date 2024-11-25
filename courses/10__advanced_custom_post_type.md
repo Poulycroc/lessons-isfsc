@@ -23,7 +23,7 @@ En résumé, ACF vous permet de créer des champs personnalisés pour votre site
 <summary>Installation</summary>
 
 <details>
-<summary>Avant</summary>
+<summary>Via extention (attention cette méthode ne semble plus fonctionner aujourd'hui)</summary>
 
 1. On se rend comme toujours (quand on veut installer un 'plugin' ou un 'extention') dans `extentions`.<br>
    <img src=".screenshots/Screenshot 2022-12-08 at 10.22.18.png" alt="installer une extention ACF">
