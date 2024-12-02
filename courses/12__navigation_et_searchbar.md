@@ -77,7 +77,7 @@ On va pouvoir retourner dans notre partie "affichage"
 
 Pour afficher un joli menu dans notre site on va aller chercher un [bout de code chez Bootstrap](https://getbootstrap.com/docs/5.2/components/navbar/), on veut quelque chose qui ressemble a ceci : <br><img src=".screenshots/Screenshot 2022-11-21 at 18.53.07.png" alt="notre future navigation">
 
-On copie simplement le code qui est présenté dans la documentation,  et on va le coller dans notre `header.php` juste avant notre `<div class="container">`.
+On copie simplement le code qui est présenté dans la documentation, et on va le coller dans notre `header.php` juste avant notre `<div class="container">`.
 
 J'aimerais aussi commenter la partie `<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>` histoire de travailler plus tranquillement.
 
@@ -557,7 +557,7 @@ get_header(); ?>
             </h1>
         </header><!-- .page-header -->
         <?php while ( have_posts() ): the_post(); ?>
-          
+
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><?php the_title(); ?></h5>
@@ -576,16 +576,20 @@ get_header(); ?>
 <?php get_footer(); ?>
 ```
 
-Dans ce fichier rien de bien fou, on reconnait notre boucle while `<?php while ( have_posts() ): the_post(); ?>` qui va simplement retourner nos articles filtré par notre recherche et `<?php echo get_search_query(); ?>`  qui va retourner la string de ce qu'on a tapé dans la bar de recherche je pourrais don ajouter un lien dans chaque card pour avoir plus de détails sur l'article en question.
+Dans ce fichier rien de bien fou, on reconnait notre boucle while `<?php while ( have_posts() ): the_post(); ?>` qui va simplement retourner nos articles filtré par notre recherche et `<?php echo get_search_query(); ?>` qui va retourner la string de ce qu'on a tapé dans la bar de recherche je pourrais don ajouter un lien dans chaque card pour avoir plus de détails sur l'article en question.
 
 ### Et si on ne veux voir les résultats que pour services ?
+
 Effectivement si je ne veux pas voir mes article qui ont les même références que mes `services`, je vais devoir dire a mon formulaire qu'il ne doit filtrer que les ces fameux `services` pour ça j'ajoute :
+
 ```php
 <input type="hidden" name="post_type" value="services" />
 ```
+
 Dans mon fichier `searchform.php`
 
 Ce qui nous donne quelque chose comme ceci :
+
 ```php
 <form class="d-flex" role="search" action="<?php echo home_url(); ?>">
   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="s" value="<?php echo get_search_query(); ?>">
@@ -593,3 +597,4 @@ Ce qui nous donne quelque chose comme ceci :
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 ```
+
