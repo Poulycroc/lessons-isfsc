@@ -1,25 +1,24 @@
-# Espace membre
+# Espace membres
 
 Un espace membre est une zone d'un site web réservée aux utilisateurs enregistrés. Dans un site WordPress, l'espace membre est généralement accessible en s'identifiant avec un nom d'utilisateur et un mot de passe. Les utilisateurs qui ont accès à l'espace membre peuvent avoir accès à des fonctionnalités supplémentaires, telles que des pages ou des articles exclusifs, des forums de discussion, des téléchargements de fichiers, etc. L'espace membre peut également être utilisé pour gérer les paramètres de compte de l'utilisateur, tels que les informations de contact et les préférences de notification. En général, l'espace membre permet aux utilisateurs de se connecter au site et d'interagir avec d'autres utilisateurs enregistrés.
-
 
 Pour que vos utilisateurs puissent créer du contenu sur votre site il va donc faloir faire un espace membre et ensuite créer des formulaire pour qu'ils puissent entrer leurs informations
 
 ## Avec plugins
 
 ### Client portal
+
 [site officiel](https://fr.wordpress.org/plugins/client-portal/)
 [source video](https://www.youtube.com/watch?v=xj2QvdVC9y8)
 
-
 ### Wp Members
+
 [site officiel](https://rocketgeek.com/plugins/wp-members/#:~:text=WP%2DMembers%E2%84%A2%20is%20a,premium%20content%20sites%2C%20and%20more!)
 [source video](https://www.youtube.com/watch?v=kU9UWpEWiho)
 
 ## Permettre a l'utilisateur de poster des articles ou autres
 
 [Ce tuto](https://www.wpbeginner.com/wp-tutorials/how-to-allow-users-to-submit-posts-to-your-wordpress-site/) est très pratique pour ça mais il utilise WpForms qui permet de générer des formulaire pour que vos utilisateur puisse envoyer des données sur votre application je vous conseil aussi de suivre [la vidéo](https://www.youtube.com/watch?v=gCZ0ffQUs_0)
-
 
 ## Sans plugins
 
@@ -45,7 +44,7 @@ dans `page--login.php`.
 
 ```php
 <?php
-/* Template Name: login-new */ 
+/* Template Name: login-new */
 if (is_user_logged_in()) {
   // si je suis déjà connecté je suis redirigé vers la page home
   wp_redirect( home_url('/') );
@@ -57,14 +56,14 @@ get_header();
 ?>
 
 <div class="container">
-  
+
   <form action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 		<label for="log">Nom d\'utilisateur ou adresse e-mail</label>
 		<input type="text" name="log" id="log" value="<?php echo esc_attr( $user_login ); ?>">
-		
+
     <label for="pwd">Mot de passe</label>
 		<input type="password" name="pwd" id="pwd">
-		
+
     <input type="submit" name="submit" value="Se connecter">
 		<input type="hidden" name="redirect_to" value="<?php echo esc_url( home_url('/') ); ?>">
 	</form>
@@ -74,7 +73,7 @@ get_header();
 <?php get_footer(); ?>
 ```
 
-évidement je n'ai mis aucun design dans ce formulaire mais il fonctionne.<br> 
+évidement je n'ai mis aucun design dans ce formulaire mais il fonctionne.<br>
 Voici quelque points important :
 
 1. `<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>` Envoi vos données vers le formulaire de connection de wordpress, il ne doit donc pas être changé.
@@ -91,6 +90,7 @@ Page registration
 Ici on va devoir créer notre formulaire dans la page `page--register.php` et un peu de code dans `functions.php`.
 
 Dans `page--register.php` :
+
 ```php
 <?php
 /* Template Name: RegistrationPage */
@@ -114,6 +114,7 @@ get_header();
 ```
 
 Dans `functions.php` :
+
 ```php
 function create_account(){
 	//You may need some data validation here
@@ -132,7 +133,7 @@ function create_account(){
 		if( !is_wp_error($user_id) ) {
 			// user has been created
 			$user = new WP_User( $user_id );
-			$user->set_role( 'contributor' ); // type d'user que je veux a ce moment la 
+			$user->set_role( 'contributor' ); // type d'user que je veux a ce moment la
 			// redirection après connexion
 			wp_redirect(esc_url(home_url('/')));
 			exit;
@@ -145,8 +146,6 @@ add_action('init', 'create_account');
 ```
 
 </details>
-
-
 
 <details>
 <summary>
@@ -167,7 +166,7 @@ get_header(); // j'importe mon header
 
 coucou c'est une page privée
 
-<?php 
+<?php
 $user = wp_get_current_user();
 var_dump($user);
 ?>
@@ -187,6 +186,7 @@ Se déconnecter ?
 Dans mon header ou ailleurs je vais pouvoir ajouter un lien de déconnexion.
 
 Dans ma page `header.php` :
+
 ```php
 <?php if (is_user_logged_in()): // si je suis connecté ?>
   <a href="<?php echo wp_logout_url(); // lien généré par wordpress pour déconnexion ?>">Déconnexion</a>
@@ -205,6 +205,7 @@ Pour cacher la bar d'option wordpress
 Comme mon membre nouvellement inscrit est un utilisateur de mon application wordpress il a accès a notre barre d'outil wordpress, c'est pas super pratique pour nous on va donc devoir ajouter une condition dans notre code `functions.php` qui va déterminer qui a le droit ou non de voir cette fameuse barre .
 
 dans `functions.php` :
+
 ```php
 function tf_check_user_role( $roles ) {
 	// si pas connecté alors je sors de la function
@@ -212,7 +213,7 @@ function tf_check_user_role( $roles ) {
 		return;
 	}
 
-	// je récupère les information de la personne connectée 
+	// je récupère les information de la personne connectée
 	$user = wp_get_current_user();
 	// je récupère les roles
 	$currentUserRoles = $user->roles;
@@ -225,7 +226,7 @@ function tf_check_user_role( $roles ) {
 		$response = true;
 	}
 
-	// je retourne le résulatat 
+	// je retourne le résulatat
 	return $response;
 }
 $roles = [ 'contributor' ];
@@ -237,3 +238,4 @@ if ( tf_check_user_role($roles) ) {
 </details>
 
 </details>
+

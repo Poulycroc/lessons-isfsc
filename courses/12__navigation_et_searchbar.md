@@ -1,4 +1,4 @@
-# Bootstrap dans WordPress
+# Navigation et Searchbar
 
 [Voir Github Version](https://github.com/Poulycroc/lessons-isfsc/blob/master/courses/08__navbar_search.md)<br>
 [le projet 'montheme' complet](https://github.com/Poulycroc/lessons-isfsc/tree/master/wordpress/montheme)
@@ -597,4 +597,3 @@ Ce qui nous donne quelque chose comme ceci :
   <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 ```
-
